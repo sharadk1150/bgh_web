@@ -109,13 +109,13 @@ if (array_key_exists('check_submit', $_POST))
                 print '</table>';
         }
 
-    
+   
     
         // Create connection to Oracle
         $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
         // Use bind variable to improve resuability, 
         // and to remove SQL Injection attacks.
-        $query = "select hospno, hospyr, pat_name, admdate  from ward_admission_vw where to_char(admdate,'YYYY-MM-DD') = :EIDBV order by pat_name";
+        $query = "select hospno, hospyr, pat_name, admdate,admtime, pat_age, pat_sex gender, pat_admit_unit from ward_admission_vw where to_char(admdate,'YYYY-MM-DD') = :EIDBV order by pat_name";
         $s = oci_parse($c, $query);
         $myeid = $stdate;
         //$myeid =  date("d-m-Y", $stdate);
