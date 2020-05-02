@@ -127,7 +127,15 @@ if (array_key_exists('check_submit', $_POST))
                             print '<tr>';
                             foreach ($row as $item) 
                             {
+                                
                                 print '<td>'.($item?htmlentities($item):'&nbsp;').'</td>';
+                                
+/*                                
+print "<td>" . '<form type="POST"><input type="hidden" name="whatever" value="$row['1']"><input type="submit" name="submit_btn" value="accept"></form>' . "</td>";
+*/
+                                
+                                
+                                
                                 
                             }
                                 print '</tr>';

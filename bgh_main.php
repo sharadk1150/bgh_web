@@ -95,8 +95,8 @@ session_start();
                 IPD/WARD
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="get_adm_date.php">Admissions</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="get_adm_date.php">All Admissions</a>
+                <a class="dropdown-item" href="get_adm_employee.php">ON Roll Employee</a>
                 <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </li>
