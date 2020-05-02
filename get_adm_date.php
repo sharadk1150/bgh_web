@@ -4,30 +4,26 @@
 
 <html>
 <head>
-  <title>Process the HTML form data with the POST method</title>
+  <title>Get Admission Data For BGH</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-<-- Check if the the login ha sbeen successfull -->
+
 <?php
           
-         $login_name = $_SESSION["login"];
-        
-//        echo $_SESSION["login"];
-//        echo $_SESSION['loggedIn'];
-        
-//          print_r($_SESSION);
-//        on the second page you check if that session is true, else redirect to the login page  
-//        if (!isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]="")
+         $login_name = $_SESSION["login"];        
+//       echo $_SESSION["login"];
+//       echo $_SESSION['loggedIn'];        
+//       print_r($_SESSION);
+//       on the second page you check if that session is true, else redirect to the login page  
+//       if (!isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]="")
         if (!isset($_SESSION["loggedIn"]))
         {  
             header('Location:/login_bgh.php'); 
         }
         else
         {
-            ;
-//            echo "all Good";
-            
+            ;            
         }
     ?>
     
