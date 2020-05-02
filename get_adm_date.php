@@ -119,12 +119,8 @@ if (array_key_exists('check_submit', $_POST))
                 print '<th scope="col">Gender</th>';   
                 print '<th scope="col">Unit</th>';   
             
-            
-
-            
-            print '</tr>';
-            print '</thead>';
-            
+                print '</tr>';
+                print '</thead>';
             
                         while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) 
                         {
@@ -138,8 +134,6 @@ if (array_key_exists('check_submit', $_POST))
                             }
                 print '</table>';
         }
-
-   
     
         // Create connection to Oracle
         $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
@@ -155,13 +149,6 @@ if (array_key_exists('check_submit', $_POST))
         oci_execute($s);
         do_fetch($myeid, $s);
 
-
-    
-        
-
-    
-    
-    
         // Redo query without reparsing SQL statement
         //$myeid = 104;
         //oci_execute($s);
