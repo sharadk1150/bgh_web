@@ -144,7 +144,7 @@ print "<td>" . '<form type="POST"><input type="hidden" name="whatever" value="$r
         $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
         // Use bind variable to improve resuability, 
         // and to remove SQL Injection attacks.
-        $query = "select hospno, hospyr, pat_name, admdate,admtime, pat_age, pat_sex gender, pat_admit_unit from ward_admission_vw 
+        $query = "select hospno, hospyr, pat_name, admdate,admtime, pat_age, pat_sex gender, pat_admit_unit,staff_no,design,deptt,pat_local_ADD, PAT_LOCAL_TEL, PAT_PROVDIAG from ward_admission_vw 
         where category='99' and family='E' and  
         to_char(admdate,'YYYY-MM-DD') = :EIDBV order by pat_name";
         $s = oci_parse($c, $query);
