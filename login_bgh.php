@@ -1,8 +1,3 @@
-<?php
-    session_start();
-?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +6,6 @@
 {font-family: Arial, Helvetica, sans-serif;
       font-size: x-large;
 }
-
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
@@ -169,20 +163,22 @@ span.psw {
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
       <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
-  </form>
 
+    </form>
 </div> 
+
 <script>
 // Get the modal
 var modal = document.getElementById('id01');
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
+window.onclick = function(event) 
+{
+    if (event.target == modal) 
+    {
         modal.style.display = "none";
     }
 }
 </script>
-
 </body>
 </html>
