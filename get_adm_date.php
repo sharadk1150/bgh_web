@@ -1,9 +1,37 @@
+<?php
+    session_start();
+?>
+
 <html>
 <head>
   <title>Process the HTML form data with the POST method</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
+<-- Check if the the login ha sbeen successfull -->
+<?php
+          
+         $login_name = $_SESSION["login"];
+        
+//        echo $_SESSION["login"];
+//        echo $_SESSION['loggedIn'];
+        
+//          print_r($_SESSION);
+//        on the second page you check if that session is true, else redirect to the login page  
+//        if (!isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]="")
+        if (!isset($_SESSION["loggedIn"]))
+        {  
+            header('Location:/login_bgh.php'); 
+        }
+        else
+        {
+            ;
+//            echo "all Good";
+            
+        }
+    ?>
+    
+
 
 <form  name="myform" action="get_adm_date.php" method="POST">
                 <input type="hidden" name="check_submit" value="1" />
@@ -17,14 +45,16 @@
 <!--    <button type="submit" name="submit" class="btn btn-primary">Show Admission Data</button> -->
 <!--  </div> -->
  
+<form class="form-horizontal">   
     <div class="form-group row">
-        <label for="stdate" class="col-sm-1 col-form-label">Date</label> 
-        <div class="col-sm-2">
+        <label for="stdate" class="col-sm-2 col-form-label">Date</label> 
+        <div class="col-sm-4">
             <input type="date" class="form-control" id="stdate" name="stdate">
             <button type="submit" name="submit" class="btn btn-primary">Get Data....</button>     
           
         </div>
     </div>             
+</form>            
              
                  
  <!--
@@ -76,22 +106,26 @@ if (array_key_exists('check_submit', $_POST))
             //print '<p>Data Showing For the Date:' . $myeid . '</p>';
             // <table class="table table-dark">
                 print '<table class="table table-sm table-bordered table-striped table-dark w-auto">';
-
-             
             
-
+                print '<thead>';
             
-            print '<thead>';
-            
-            print '<tr>'; 
+                print '<tr>'; 
                 print '<td  colspan="4">' . 'Data For Date: ' . $myeid . '</td>';
-            print '</tr>';
+                print '</tr>';
             
-            print '<tr>';
+                print '<tr>';
                 print '<th scope="col">Hospno</th>';
                 print '<th scope="col">HospYr</th>';
                 print '<th scope="col">Patient</th>';
-                print '<th scope="col">AdmDate</th>';            
+                print '<th scope="col">AdmDate</th>';   
+                print '<th scope="col">AdmTime</th>';   
+                print '<th scope="col">Age</th>';   
+                print '<th scope="col">Gender</th>';   
+                print '<th scope="col">Unit</th>';   
+            
+            
+
+            
             print '</tr>';
             print '</thead>';
             
