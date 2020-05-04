@@ -44,11 +44,7 @@
           <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" name="submit" id="submit">Login</button>
 <!--          <input class="w3-check w3-margin-top" type="checkbox" checked="checked">Remember me> -->
         </div>
-        
-   
-
-        
-        
+             
       </form>
 
       <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">

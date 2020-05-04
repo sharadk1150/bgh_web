@@ -5,18 +5,31 @@
 <html>
 <head>
   <title>Get Admission Data For Employees</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">    
+    
+        
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+
+
 </head>
 <body>
 
 <?php
           
          $login_name = $_SESSION["login"];        
-//       echo $_SESSION["login"];
-//       echo $_SESSION['loggedIn'];        
-//       print_r($_SESSION);
-//       on the second page you check if that session is true, else redirect to the login page  
-//       if (!isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]="")
         if (!isset($_SESSION["loggedIn"]))
         {  
             header('Location:/login_bgh.php'); 
@@ -25,91 +38,57 @@
         {
             ;            
         }
-    ?>
+?>
+  
+<div class="w3-panel w3-red">
+  <p>Employees Admitted at BGH...</p>
+</div>
     
+<form class="w3-container" name="myform" action="get_adm_employee.php" method="post">    
+    <input type="hidden" name="check_submit" value="1" />    
+    
+    <div class="w3-row-padding">
+           
+           <div class="w3-quarter">
+                <label class="w3-text-blue"><b>Start Date</b></label>
+                <input maxlength="10" size="12" class="w3-input w3-border" type="date" id="stdate" name="stdate">
+           </div>
 
-
-<form  name="myform" action="get_adm_employee.php" method="POST">
-                <input type="hidden" name="check_submit" value="1" />
-<!--        Name: <input type="text" name="Name" /><br /> -->
-<!--        Date:   <input type="date" name="stdate"   /> -->
-<!--                <input type="submit" name="submit" value="Show Admission Data:"/> -->
-
-<!--  <div class="form-group"> -->
-<!--    <input type="date" class="form-control" name="stdate" id="stdate" aria-describedby="dateHelp"> -->
-<!--    <small id="dateHelp" class="form-text text-muted">The Date for Which Admission Details are Required</small> -->
-<!--    <button type="submit" name="submit" class="btn btn-primary">Show Admission Data</button> -->
-<!--  </div> -->
- 
-<form class="form-horizontal">   
-    <div class="form-group row">
-        <label for="stdate" class="col-sm-2 col-form-label">Date</label> 
-        <div class="col-sm-4">
-            <input type="date" class="form-control" id="stdate" name="stdate">
-            <button type="submit" name="submit" class="btn btn-primary">Get Data....</button>     
-          
-        </div>
-    </div>             
-</form>            
-             
-                 
- <!--
-
-                
-                        
-        Password: <input type="password" name="Password" maxlength="10" /><br />
-        Select something from the list: <select name="Seasons">
-          <option value="Spring" selected="selected">Spring</option>
-          <option value="Summer">Summer</option>
-          <option value="Autumn">Autumn</option>
-          <option value="Winter">Winter</option>
-        </select><br /><br />
-        Choose one:
-          <input type="radio" name="Country" value="USA" /> USA
-          <input type="radio" name="Country" value="Canada" /> Canada
-          <input type="radio" name="Country" value="Other" /> Other
-            <br />
-        Choose the colors:
-          <input type="checkbox" name="Colors[]" value="green" checked="checked" /> Green
-          <input type="checkbox" name="Colors[]" value="yellow" /> Yellow
-          <input type="checkbox" name="Colors[]" value="red" /> Red
-          <input type="checkbox" name="Colors[]" value="gray" /> Gray
-          <br /><br />
-        Comments:<br />
-         <textarea name="Comments" rows="10" cols="60">Enter your comments here</textarea><br />
--->
-                 
-         
-  </form>
+           <div class="w3-quarter">
+                <label class="w3-text-blue"><b>End Date</b></label>
+                <input maxlength="10" size="12" class="w3-input w3-border" type="date" id="endate" name="endate">
+           </div>
+           
+            <div class="w3-quarter">    
+                    <button class="w3-btn w3-blue w3-margin-top" type="submit" name="submit" id="submit">Get Data</button>
+            </div>
+            
+     </div>
+</form>    
 
 
 
 
 <?php
-if (array_key_exists('check_submit', $_POST)) 
+
+    if (array_key_exists('check_submit', $_POST)) 
 {
     $stdate =  $_POST['stdate'];
-         
-   //Let's now print out the received values in the browser
-   //   echo "Your name: {$_POST['Name']}<br />";
-   //   echo "Selected Date : {$_POST['stdate']}<br />";
-   //echo $stdate;
+    $endate =  $_POST['endate'];         
 
-        function do_fetch($myeid, $s)
+        function do_fetch($myeid, $myendt, $s)
         {
-            //Fetch the results in an associative array
-            //print '<p>$myeid is ' . $myeid . '</p>';
-            //print '<p>Data Showing For the Date:' . $myeid . '</p>';
-            // <table class="table table-dark">
-                print '<table class="table table-sm table-bordered table-striped table-dark w-auto">';
             
-                print '<thead>';
+            print '<div class="w3-responsive">';
+            print '<table class="w3-bordered w3-striped w3-table-all">';
+  
             
-                print '<tr>'; 
-                print '<td  colspan="4">' . 'Data For Date: ' . $myeid . '</td>';
-                print '</tr>';
-            
-                print '<tr>';
+//                print '<table class="table table-sm table-bordered table-striped table-dark w-auto">';   
+                print '<thead>';            
+                print '<tr class="w3-red">'; 
+                print '<td  colspan="6">' . 'Data For Date: ' . $myeid .  ' To ' .  $myendt . '</td>';
+                print '</tr>';            
+                print '<tr class="w3-blue">';
                 print '<th scope="col">Hospno</th>';
                 print '<th scope="col">HospYr</th>';
                 print '<th scope="col">Patient</th>';
@@ -118,50 +97,46 @@ if (array_key_exists('check_submit', $_POST))
                 print '<th scope="col">Age</th>';   
                 print '<th scope="col">Gender</th>';   
                 print '<th scope="col">Unit</th>';   
-            
+                print '<th scope="col">StaffNo</th>';   
+                print '<th scope="col">Desig</th>';   
+                print '<th scope="col">Deptt.</th>'; 
+                print '<th scope="col">Address</th>';   
+                print '<th scope="col">Tel No</th>';   
+                print '<th scope="col">Prov Diag</th>';         
                 print '</tr>';
                 print '</thead>';
             
                         while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) 
                         {
-                            print '<tr>';
+                            print '<tr class="w3-hover-green">';
                             foreach ($row as $item) 
                             {
                                 
-                                print '<td>'.($item?htmlentities($item):'&nbsp;').'</td>';
-                                
-/*                                
-print "<td>" . '<form type="POST"><input type="hidden" name="whatever" value="$row['1']"><input type="submit" name="submit_btn" value="accept"></form>' . "</td>";
-*/
-                                
+                                print '<td>'.($item?htmlentities($item):'&nbsp;').'</td>';                                
                             }
                                 print '</tr>';
                             }
-                print '</table>';
+//                print '</table>';
+print   '</table>';
+print   '</div>';
+
+        
         }
     
         // Create connection to Oracle
         $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
         // Use bind variable to improve resuability, 
         // and to remove SQL Injection attacks.
-        $query = "select hospno, hospyr, pat_name, admdate,admtime, pat_age, pat_sex gender, pat_admit_unit,staff_no,design,deptt,pat_local_ADD, PAT_LOCAL_TEL, PAT_PROVDIAG from ward_admission_vw 
+        $query = "select hospno, hospyr, pat_name, to_char(admdate,'DD.MM.YY') admdate,admtime, pat_age, pat_sex gender, pat_admit_unit,staff_no,design,deptt,pat_local_ADD, PAT_LOCAL_TEL, PAT_PROVDIAG from ward_admission_vw 
         where category='99' and family='E' and  
-        to_char(admdate,'YYYY-MM-DD') = :EIDBV order by pat_name";
+        to_char(admdate,'YYYY-MM-DD') between :EIDBV  and :ENDBV order by admdate, pat_name";
         $s = oci_parse($c, $query);
-        $myeid = $stdate;
-        //$myeid =  date("d-m-Y", $stdate);
-        //$myeid = '28-APR-2020';    
-        //echo 'value of $myeid' . $myeid;    
+        $myeid =  $stdate;
+        $myendt = $endate;
         oci_bind_by_name($s, ":EIDBV", $myeid);
+        oci_bind_by_name($s, ":ENDBV", $myendt);    
         oci_execute($s);
-        do_fetch($myeid, $s);
-
-        // Redo query without reparsing SQL statement
-        //$myeid = 104;
-        //oci_execute($s);
-        //do_fetch($myeid, $s);
-
-        // Close the Oracle connection
+        do_fetch($myeid, $myendt, $s);
         oci_close($c);
 
 } 
