@@ -8,21 +8,9 @@
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">    
     
         
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
-
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
 <body>
@@ -40,33 +28,30 @@
         }
 ?>
   
-<div class="w3-panel w3-red">
-  <p>Employees Admitted at BGH...</p>
-</div>
+<nav class="navbar navbar-dark fixed-top bg-primary">
+  <h6>On Roll Employees Admission Details</h6>
+</nav>
+
+<br><br><br>
     
-<form class="w3-container" name="myform" action="get_adm_employee.php" method="post">    
-    <input type="hidden" name="check_submit" value="1" />    
-    
-    <div class="w3-row-padding">
-           
-           <div class="w3-quarter">
-                <label class="w3-text-blue"><b>Start Date</b></label>
-                <input maxlength="10" size="12" class="w3-input w3-border" type="date" id="stdate" name="stdate">
-           </div>
-
-           <div class="w3-quarter">
-                <label class="w3-text-blue"><b>End Date</b></label>
-                <input maxlength="10" size="12" class="w3-input w3-border" type="date" id="endate" name="endate">
-           </div>
-           
-            <div class="w3-quarter">    
-                    <button class="w3-btn w3-blue w3-margin-top" type="submit" name="submit" id="submit">Get Data</button>
-            </div>
-            
-     </div>
-</form>    
-
-
+<form  name="myform" action="get_adm_employee.php" method="POST">
+                <input type="hidden" name="check_submit" value="1" />
+    <form class="form-inline">   
+        <div class="form-group row">
+            <label for="stdate" class="col-sm-1 col-form-label">From Date</label> 
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" id="stdate" name="stdate">
+                </div>    
+                   
+            <label for="endate" class="col-sm-1 col-form-label">To Date</label> 
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" id="endate" name="endate">
+                </div>    
+                   
+                    <button type="submit" name="submit" class="btn btn-primary">Get Data....</button>               
+        </div>
+    </form>            
+  </form> 
 
 
 <?php
@@ -76,19 +61,15 @@
     $stdate =  $_POST['stdate'];
     $endate =  $_POST['endate'];         
 
-        function do_fetch($myeid, $myendt, $rcount, $s)
+        function do_fetch($myeid, $myendt, $scount, $s)
         {
             
-            print '<div class="w3-responsive">';
-            print '<table class="w3-bordered w3-striped w3-table-all">';
-  
-            
-//                print '<table class="table table-sm table-bordered table-striped table-dark w-auto">';   
-                print '<thead>';            
-                print '<tr class="w3-red">'; 
-                print '<td  colspan="6">' . 'Data For Date: ' . $myeid .  ' To ' .  $myendt . 'Toatl : ' . $rcount . '</td>';
-                print '</tr>';            
-                print '<tr class="w3-blue">';
+                print '<table class="table table-sm table-bordered table-striped table-dark w-auto table-hover">';            
+                print '<thead class="thead-light">';
+                print '<tr>'; 
+                print '<td colspan="9">' . 'Admission Data From Date : ' . $myeid .  '  To Date : ' . $myendt . '</td>';
+                print '</tr>';
+                print '<tr>';
                 print '<th scope="col">Hospno</th>';
                 print '<th scope="col">HospYr</th>';
                 print '<th scope="col">Patient</th>';
@@ -106,9 +87,22 @@
                 print '</tr>';
                 print '</thead>';
             
+            
+                        while ($row_1 = oci_fetch_array($scount, OCI_RETURN_NULLS+OCI_ASSOC)) {
+                        print '<b>' . $row_1["GRADEP"] . " =  " . $row_1["TOT_COUNT"] . " ; " . '<b>';
+                        }
+
                         while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) 
                         {
-                            print '<tr class="w3-hover-green">';
+                            
+                            
+                            if (strpos($row["GRADEP"],'E') !== false){
+                                print '<tr class="bg-danger">';
+                            }
+                            else{
+                                print '<tr class="bg-active">';
+                            }
+
                             foreach ($row as $item) 
                             {
                                 
@@ -116,24 +110,23 @@
                             }
                                 print '</tr>';
                             }
-//                print '</table>';
-print   '</table>';
-print   '</div>';
+                print   '</table>';
 
-        
         }
     
         // Create connection to Oracle
         $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
         // Use bind variable to improve resuability, 
         // and to remove SQL Injection attacks.
-        $query = "select hospno, hospyr, pat_name, to_char(admdate,'DD.MM.YY') admdate,admtime, pat_age, pat_sex gender, pat_admit_unit,staff_no,design,deptt,pat_local_ADD, PAT_LOCAL_TEL, PAT_PROVDIAG from ward_admission_vw 
+        $query = "select hospno, hospyr, pat_name, to_char(admdate,'DD.MM.YY') admdate, admtime, pat_age, pat_sex gender, pat_admit_unit,staff_no,design,deptt,pat_local_ADD, PAT_LOCAL_TEL, PAT_PROVDIAG, gradep 
+        from ward_admission_vw_grade 
         where category='99' and family='E' and  
-        to_char(admdate,'YYYY-MM-DD') between :EIDBV  and :ENDBV order by admdate, pat_name";
+        to_char(admdate,'YYYY-MM-DD') between :EIDBV  and :ENDBV order by hospno, admdate, pat_name";
         
-        $qcount = "select count(*) tot_count from ward_admission_vw 
+        $qcount = "select gradep, count(*) tot_count from ward_admission_vw_grade 
         where category='99' and family='E' and  
-        to_char(admdate,'YYYY-MM-DD') between :EIDBV  and :ENDBV order by admdate, pat_name";
+        to_char(admdate,'YYYY-MM-DD') between :EIDBV  and :ENDBV 
+        group by gradep order by gradep";
         
         
         
@@ -153,11 +146,11 @@ print   '</div>';
         oci_execute($scount);
         
 //        $rowarray = oci_fetch_array($statement, $mode);
-        $rowcount = oci_fetch_array($scount, OCI_RETURN_NULLS+OCI_NUM);
-        $rcount = $rowcount[0]; 
-        echo $rowcount[0]; 
+//        $rowcount = oci_fetch_array($scount, OCI_RETURN_NULLS+OCI_NUM);
+//        $rcount = $rowcount[0]; 
+//        echo $rowcount[0]; 
         
-        do_fetch($myeid, $myendt, $rcount, $s);
+        do_fetch($myeid, $myendt, $scount, $s);
         
         
         

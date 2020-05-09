@@ -109,19 +109,6 @@ while ($row = oci_fetch_array($s, OCI_ASSOC)) {
                                     print '<tr class="bg-primary">';
                                     break;
                             }
-                            
-/*                            
-                            
-                            if ($row["CATEGORY"] != '99') {
-                                echo $row["CATEGORY"];
-                                print '<tr class="bg-primary">';
-                            }
-                            else{
-                                print '<tr class="bg-secondary">';                                
-                            }
-*/
-                                    
-                                
                             foreach ($row as $item) 
                             {                                
                                 print '<td>'.($item?htmlentities($item):'&nbsp;').'</td>';
