@@ -76,7 +76,7 @@
     $stdate =  $_POST['stdate'];
     $endate =  $_POST['endate'];         
 
-        function do_fetch($myeid, $myendt, $s)
+        function do_fetch($myeid, $myendt, $rcount, $s)
         {
             
             print '<div class="w3-responsive">';
@@ -86,7 +86,7 @@
 //                print '<table class="table table-sm table-bordered table-striped table-dark w-auto">';   
                 print '<thead>';            
                 print '<tr class="w3-red">'; 
-                print '<td  colspan="6">' . 'Data For Date: ' . $myeid .  ' To ' .  $myendt . '</td>';
+                print '<td  colspan="6">' . 'Data For Date: ' . $myeid .  ' To ' .  $myendt . 'Toatl : ' . $rcount . '</td>';
                 print '</tr>';            
                 print '<tr class="w3-blue">';
                 print '<th scope="col">Hospno</th>';
@@ -130,13 +130,38 @@ print   '</div>';
         $query = "select hospno, hospyr, pat_name, to_char(admdate,'DD.MM.YY') admdate,admtime, pat_age, pat_sex gender, pat_admit_unit,staff_no,design,deptt,pat_local_ADD, PAT_LOCAL_TEL, PAT_PROVDIAG from ward_admission_vw 
         where category='99' and family='E' and  
         to_char(admdate,'YYYY-MM-DD') between :EIDBV  and :ENDBV order by admdate, pat_name";
-        $s = oci_parse($c, $query);
+        
+        $qcount = "select count(*) tot_count from ward_admission_vw 
+        where category='99' and family='E' and  
+        to_char(admdate,'YYYY-MM-DD') between :EIDBV  and :ENDBV order by admdate, pat_name";
+        
+        
+        
+        $s      = oci_parse($c, $query);
+        $scount = oci_parse($c, $qcount);
         $myeid =  $stdate;
         $myendt = $endate;
         oci_bind_by_name($s, ":EIDBV", $myeid);
         oci_bind_by_name($s, ":ENDBV", $myendt);    
+
+        oci_bind_by_name($scount, ":EIDBV", $myeid);
+        oci_bind_by_name($scount, ":ENDBV", $myendt);    
+        
+        
+        
         oci_execute($s);
-        do_fetch($myeid, $myendt, $s);
+        oci_execute($scount);
+        
+//        $rowarray = oci_fetch_array($statement, $mode);
+        $rowcount = oci_fetch_array($scount, OCI_RETURN_NULLS+OCI_NUM);
+        $rcount = $rowcount[0]; 
+        echo $rowcount[0]; 
+        
+        do_fetch($myeid, $myendt, $rcount, $s);
+        
+        
+        
+        
         oci_close($c);
 
 } 

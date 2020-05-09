@@ -9,14 +9,10 @@
 </head>
 <body>
 
+
 <?php
           
          $login_name = $_SESSION["login"];        
-//       echo $_SESSION["login"];
-//       echo $_SESSION['loggedIn'];        
-//       print_r($_SESSION);
-//       on the second page you check if that session is true, else redirect to the login page  
-//       if (!isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]="")
         if (!isset($_SESSION["loggedIn"]))
         {  
             header('Location:/login_bgh.php'); 
@@ -25,90 +21,45 @@
         {
             ;            
         }
-    ?>
+?>
     
-
-
+<nav class="navbar navbar-dark fixed-top bg-primary">
+  <h6> Admission Data</h6>
+</nav>
+<br><br><br>
 <form  name="myform" action="get_adm_date.php" method="POST">
                 <input type="hidden" name="check_submit" value="1" />
-<!--        Name: <input type="text" name="Name" /><br /> -->
-<!--        Date:   <input type="date" name="stdate"   /> -->
-<!--                <input type="submit" name="submit" value="Show Admission Data:"/> -->
-
-<!--  <div class="form-group"> -->
-<!--    <input type="date" class="form-control" name="stdate" id="stdate" aria-describedby="dateHelp"> -->
-<!--    <small id="dateHelp" class="form-text text-muted">The Date for Which Admission Details are Required</small> -->
-<!--    <button type="submit" name="submit" class="btn btn-primary">Show Admission Data</button> -->
-<!--  </div> -->
- 
-<form class="form-horizontal">   
-    <div class="form-group row">
-        <label for="stdate" class="col-sm-2 col-form-label">Date</label> 
-        <div class="col-sm-4">
-            <input type="date" class="form-control" id="stdate" name="stdate">
-            <button type="submit" name="submit" class="btn btn-primary">Get Data....</button>     
-          
+    <form class="form-inline">   
+        <div class="form-group row">
+            <label for="stdate" class="col-sm-1 col-form-label">From Date</label> 
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" id="stdate" name="stdate">
+                </div>    
+                   
+            <label for="endate" class="col-sm-1 col-form-label">To Date</label> 
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" id="endate" name="endate">
+                </div>    
+                   
+                    <button type="submit" name="submit" class="btn btn-primary">Get Data....</button>               
         </div>
-    </div>             
-</form>            
-             
-                 
- <!--
-
-                
-                        
-        Password: <input type="password" name="Password" maxlength="10" /><br />
-        Select something from the list: <select name="Seasons">
-          <option value="Spring" selected="selected">Spring</option>
-          <option value="Summer">Summer</option>
-          <option value="Autumn">Autumn</option>
-          <option value="Winter">Winter</option>
-        </select><br /><br />
-        Choose one:
-          <input type="radio" name="Country" value="USA" /> USA
-          <input type="radio" name="Country" value="Canada" /> Canada
-          <input type="radio" name="Country" value="Other" /> Other
-            <br />
-        Choose the colors:
-          <input type="checkbox" name="Colors[]" value="green" checked="checked" /> Green
-          <input type="checkbox" name="Colors[]" value="yellow" /> Yellow
-          <input type="checkbox" name="Colors[]" value="red" /> Red
-          <input type="checkbox" name="Colors[]" value="gray" /> Gray
-          <br /><br />
-        Comments:<br />
-         <textarea name="Comments" rows="10" cols="60">Enter your comments here</textarea><br />
--->
-                 
-         
+    </form>            
   </form>
-
-
 
 
 <?php
 if (array_key_exists('check_submit', $_POST)) 
 {
     $stdate =  $_POST['stdate'];
-         
-   //Let's now print out the received values in the browser
-   //   echo "Your name: {$_POST['Name']}<br />";
-   //   echo "Selected Date : {$_POST['stdate']}<br />";
-   //echo $stdate;
-
-        function do_fetch($myeid, $s)
+    $endate =  $_POST['endate'];
+    
+        function do_fetch($myeid, $myendt,  $s, $scount)
         {
-            //Fetch the results in an associative array
-            //print '<p>$myeid is ' . $myeid . '</p>';
-            //print '<p>Data Showing For the Date:' . $myeid . '</p>';
-            // <table class="table table-dark">
-                print '<table class="table table-sm table-bordered table-striped table-dark w-auto">';
-            
-                print '<thead>';
-            
+                print '<table class="table table-sm table-bordered table-striped table-dark w-auto table-hover">';            
+                print '<thead class="thead-light">';
                 print '<tr>'; 
-                print '<td  colspan="4">' . 'Data For Date: ' . $myeid . '</td>';
+                print '<td colspan="9">' . 'Admission Data From Date : ' . $myeid .  '  To Date : ' . $myendt . '</td>';
                 print '</tr>';
-            
                 print '<tr>';
                 print '<th scope="col">Hospno</th>';
                 print '<th scope="col">HospYr</th>';
@@ -118,22 +69,63 @@ if (array_key_exists('check_submit', $_POST))
                 print '<th scope="col">Age</th>';   
                 print '<th scope="col">Gender</th>';   
                 print '<th scope="col">Unit</th>';   
+                print '<th scope="col">Category</th>';  
+                print '<th scope="col">CatNo</th>';  
+                print '<th scope="col">Grade</th>';  
+            
             
                 print '</tr>';
                 print '</thead>';
             
+/*
+$s = oci_parse($c, "select postal_code from locations");
+oci_execute($s);
+while ($row = oci_fetch_array($s, OCI_ASSOC)) {
+ echo $row["POSTAL_CODE"] . "<br>\n";
+}
+*/
+//            cat_name, count(*) tot_count
+            
+                        while ($row_1 = oci_fetch_array($scount, OCI_RETURN_NULLS+OCI_ASSOC)) {
+                        print '<b>' . $row_1["CAT_NAME"] . " =  " . $row_1["TOT_COUNT"] . " ; " . '<b>';
+                        }
+                        
+            
                         while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) 
                         {
-                            print '<tr>';
-                            foreach ($row as $item) 
-                            {
-                                
-                                print '<td>'.($item?htmlentities($item):'&nbsp;').'</td>';
-                                
-/*                                
-print "<td>" . '<form type="POST"><input type="hidden" name="whatever" value="$row['1']"><input type="submit" name="submit_btn" value="accept"></form>' . "</td>";
+                            
+                            
+                            switch ($row["CATEGORY"]) {
+                                case '99':
+                                    print '<tr class="bg-danger">';
+                                    break;
+                                case '94':
+                                    print '<tr class="bg-active">';
+                                    break;
+                                case '26':
+                                    print '<tr class="bg-secondary">';
+                                    break;
+                                default:
+                                    print '<tr class="bg-primary">';
+                                    break;
+                            }
+                            
+/*                            
+                            
+                            if ($row["CATEGORY"] != '99') {
+                                echo $row["CATEGORY"];
+                                print '<tr class="bg-primary">';
+                            }
+                            else{
+                                print '<tr class="bg-secondary">';                                
+                            }
 */
+                                    
                                 
+                            foreach ($row as $item) 
+                            {                                
+                                print '<td>'.($item?htmlentities($item):'&nbsp;').'</td>';
+                                                                
                             }
                                 print '</tr>';
                             }
@@ -144,22 +136,33 @@ print "<td>" . '<form type="POST"><input type="hidden" name="whatever" value="$r
         $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
         // Use bind variable to improve resuability, 
         // and to remove SQL Injection attacks.
-        $query = "select hospno, hospyr, pat_name, admdate,admtime, pat_age, pat_sex gender, pat_admit_unit from ward_admission_vw where to_char(admdate,'YYYY-MM-DD') = :EIDBV order by pat_name";
+        $query = "select hospno, hospyr, pat_name, admdate,admtime, pat_age, pat_sex gender, pat_admit_unit,cat_name, category,gradep from ward_admission_vw_grade where to_char(admdate,'YYYY-MM-DD') between :EIDBV and :EIDBV2 order by admdate, pat_name";
+    
+        $qcount = "select cat_name, count(*) tot_count from ward_admission_vw_grade 
+        where  to_char(admdate,'YYYY-MM-DD') between :EIDBV and :EIDBV2 group by cat_name";
+    
         $s = oci_parse($c, $query);
+        $scount = oci_parse($c, $qcount);
+    
         $myeid = $stdate;
-        //$myeid =  date("d-m-Y", $stdate);
-        //$myeid = '28-APR-2020';    
-        //echo 'value of $myeid' . $myeid;    
         oci_bind_by_name($s, ":EIDBV", $myeid);
+        oci_bind_by_name($scount, ":EIDBV", $myeid);
+    
+        
+        $myendt = $endate;
+        oci_bind_by_name($s,":EIDBV2", $myendt);
+        oci_bind_by_name($scount, ":EIDBV2", $myeid);
+    
         oci_execute($s);
-        do_fetch($myeid, $s);
-
-        // Redo query without reparsing SQL statement
-        //$myeid = 104;
-        //oci_execute($s);
-        //do_fetch($myeid, $s);
-
-        // Close the Oracle connection
+        oci_execute($scount);
+    
+    
+//        while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) {
+//            echo $row[0] . $row[1]. "<br>\n";
+//              echo $row["HOSPNO"];
+//        }
+    
+        do_fetch($myeid, $myendt,  $s, $scount);
         oci_close($c);
 
 } 
