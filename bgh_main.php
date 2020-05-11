@@ -14,6 +14,25 @@ session_start();
         <link rel="stylesheet" href="bgh_main_style.css">
         <link rel="stylesheet "href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <style>
+            /*
+            .dropdown {list-style: none; background: green; padding: 10px; display: inline-block;}
+            .dropdown .nav-link {color:#fff; text-decoration: none;}
+            .dropdown .dropdown-menu a{color: #000; text-decoration: none;}
+            .dropdown .btn {background: green; color:#fff;}
+            .dropdown .btn:hover {background: cyan; color:#000;}
+            .dropdown .btn:active {background: cyan; color:#000;}
+            .dropdown .btn:focus {background: cyan; color:#000;}
+            .dropdown-menu .dropdown-item {display: inline-block; width: 100%; padding: 10px 5px;}
+            */
+            
+            .dropdown .dropdown-menu a:hover
+            {    
+              color: #fff;
+              background-color: #b91773;
+              border-color: #fff;
+            }
+        </style>
         <title> Bokaro General Hospital, Bokaro</title>
 
     </head>
@@ -83,6 +102,8 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             
           <ul class="navbar-nav">
+           
+           
             <li class="nav-item active">
               <a class="nav-link" href="#"><i class="fa fa-home"></i><span class="sr-only">(current)</span></a>
             </li>
@@ -180,12 +201,26 @@ session_start();
 
               <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Reports
+                  Misc Reports
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Action</a>
                   <a class="dropdown-item" href="#">Another action</a>
                   <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="medissue_csr_13.php">CSR-Medicine Issued to Medical Camps</a>
+                  <a class="dropdown-item" href="medissue_csr_20.php">CSR-Medicine Issued to SSK(HC-5)</a>
                 </div>
               </li>
 
@@ -375,7 +410,7 @@ session_start();
         </div>
       </div>
         <div class="footer">
-            <footer>Developed by C&IT in Consultation With Bokaro General Hospital, Bokaro</footer>
+            <footer>Developed by C and IT in Consultation With Bokaro General Hospital, Bokaro</footer>
         </div>
       
 <!-- CARD LAYOUT FROM THE BOOTSTRAP GOES UPTO HERE -->
