@@ -76,6 +76,7 @@ if (array_key_exists('check_submit', $_POST))
                 while ($row_1 = oci_fetch_array($scount, OCI_RETURN_NULLS+OCI_ASSOC)) 
                 {            
                     print '<b>' . 'Total Value of Medicine Issued to CSR HC-5 is Rs.: ' . $row_1["TOT_VALUE"] . '</b>';
+                    
                 }                        
                 print '</tr>';
 

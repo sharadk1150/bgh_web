@@ -151,7 +151,7 @@ session_start();
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Action</a>
                   <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="pharma_expiry_01.php">Pharmacy Expired Drug</a>
                 </div>
               </li>  
 
