@@ -67,7 +67,7 @@
 
     <?php                  
         $c = oci_connect("BGH", "hpv185e", "10.143.100.36/BGH6");
-        $sql = "select distinct ctrno from bgh_pharma_expiry_vw order by 1";  
+        $sql = "select 'ALL COUNTERS' CTRNO from DUAL";  
         $stid = oci_parse($c, $sql);  
         $success = oci_execute($stid);
         while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)){
@@ -96,7 +96,7 @@ if (array_key_exists('check_submit', $_POST))
                 print '<table class="table table-sm table-bordered table-striped table-dark w-auto table-hover">';            
                 print '<thead class="thead-light">';
                 print '<tr>'; 
-                print '<td colspan="9">' . 'Expiry Medicine in  : ' . $myfinyr .  '  For Counter No : ' . $myctrno . '</td>';
+                print '<td colspan="9">' . 'Expiry Medicine in  : ' . $myfinyr .  '  Consolidated for All Counters </td>';
                 print '</tr>';
                 print '<tr>';
                 print '<th scope="col">Med Name</th>';
@@ -138,8 +138,8 @@ if (array_key_exists('check_submit', $_POST))
         // Use bind variable to improve resuability, 
         // and to remove SQL Injection attacks.
     
-        $query = "select med_desc, dmg, bkg, exp, fin_year from bgh_pharma_expiry_vw
-                  where fin_year=:EIDBV and ctrno=:EIDBV2
+        $query = "select med_desc, sum(dmg) dmg, sum(bkg) bkg, sum(exp), fin_year from bgh_pharma_expiry_vw
+                  where fin_year=:EIDBV group by med_desc, fin_year
                   order by med_desc";
     
 //        $qcount = "select sum(tot_rate) TOT_VALUE from BGH_MED_STOCK_ISSUE_VW 
@@ -153,8 +153,8 @@ if (array_key_exists('check_submit', $_POST))
 //        oci_bind_by_name($scount, ":EIDBV", $myeid);
     
         
-        $myctrno = $ctrno;
-        oci_bind_by_name($s, ":EIDBV2", $myctrno);
+//        $myctrno = $ctrno;
+//        oci_bind_by_name($s, ":EIDBV2", $myctrno);
 //        oci_bind_by_name($scount, ":EIDBV2", $myendt);
     
         oci_execute($s);
