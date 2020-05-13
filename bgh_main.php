@@ -104,13 +104,17 @@ session_start();
           <ul class="navbar-nav">
            
            
-            <li class="nav-item active">
-              <a class="nav-link" href="#"><i class="fa fa-home"></i><span class="sr-only">(current)</span></a>
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                OPD
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="opd_status_01.php">OPD Status</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">OPD</a>
-            </li>
-            
+                        
             <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 IPD/WARD
