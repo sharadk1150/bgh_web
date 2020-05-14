@@ -34,7 +34,7 @@
 
 
 
- <form  name="myform" action="pharma_expiry_01.php" method="POST"> <input type="hidden" name="check_submit" value="1" />
+ <form  name="myform" action="pharma_expiry_02.php" method="POST"> <input type="hidden" name="check_submit" value="1" />
  
  <!-- print '<form  name="myform" action=' . $_SERVER['PHP_SELF'].  ' method="POST"> <input type="hidden" name="check_submit" value="1" />'; -->
      

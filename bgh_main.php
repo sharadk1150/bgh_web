@@ -243,15 +243,15 @@ session_start();
               </li>
 
               <li class="nav-item active">
-                <a class="nav-link" href="#">BokaroSteel.com <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="http://bokarosteel.com">BokaroSteel.com <span class="sr-only">(current)</span></a>
               </li>
 
               <li class="nav-item active">
-                <a class="nav-link" href="#">Complaints <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="bgh_complaints.html">Complaints <span class="sr-only">(current)</span></a>
               </li>  
 
               <li class="nav-item active">
-                <a class="nav-link" href="#"><i class="fa fa-phone"></i><span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="bgh_com_escalation.html"><i class="fa fa-phone"></i><span class="sr-only">(current)</span></a>
               </li>
 
 
