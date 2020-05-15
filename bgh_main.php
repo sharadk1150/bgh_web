@@ -122,7 +122,13 @@ session_start();
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="get_adm_date.php">All Admissions</a>
                 <a class="dropdown-item" href="get_adm_employee.php">ON Roll Employee</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="adm_cat_wise.php">Category Wise Admission</a>
+                <a class="dropdown-item" href="adm_unit_wise.php">Unit Wise Admission</a>
+                <a class="dropdown-item" href="adm_source_wise.php">Source Wise Admission</a>
+                <a class="dropdown-item" href="adm_diag_wise.php">Diagnosis Wise Admission</a>
+                <a class="dropdown-item" href="adm_census_data.php">Census Daily Data</a>
+                
+                
               </div>
             </li>
             
