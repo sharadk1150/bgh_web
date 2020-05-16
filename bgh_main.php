@@ -109,9 +109,9 @@ session_start();
                 OPD
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="opd_status_01.php">OPD Status</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="opd_status_01.php">OPD Dashboard</a>
+                <a class="dropdown-item" href="#">OPD Schedule</a>
+                <a class="dropdown-item" href="#">................</a>
               </div>
             </li>
                         
@@ -120,6 +120,7 @@ session_start();
                 IPD/WARD
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Admissions Dashboard</a>
                 <a class="dropdown-item" href="get_adm_date.php">All Admissions</a>
                 <a class="dropdown-item" href="get_adm_employee.php">ON Roll Employee</a>
                 <a class="dropdown-item" href="adm_cat_wise.php">Category Wise Admission</a>
@@ -137,8 +138,17 @@ session_start();
                 Billing
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Billing Dashboard</a>
+                <a class="dropdown-item" href="bill_cat_wise.php">Category Wise Billing</a>
+                <a class="dropdown-item" href="bill_cat_wise_01.php">Group Wise Billing</a>
+                <a class="dropdown-item" href="bill_cat_wise_02.php">Group/Cat Wise Billing</a>
+                <a class="dropdown-item" href="bill_cat_wise_03.php">Third Party Billing</a>
+                <a class="dropdown-item" href="bill_collection_01.php">IPD Cash Collection</a>
+                <a class="dropdown-item" href="bill_refund_01.php">IPD Refunds</a>
+                
+                
+                
+                
                 <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </li>
