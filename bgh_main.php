@@ -145,6 +145,8 @@ session_start();
                 <a class="dropdown-item" href="bill_cat_wise_03.php">Third Party Billing</a>
                 <a class="dropdown-item" href="bill_collection_01.php">IPD Cash Collection</a>
                 <a class="dropdown-item" href="bill_refund_01.php">IPD Refunds</a>
+                <a class="dropdown-item" href="bill_refund_02.php">Misc. Refunds</a>
+                
                 
                 
                 
@@ -169,8 +171,13 @@ session_start();
                   Pharmacy
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Pharmacy DashBoard</a>
+                  <a class="dropdown-item" href="pharma_med_master.php">OPD Med Master</a>
+                  <a class="dropdown-item" href="pharma_med_master_wms.php">WMS Med Master</a>
+                  <a class="dropdown-item" href="pharma_allctr_stock.php">All Counter Stock</a>
+                  <a class="dropdown-item" href="pharma_substore_stock.php">SubStore Stock</a>
+                                   
+                                    
                   <a class="dropdown-item" href="pharma_expiry_01.php">Pharma Expired Drug (Counter)</a>
                   <a class="dropdown-item" href="pharma_expiry_02.php">Pharma Expired Drug (All)</a>
                   
@@ -204,8 +211,8 @@ session_start();
                   Radiology
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Radiology DashBoard</a>
+                  <a class="dropdown-item" href="radiology_report_02.php">Radiology Report</a>
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li>
@@ -249,9 +256,18 @@ session_start();
               <li class="nav-item active">
                 <a class="nav-link" href="#">PMJAY <span class="sr-only">(current)</span></a>
               </li>
-
-              <li class="nav-item active">
-                <a class="nav-link" href="#">PACS <span class="sr-only">(current)</span></a>
+              
+              <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  PACS
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="http://10.143.55.35">Pacs System</a>
+                  <a class="dropdown-item" href="#">About PACS System</a>
+                  <a class="dropdown-item" href="#">Work Order PACS</a>
+                  <a class="dropdown-item" href="#">AMC PACS</a>
+                  
+                </div>
               </li>
 
               <li class="nav-item active">
