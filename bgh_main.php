@@ -145,12 +145,7 @@ session_start();
                 <a class="dropdown-item" href="bill_cat_wise_03.php">Third Party Billing</a>
                 <a class="dropdown-item" href="bill_collection_01.php">IPD Cash Collection</a>
                 <a class="dropdown-item" href="bill_refund_01.php">IPD Refunds</a>
-                <a class="dropdown-item" href="bill_refund_02.php">Misc. Refunds</a>
-                
-                
-                
-                
-                
+                <a class="dropdown-item" href="bill_refund_02.php">Misc. Refunds</a>                                
                 <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </li>
@@ -176,8 +171,8 @@ session_start();
                   <a class="dropdown-item" href="pharma_med_master_wms.php">WMS Med Master</a>
                   <a class="dropdown-item" href="pharma_allctr_stock.php">All Counter Stock</a>
                   <a class="dropdown-item" href="pharma_substore_stock.php">SubStore Stock</a>
-                                   
-                                    
+                  <a class="dropdown-item" href="pharma_na_order.php">LP-NA Medicines</a>
+                  <a class="dropdown-item" href="pharma_nl_order.php">LP-NL Medicines</a>
                   <a class="dropdown-item" href="pharma_expiry_01.php">Pharma Expired Drug (Counter)</a>
                   <a class="dropdown-item" href="pharma_expiry_02.php">Pharma Expired Drug (All)</a>
                   
@@ -201,7 +196,7 @@ session_start();
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="stat_mortality_01.php">Mortality Data</a>
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li>
@@ -236,25 +231,20 @@ session_start();
                   <a class="dropdown-item" href="#">Action</a>
                   <a class="dropdown-item" href="#">Another action</a>
                   <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
                   <a class="dropdown-item" href="medissue_csr_13.php">CSR-Medicine Issued to Medical Camps</a>
                   <a class="dropdown-item" href="medissue_csr_20.php">CSR-Medicine Issued to SSK(HC-5)</a>
                 </div>
               </li>
 
-              <li class="nav-item active">
-                <a class="nav-link" href="#">PMJAY <span class="sr-only">(current)</span></a>
+              <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  PMJAY
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">About PMJAY</a>
+                  <a class="dropdown-item" href="#">PMJAY Admissions</a>
+                  <a class="dropdown-item" href="#">PMJAY Claims</a>                  
+                </div>
               </li>
               
               <li class="nav-item dropdown active">
@@ -270,8 +260,14 @@ session_start();
                 </div>
               </li>
 
-              <li class="nav-item active">
-                <a class="nav-link" href="#">BGH-MIS <span class="sr-only">(current)</span></a>
+              <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  BGH-MIS
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">BGH-MIS-Server-1</a>
+                  <a class="dropdown-item" href="#">BGH-MIS-Server-2</a>
+                </div>
               </li>
 
               <li class="nav-item active">
