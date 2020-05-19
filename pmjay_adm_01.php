@@ -4,7 +4,7 @@
 
 <html>
 <head>
-  <title>Stats: Mortality</title>
+  <title>PMJAY: Admissions</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
@@ -31,9 +31,9 @@
   -->
  
  <nav class="navbar navbar-dark fixed-top bg-warning">
-  <h6>BGH Stats-Mortality</h6>
+  <h6>BGH PMJAY-Admissions</h6>
 <div class="container">
-<form  class="form-inline" name="myform" action="stat_mortality_01.php" method="POST">
+<form  class="form-inline" name="myform" action="pmjay_adm_01.php" method="POST">
                 <input type="hidden" name="check_submit" value="1" />
     <form class="form-inline">   
         <div class="form-group row">
@@ -74,35 +74,28 @@ if (array_key_exists('check_submit', $_POST))
                 print '<table class="table table-sm table-bordered table-striped table-dark w-auto table-hover">';            
                 print '<thead class="thead-light">';
                 print '<tr>'; 
-                print '<td colspan="9">' . 'Mortality From : ' . date("d-m-Y", strtotime($myeid)) .  '  To Date : ' . date("d-m-Y", strtotime($myendt)) . '</td>';
+                print '<td colspan="6">' . 'PMJAY Admisisons From : ' . date("d-m-Y", strtotime($myeid)) .  '  To Date : ' . date("d-m-Y", strtotime($myendt)) . '</td>';                
                 print '</tr>';
                 print '<tr>';
-                print '<th scope="col">Dept</th>';
-                print '<th scope="col">SlNo</th>';
-                print '<th scope="col">Unit</th>';
-                print '<th scope="col">Ward</th>';
-                print '<th scope="col">Ward</th>';
-                print '<th scope="col">Patient Name</th>';
-                print '<th scope="col">Hospno</th>';
-                print '<th scope="col">Ent</th>';
-            
-                print '<th scope="col">Age</th>';
-                print '<th scope="col">Gender</th>';
-                print '<th scope="col">AdmDt</th>';
-                print '<th scope="col">AdmTm</th>';
-                print '<th scope="col">DeathDt</th>';
-                print '<th scope="col">DeathTm</th>';
-                print '<th scope="col">Diag</th>';
-                print '<th scope="col">Dur(Hrs.)</th>';
-            
-            
-            
+                print '<th scope="col">HospNo</th>';
+                print '<th scope="col">AdmDate</th>';                        
+                print '<th scope="col">AdmTm</th>';      
+                print '<th scope="col">PatName</th>';      
+                print '<th scope="col">Age</th>'; 
+                print '<th scope="col">Gender</th>'; 
+                print '<th scope="col">TMSRegNo</th>'; 
+                print '<th scope="col">ProvDiag</th>'; 
+                print '<th scope="col">Unit</th>'; 
+                print '<th scope="col">From</th>'; 
                 print '</tr>';
                 print '</thead>';
                           
                         $x = 0;
-                        while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) 
+                        $y = 0;
+                        while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC))                         
+
                         {
+//                            $y = $y + $row["TOTAL_DEATH"];
                             $x = $x + 1;
                             if ($x%2==0) {
                                 print '<tr class="bg-primary">';}
@@ -116,26 +109,20 @@ if (array_key_exists('check_submit', $_POST))
                             }
                                 print '</tr>';
                             }
-//                print '<tr>';
-//                        print '<td>' . 'Total Refund Made (Rs.)' .  '</td>';
-//                        print '<td>' .  $x .  '</td>';
-//                print '</tr>';   
-//                    $GLOBALS['gtotal'] = $GLOBALS['gtotal']  + $x;
+                print '<tr>';
+                        print '<td>' . 'Total Admissions ' .  '</td>';
+                        print '<td>' .  $x .  '</td>';
+                print '</tr>';   
             print '</table>';
-                
-
                 print '<br>';
         }
-   
-  
     
         // Create connection to Oracle
         $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD"); 
-        $query = "select DEPT, SRL_NO, UNIT, WARD, WARD_NAME, NAME, HOSPNO, ENT, AGE, 
-                  GENDER, ADM_DT, ADM_TIME, DEATH_DT, DEATH_TIME, DIAG_DESC,HOSP_DUR
-                  from WARD_STAT_DEATH_VIEW
-                  where to_char(death_dt,'YYYY-MM-DD') between :EIDBV and :EIDBV2 
-                  order by dept, death_date";
+        $query = "select (hospno||'/'||hospyr) hospno, admdate, admtime, pat_name, pat_age_yy, pat_gender,                     pat_tms_registration_no, pat_provdiag, pat_admit_unit, pfrom1
+                  from ward_pmjay
+                  where to_char(admdate,'YYYY-MM-DD') between :EIDBV and :EIDBV2 
+                  order by admdate desc, hospno desc";
     
     
         $s = oci_parse($c, $query);    
@@ -145,8 +132,13 @@ if (array_key_exists('check_submit', $_POST))
         
         $myendt = $endate;
         oci_bind_by_name($s,":EIDBV2", $myendt);
- 
-       
+/*
+$stid = oci_parse($conn, "create table emp2 as select * from employees");
+oci_execute($stid);
+echo oci_num_rows($stid) . " rows inserted.<br />\n";
+oci_free_statement($stid);
+*/
+    
     
         oci_execute($s);
         do_fetch($myeid, $myendt, $s);
@@ -159,9 +151,6 @@ else
 }
 ?> 
 
- 
- 
-  
     
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

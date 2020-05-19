@@ -197,6 +197,7 @@ session_start();
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Action</a>
                   <a class="dropdown-item" href="stat_mortality_01.php">Mortality Data</a>
+                  <a class="dropdown-item" href="stat_mortality_02.php">Mortality DepartmentWise</a>                 
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li>
@@ -242,7 +243,7 @@ session_start();
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">About PMJAY</a>
-                  <a class="dropdown-item" href="#">PMJAY Admissions</a>
+                  <a class="dropdown-item" href="pmjay_adm_01.php">PMJAY Admissions</a>
                   <a class="dropdown-item" href="#">PMJAY Claims</a>                  
                 </div>
               </li>
