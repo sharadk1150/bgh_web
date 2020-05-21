@@ -128,8 +128,8 @@ session_start();
                 <a class="dropdown-item" href="adm_source_wise.php">Source Wise Admission</a>
                 <a class="dropdown-item" href="adm_diag_wise.php">Diagnosis Wise Admission</a>
                 <a class="dropdown-item" href="adm_census_data.php">Census Daily Data</a>
-                
-                
+                <a class="dropdown-item" href="adm_wrkacdt_case.php">Work Acident Cases</a>
+                <a class="dropdown-item" href="adm_ml_case.php">Medico Legal Cases</a>
               </div>
             </li>
             
@@ -143,6 +143,7 @@ session_start();
                 <a class="dropdown-item" href="bill_cat_wise_01.php">Group Wise Billing</a>
                 <a class="dropdown-item" href="bill_cat_wise_02.php">Group/Cat Wise Billing</a>
                 <a class="dropdown-item" href="bill_cat_wise_03.php">Third Party Billing</a>
+                <a class="dropdown-item" href="billing_ccat_claims.php">Third Party Claims/Receipt</a>               
                 <a class="dropdown-item" href="bill_collection_01.php">IPD Cash Collection</a>
                 <a class="dropdown-item" href="bill_refund_01.php">IPD Refunds</a>
                 <a class="dropdown-item" href="bill_refund_02.php">Misc. Refunds</a>                                
@@ -393,7 +394,7 @@ session_start();
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title">Dr. A K Singh</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text">Message From DMS I/c (M and HS).</p>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
@@ -403,8 +404,8 @@ session_start();
       <div class="card border-success mb-3" style="max-width: 18rem;">
         <div class="card-header bg-transparent border-success">Header</div>
         <div class="card-body text-success">
-          <h5 class="card-title">Success card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h5 class="card-title">Important Message</h5>
+          <p class="card-text">Some Important Message Will Go Here.</p>
         </div>
         <div class="card-footer bg-transparent border-success">Footer</div>
       </div>
@@ -414,8 +415,8 @@ session_start();
       <div class="card border-success mb-3" style="max-width: 18rem;">
         <div class="card-header bg-transparent border-success">Header</div>
         <div class="card-body text-success">
-          <h5 class="card-title">Success card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h5 class="card-title">Important Message</h5>
+          <p class="card-text">Some Important Message Will Go Here.</p>
         </div>
         <div class="card-footer bg-transparent border-success">Footer</div>
       </div>
@@ -424,8 +425,8 @@ session_start();
     <div class="card border-success mb-3" style="max-width: 18rem;">
         <div class="card-header bg-transparent border-success">Header</div>
         <div class="card-body text-success">
-          <h5 class="card-title">Success card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h5 class="card-title">Important Message</h5>
+          <p class="card-text">Some Important Message Will Go Here.</p>
         </div>
         <div class="card-footer bg-transparent border-success">Footer</div>
     </div>
