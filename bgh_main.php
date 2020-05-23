@@ -110,7 +110,7 @@ session_start();
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="opd_status_01.php">OPD Dashboard</a>
-                <a class="dropdown-item" href="#">OPD Schedule</a>
+                <a class="dropdown-item" href="opd_status_02.php">Daily OPD Stats</a>
                 <a class="dropdown-item" href="#">................</a>
               </div>
             </li>
@@ -221,7 +221,7 @@ session_start();
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Action</a>
                   <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="wardlab_inv_fy_wise.php">FY Year Wise Ward Lab Summary</a>
                 </div>
               </li>
 
