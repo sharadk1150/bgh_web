@@ -3,8 +3,8 @@
 session_start();
 ?>
 
-<!doctype html>
-<html lang="en">
+
+<html>
     <head>
     <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -14,18 +14,7 @@ session_start();
         <link rel="stylesheet" href="bgh_main_style.css">
         <link rel="stylesheet "href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <style>
-            /*
-            .dropdown {list-style: none; background: green; padding: 10px; display: inline-block;}
-            .dropdown .nav-link {color:#fff; text-decoration: none;}
-            .dropdown .dropdown-menu a{color: #000; text-decoration: none;}
-            .dropdown .btn {background: green; color:#fff;}
-            .dropdown .btn:hover {background: cyan; color:#000;}
-            .dropdown .btn:active {background: cyan; color:#000;}
-            .dropdown .btn:focus {background: cyan; color:#000;}
-            .dropdown-menu .dropdown-item {display: inline-block; width: 100%; padding: 10px 5px;}
-            */
-            
+        <style>                      
             .dropdown .dropdown-menu a:hover
             {    
               color: #fff;
@@ -39,16 +28,9 @@ session_start();
     <body>
       <!-- Checking the Session Variable for Login from the login page -->
       
-      <?php
+<?php
           
          $login_name = $_SESSION["login"];
-        
-//        echo $_SESSION["login"];
-//        echo $_SESSION['loggedIn'];
-        
-//          print_r($_SESSION);
-//        on the second page you check if that session is true, else redirect to the login page  
-//        if (!isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]="")
         if (!isset($_SESSION["loggedIn"]))
         {  
             header('Location:/login_bgh.php'); 
@@ -56,41 +38,10 @@ session_start();
         else
         {
             ;
-//            echo "all Good";
             
         }
-    ?>
+?>
     
-      
-        
-    <!--    <h1 class="display-6"> Bokaro General Hospital </<h1> -->
-    <!-- Drop Down Menus from Bootstrap-->
-    <!-- Example single danger button -->
-<!--
-    <div class="btn-group">
-    <button type="button" class="btn btn-primary dropdown-toggle" col-sm-2 data-toggle="dropdown">
-      OPD
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
-    </div>
-
-    <button type="button" class="btn btn-primary dropdown-toggle" col-sm-2 data-toggle="dropdown">
-        IPD
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Separated link</a>
-      </div>
-</div>
--->
     <!-- NAVBAR FROM BOOTSTRAP -->
     <!-- class="navbar navbar-dark bg-primary" -->
     <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
@@ -111,7 +62,15 @@ session_start();
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="opd_status_01.php">OPD Dashboard</a>
                 <a class="dropdown-item" href="opd_status_02.php">Daily OPD Stats</a>
-                <a class="dropdown-item" href="#">................</a>
+                <a class="dropdown-item" href="#">Department Wise OPD Visit</a>
+                <a class="dropdown-item" href="#">Entitled OPD Visits</a>                
+                <a class="dropdown-item" href="#">Non-Entitled OPD Visits</a>
+                <a class="dropdown-item" href="#">Gender Wise OPD Visits</a>
+                <a class="dropdown-item" href="#">Third Party OP Billing</a>
+                <a class="dropdown-item" href="#">OP Billing of Mediclaim</a>
+                <a class="dropdown-item" href="#">Inv. Billing of Mediclaim</a>
+                <a class="dropdown-item" href="#">Daily OPD Cash Collection</a>
+                
               </div>
             </li>
                         
@@ -130,6 +89,8 @@ session_start();
                 <a class="dropdown-item" href="adm_census_data.php">Census Daily Data</a>
                 <a class="dropdown-item" href="adm_wrkacdt_case.php">Work Acident Cases</a>
                 <a class="dropdown-item" href="adm_ml_case.php">Medico Legal Cases</a>
+                <a class="dropdown-item" href="#">Gender Wise Admissions</a>
+                <a class="dropdown-item" href="#">Entitled/Non-Entitled Admissions</a>
               </div>
             </li>
             
@@ -147,7 +108,7 @@ session_start();
                 <a class="dropdown-item" href="bill_collection_01.php">IPD Cash Collection</a>
                 <a class="dropdown-item" href="bill_refund_01.php">IPD Refunds</a>
                 <a class="dropdown-item" href="bill_refund_02.php">Misc. Refunds</a>                                
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#">Guarantor Bill Details</a>
               </div>
             </li>
 
@@ -172,11 +133,11 @@ session_start();
                   <a class="dropdown-item" href="pharma_med_master_wms.php">WMS Med Master</a>
                   <a class="dropdown-item" href="pharma_allctr_stock.php">All Counter Stock</a>
                   <a class="dropdown-item" href="pharma_substore_stock.php">SubStore Stock</a>
+                  <a class="dropdown-item" href="#">WMS-Store Stock</a>                  
                   <a class="dropdown-item" href="pharma_na_order.php">LP-NA Medicines</a>
                   <a class="dropdown-item" href="pharma_nl_order.php">LP-NL Medicines</a>
                   <a class="dropdown-item" href="pharma_expiry_01.php">Pharma Expired Drug (Counter)</a>
-                  <a class="dropdown-item" href="pharma_expiry_02.php">Pharma Expired Drug (All)</a>
-                  
+                  <a class="dropdown-item" href="pharma_expiry_02.php">Pharma Expired Drug (All)</a>                  
                 </div>
               </li>  
 
@@ -199,7 +160,7 @@ session_start();
                   <a class="dropdown-item" href="#">Action</a>
                   <a class="dropdown-item" href="stat_mortality_01.php">Mortality Data</a>
                   <a class="dropdown-item" href="stat_mortality_02.php">Mortality DepartmentWise</a>                 
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="labour_room_br_01.php">Birth Report Summary</a>
                 </div>
               </li>
 
@@ -283,79 +244,10 @@ session_start();
               <li class="nav-item active">
                 <a class="nav-link" href="bgh_com_escalation.html"><i class="fa fa-phone"></i><span class="sr-only">(current)</span></a>
               </li>
-
-
-
           </ul>
         </div>
       </nav>
-    <!-- NVBAR FROM BOOTSTRAP  UPTO HERE -->
-<!-- OLD STYLE MENU     
-        <div class="menu-bar">
-        <ul>
-            <li class="active"><a href="#"><i class="fa fa-home"></i>Home</a></li>
-            
-            <li><a href="#"><i class="fa fa-hospital-o"></i></a>About Us</a>
-                <div class="sub-menu-1">
-                    <ul>
-                        <li><a href="#">OPD List</a></li>
-                        <li><a href="#">OPD Doctor</a></li>
-                        <li><a href="#">OPD Schedule</a></li>
-                        <li><a href="#">4.</a></li>
-                        <li><a href="#">5.</a></li>
-                        <li><a href="#">6.</a></li>
-                        <li><a href="#">7.</a></li>
-                    </ul>
-                </div>  
-            </li>
 
-            <li><a href="#"></a>OPD</a>
-                <div class="sub-menu-1">
-                    <ul>
-                        <li><a href="#">OPD List</a></li>
-                        <li><a href="#">OPD Doctor</a></li>
-                        <li><a href="#">OPD Schedule</a></li>
-                        <li><a href="#">4.</a></li>
-                        <li><a href="#">5.</a></li>
-                        <li><a href="#">6.</a></li>
-                        <li><a href="#">7.</a></li>
-                    </ul>
-                </div>              
-            </li>
-
-            <li><a href="#"></a>IPD</a>
-                <div class="sub-menu-1">
-                    <ul>
-                        <li><a href="#">IPD List</a></li>
-                        <li><a href="#">IPD Unit</a></li>
-                        
-                        <li class="hover-me"><a href="#">IPD Reports</a><i class="fa fa-angle-right"></i>
-                            <div class="sub-menu-2">
-                                <ul>
-                                    <li><a href="#">Daily Adm Report </a></li>
-                                    <li><a href="#">Monthly Adm Report  </a></li>
-                                    <li><a href="#">Yearly Adm Report    </a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        
-                        <li><a href="#">4.</a></li>
-                        <li><a href="#">5.</a></li>
-                        <li><a href="#">6.</a></li>
-                        <li><a href="#">7.</a></li>
-                    </ul>
-                </div>                          
-            </li>
-
-            <li><a href="#"></a>Billing</a></li>
-            <li><a href="#"></a>Blood Bank</a></li>
-            <li><a href="#"></a>Pharmacy</a></li>
-            <li><a href="#"></a>ISO</a></li>
-            <li><a href="#"></a>Reports</a></li>
-           <li><a href="#"><i class="fa fa-phone"></i></a>Contact</a></li>
-        </ul>
-    </div>
- OLD STYLE MENU IS UPTO HERE -->
 
 <!-- Caraousel Entry has to be done Here  -->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -445,6 +337,7 @@ session_start();
           </div>
         </div>
       </div>
+</div>       
         <div class="footer">
             <footer>Developed by C and IT in Consultation With Bokaro General Hospital, Bokaro</footer>
         </div>
@@ -454,4 +347,4 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>    
     </body>
-</html>
+        </html>
