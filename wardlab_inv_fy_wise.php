@@ -8,8 +8,19 @@
 
 <html>
 <head>
-  <title>LAB: FY Wise Investigation Summary</title>
+  <title>WARD LAB: FY Wise Investigation Summary</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<style> 
+    .navbar 
+       { 
+            position: absolute; 
+            height: 50px;
+            background-color: bisque;
+        } 
+</style>
+    
+
 </head>
 <body>
 <?php          
@@ -23,26 +34,22 @@
             ;            
         }
 ?>
-    
-<nav class="navbar navbar-dark fixed-top bg-primary">
-  <h6>WARD LAB:FY Wise Test Summary</h6>
-</nav>
-<br><br><br>
 
-
- <form  name="myform" action="wardlab_inv_fy_wise.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
-<form class="form-inline">   
-   <div class="form-group row">
-   
       
-      <label for="lab" class="col-sm-2 col-form-label">Lab</label>
-      <div class="col-sm-4">
+<nav class="navbar navbar-dark fixed-top">
+<h6>WARD: Lab Test Count for IPD</h6>
+
+<form  name="myform" action="wardlab_inv_fy_wise.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
+<form class="form-inline">   
+   <div class="form-group row">         
+      <label for="lab" class="col-sm-1 col-form-label">Lab</label>
+      <div class="col-sm-3">
       <select id="lab" name="lab" class="form-control">       
 
 <?php
 
             $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
-            $sql = "select distinct lab_desc from wardlab.LAB_INV_SUMMARY_FYYR order by 1 desc";  
+            $sql = "select lab_desc from wardlab.lab_code_master where lab_code in ('01', '02', '03', '04','10')";  
             $stid = oci_parse($c, $sql);  
             $success = oci_execute($stid);          
                 while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)){
@@ -53,12 +60,12 @@
       </select>
       </div>                          
       <label for="fyyr" class="col-sm-2 col-form-label">FY-YR</label>
-      <div class="col-sm-4">
+      <div class="col-sm-3">
       <select id="fyyr" name="fyyr" class="form-control">       
 <?php
           
             $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
-            $sql = "select fy_yr from ward_fyyr order by by 1 desc";  
+            $sql = "select fy_yr from ward_fyyr order  by 1 desc";  
             echo $sql;
             $stid = oci_parse($c, $sql);  
             $success = oci_execute($stid);
@@ -73,14 +80,16 @@
     </div>
     </form>
 </form>
+</nav>
 
 
+<br><br><br>
 
 <?php
 if (array_key_exists('check_submit', $_POST)) 
 {
     
-                if (isset($_POST['lab'])){$lab     =  $_POST['lab'];}
+                if (isset($_POST['lab'])){$lab      =  $_POST['lab'];}
                 if (isset($_POST['fyyr'])){$fyyr    =  $_POST['fyyr'];}
     
         function do_fetch($myfinyr, $mylab,  $s)            
@@ -92,11 +101,8 @@ if (array_key_exists('check_submit', $_POST))
                 print '</tr>';
                 print '<tr>';
                 print '<th scope="col">FinYr</th>';
-                print '<th scope="col">PartyName</th>';
-                print '<th scope="col">NumBills</th>';
-                print '<th scope="col">NetClaim</th>';   
-                print '<th scope="col">AmtReceived</th>';               
-                print '</tr>';
+                print '<th scope="col">Test Desc</th>';
+                print '<th scope="col">Total Count</th>';
                 print '</thead>';
             
 
@@ -124,7 +130,7 @@ if (array_key_exists('check_submit', $_POST))
 
   
     
-        $query = "select fy_yr, tot_count
+        $query = "select fy_yr, test_desc, tot_count
                   from wardlab.LAB_INV_SUMMARY_FYYR where fy_yr=:EIDBV and
                   lab_desc=:EIDBV2
                   order by 1";
