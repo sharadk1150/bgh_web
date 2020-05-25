@@ -78,7 +78,7 @@
 
     
         // Create connection to Oracle
-        $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD"); 
+        $c = oci_connect("BGH", "hpv185e", "10.143.100.36/BGH6"); 
         $query = "select substr(old_cat_no,7,11) drug_code, med_Desc, med_gen_name,bname  
                   from bgh_med_master where disp_in_form='Y' order by med_gen_name";    
        

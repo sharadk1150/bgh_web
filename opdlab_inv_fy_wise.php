@@ -8,7 +8,7 @@
 
 <html>
 <head>
-  <title>WARD LAB: FY Wise Investigation Summary</title>
+  <title>OPD LAB: FY Wise Investigation Summary</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 
@@ -32,15 +32,15 @@
 <!-- Nav Bar for position at the top of page-->  
 <div class="container">
 <nav class="navbar navbar-dark fixed-top" style="background-color: bisque; height:50px; position: absolute;">
-<form  class="form-inline" name="myform" action="wardlab_inv_fy_wise.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
+<form  class="form-inline" name="myform" action="opdlab_inv_fy_wise.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
   
    <div class="form-group">         
-      <label for="lab">Lab (IPD Only) For Which Data is Required:</label>
+      <label for="lab">Lab (OPD Only) For Which Data is Required:</label>
       <select id="lab" name="lab" class="form-control mr-sm-2">       
             <?php
 
-            $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
-            $sql = "select lab_desc from wardlab.lab_code_master where lab_code in ('01', '02', '03', '04','10')";  
+            $c = oci_connect("BGH", "hpv185e", "10.143.100.36/BGH6");
+            $sql = "select lab_desc from lab_code_master where lab_code in ('01', '02', '03', '04','10')";  
             $stid = oci_parse($c, $sql);  
             $success = oci_execute($stid);          
                 while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)){
@@ -57,8 +57,8 @@
       <select id="fyyr" name="fyyr" class="form-control mr-sm-2">       
       <?php
           
-            $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
-            $sql = "select fy_yr from ward_fyyr order  by 1 desc";  
+            $c = oci_connect("BGH", "hpv185e", "10.143.100.36/BGH6");
+            $sql = "select fy_yr from opd_fyyr order  by 1 desc";  
             echo $sql;
             $stid = oci_parse($c, $sql);  
             $success = oci_execute($stid);
@@ -117,7 +117,7 @@ if (array_key_exists('check_submit', $_POST))
     
     
         // Create connection to Oracle
-        $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
+        $c = oci_connect("BGH", "hpv185e", "10.143.100.36/BGH6");
         // Use bind variable to improve resuability, 
         // and to remove SQL Injection attacks.
 

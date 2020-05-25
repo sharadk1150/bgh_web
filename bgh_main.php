@@ -109,6 +109,13 @@ session_start();
                 <a class="dropdown-item" href="bill_refund_01.php">IPD Refunds</a>
                 <a class="dropdown-item" href="bill_refund_02.php">Misc. Refunds</a>                                
                 <a class="dropdown-item" href="#">Guarantor Bill Details</a>
+                <a class="dropdown-item" href="bill_grntr_pending_01.php">Guarantor Bill Pending</a>
+                <a class="dropdown-item" href="bill_grntr_status_01.php">Guarantor Bill Status</a>
+                
+                
+
+                
+                                                
               </div>
             </li>
 
@@ -148,7 +155,7 @@ session_start();
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Action</a>
                   <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="iso_adm_death_01.php">ISO Admission/Mortality Data</a>
                 </div>
               </li>  
 
@@ -204,9 +211,19 @@ session_start();
                   PMJAY
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">About PMJAY</a>
+                  <a class="dropdown-item" href="https://hospitals.pmjay.gov.in/">About PMJAY</a>
                   <a class="dropdown-item" href="pmjay_adm_01.php">PMJAY Admissions</a>
-                  <a class="dropdown-item" href="#">PMJAY Claims</a>                  
+                  <a class="dropdown-item" href="#">PMJAY Claims</a>  
+                  <a class="dropdown-item" href="https://pmjay.gov.in/">National Health Mission(NHA)</a>  
+                  <a class="dropdown-item" href="https://pmjay.qcin.org/faq-page">PMJAY-FAQ</a> 
+                  <a class="dropdown-item" href="https://nabh.co/">NABH</a> 
+                                                              
+
+                                                                                                                         
+                                                              
+                                
+                                 
+                               
                 </div>
               </li>
               
