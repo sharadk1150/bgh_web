@@ -110,11 +110,8 @@ session_start();
                 <a class="dropdown-item" href="bill_refund_02.php">Misc. Refunds</a>                                
                 <a class="dropdown-item" href="#">Guarantor Bill Details</a>
                 <a class="dropdown-item" href="bill_grntr_pending_01.php">Guarantor Bill Pending</a>
-                <a class="dropdown-item" href="bill_grntr_status_01.php">Guarantor Bill Status</a>
-                
-                
-
-                
+                <a class="dropdown-item" href=" wardbill_recovery_statement_01.php">Guarantor Recovery Statement</a>
+ 
                                                 
               </div>
             </li>
