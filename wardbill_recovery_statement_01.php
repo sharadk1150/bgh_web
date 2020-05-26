@@ -82,15 +82,15 @@
 if (array_key_exists('check_submit', $_POST)) 
 {
     
-                if (isset($_POST['year'])){$lab      =  $_POST['year'];}
-                if (isset($_POST['month'])){$fyyr    =  $_POST['month'];}
+                if (isset($_POST['year'])){$year      =  $_POST['year'];}
+                if (isset($_POST['month'])){$month    =  $_POST['month'];}
     
         function do_fetch($myyr, $mymonth,  $s)            
             {
                 print '<table class="table table-sm table-bordered table-striped table-dark w-auto table-hover">';            
                 print '<thead class="thead-light">';
                 print '<tr>'; 
-                print '<td colspan="9">' . 'Recovery Statement For  : ' . $myyr .  ' For ' . $mymonth .'</td>';
+                print '<td colspan="9">' . 'Recovery Statement For Month : ' . $mymonth .  ' and Year  ' . $myyr . '</td>';
                 print '</tr>';
                 print '<tr>';
                 print '<th scope="col">StaffNo</th>';
@@ -99,10 +99,12 @@ if (array_key_exists('check_submit', $_POST))
                 print '<th scope="col">BillDt</th>';
                 print '<th scope="col">MMYr</th>';
                 print '<th scope="col">HospCg</th>';
+                print '<th scope="col">BillAmount (Rs.)</th>';
+            
 
                 print '</thead>';
                          
-
+                        
 // Print the data in Table            
                         while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) 
                         {                            
@@ -120,17 +122,18 @@ if (array_key_exists('check_submit', $_POST))
         }
     
         //form the table name
-        $myyr = $year;
+        $myyr    = $year;
         $mymonth = $month;
-        $tname = 'ward_recovery_view_' . $myyr.$mymonth;
+        $tname = 'ward_recovery_view_' . $mymonth.$myyr;
+        
         // Create connection to Oracle
         $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
         // Use bind variable to improve resuability, 
         // and to remove SQL Injection attacks.
 
-        staffno,hospital_no, bill_no, updated_bill_dt, mmyear, hospcg
+        
     
-        $query = "select staffno, hospital_no, bill_no, updated_bill_dt, mmyear, hospcg
+        $query = "select staffno, hospital_no, bill_no, updated_bill_dt, mmyear, hospcg, bill_balance
                   from " . $tname . " order by 1";
     
 //        $qcount = "select sum(tot_rate) TOT_VALUE from BGH_MED_STOCK_ISSUE_VW 
@@ -140,12 +143,12 @@ if (array_key_exists('check_submit', $_POST))
 //        $scount = oci_parse($c, $qcount);
     
        
-        oci_bind_by_name($s, ":EIDBV", $myfinyr);
+//        oci_bind_by_name($s, ":EIDBV", $myfinyr);
 //        oci_bind_by_name($scount, ":EIDBV", $myeid);
     
         
         
-        oci_bind_by_name($s, ":EIDBV2", $mylab);
+//        oci_bind_by_name($s, ":EIDBV2", $mylab);
 //        oci_bind_by_name($scount, ":EIDBV2", $myendt);
     
         oci_execute($s);
@@ -158,7 +161,7 @@ if (array_key_exists('check_submit', $_POST))
         }
 */        
     
-        do_fetch($myfinyr, $mylab,  $s);
+        do_fetch($myyr, $mymonth,  $s);
         oci_close($c);
 
 } 
