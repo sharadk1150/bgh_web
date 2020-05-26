@@ -69,7 +69,7 @@ session_start();
                 <a class="dropdown-item" href="#">Third Party OP Billing</a>
                 <a class="dropdown-item" href="#">OP Billing of Mediclaim</a>
                 <a class="dropdown-item" href="#">Inv. Billing of Mediclaim</a>
-                <a class="dropdown-item" href="#">Daily OPD Cash Collection</a>
+                <a class="dropdown-item" href="opd_daily_cash_coll_01.php">Daily OPD Cash Collection</a>
                 
               </div>
             </li>
