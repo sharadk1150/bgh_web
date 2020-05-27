@@ -110,7 +110,9 @@ session_start();
                 <a class="dropdown-item" href="bill_refund_02.php">Misc. Refunds</a>                                
                 <a class="dropdown-item" href="#">Guarantor Bill Details</a>
                 <a class="dropdown-item" href="bill_grntr_pending_01.php">Guarantor Bill Pending</a>
-                <a class="dropdown-item" href=" wardbill_recovery_statement_01.php">Guarantor Recovery Statement</a>
+                <a class="dropdown-item" href="wardbill_recovery_statement_01.php">Guarantor Recovery Statement</a>
+                <a class="dropdown-item" href="wardbill_headwise_billing_01.php">Bills Under Different Heads</a>
+
  
                                                 
               </div>
@@ -197,7 +199,7 @@ session_start();
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Action</a>
                   <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="grnt_list_for_admin.php">BSL Guarantor for Admin</a>
                   <a class="dropdown-item" href="medissue_csr_13.php">CSR-Medicine Issued to Medical Camps</a>
                   <a class="dropdown-item" href="medissue_csr_20.php">CSR-Medicine Issued to SSK(HC-5)</a>
                 </div>
@@ -210,7 +212,7 @@ session_start();
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="https://hospitals.pmjay.gov.in/">About PMJAY</a>
                   <a class="dropdown-item" href="pmjay_adm_01.php">PMJAY Admissions</a>
-                  <a class="dropdown-item" href="#">PMJAY Claims</a>  
+                  <a class="dropdown-item" href="pmjay_claims_manual_01.php">PMJAY Claims and Receipt</a>  
                   <a class="dropdown-item" href="https://pmjay.gov.in/">National Health Mission(NHA)</a>  
                   <a class="dropdown-item" href="https://pmjay.qcin.org/faq-page">PMJAY-FAQ</a> 
                   <a class="dropdown-item" href="https://nabh.co/">NABH</a> 
