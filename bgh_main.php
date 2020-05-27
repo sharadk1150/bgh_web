@@ -62,6 +62,7 @@ session_start();
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="opd_status_01.php">OPD Dashboard</a>
                 <a class="dropdown-item" href="opd_status_02.php">Daily OPD Stats</a>
+                <a class="dropdown-item" href="opd_daily_status_gr01.html">Daily OPD Stats Graph</a>
                 <a class="dropdown-item" href="#">Department Wise OPD Visit</a>
                 <a class="dropdown-item" href="#">Entitled OPD Visits</a>                
                 <a class="dropdown-item" href="#">Non-Entitled OPD Visits</a>
