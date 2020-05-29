@@ -198,7 +198,8 @@ session_start();
                   Misc Reports
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="list_doctor_01.php">List of Doctor's</a>
+                  <a class="dropdown-item" href="list_bgh_or_employees.php">List of BGH Staff</a>
                   <a class="dropdown-item" href="#">Another action</a>
                   <a class="dropdown-item" href="grnt_list_for_admin.php">BSL Guarantor for Admin</a>
                   <a class="dropdown-item" href="medissue_csr_13.php">CSR-Medicine Issued to Medical Camps</a>
