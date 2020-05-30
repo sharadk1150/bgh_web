@@ -164,7 +164,7 @@ session_start();
                   Statistics
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Stats Cloud System</a>
                   <a class="dropdown-item" href="stat_mortality_01.php">Mortality Data</a>
                   <a class="dropdown-item" href="stat_mortality_02.php">Mortality DepartmentWise</a>                 
                   <a class="dropdown-item" href="labour_room_br_01.php">Birth Report Summary</a>
@@ -188,7 +188,8 @@ session_start();
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="wardlab_status_rep_01.php">WardLab Tests Report</a>
+                  <a class="dropdown-item" href="wardlab_non_conformity_01.php">WardLab Non Conformity Report</a>
                   <a class="dropdown-item" href="wardlab_inv_fy_wise.php">FY Year Wise Ward Lab Summary</a>
                 </div>
               </li>
@@ -218,13 +219,6 @@ session_start();
                   <a class="dropdown-item" href="https://pmjay.gov.in/">National Health Mission(NHA)</a>  
                   <a class="dropdown-item" href="https://pmjay.qcin.org/faq-page">PMJAY-FAQ</a> 
                   <a class="dropdown-item" href="https://nabh.co/">NABH</a> 
-                                                              
-
-                                                                                                                         
-                                                              
-                                
-                                 
-                               
                 </div>
               </li>
               
@@ -251,8 +245,23 @@ session_start();
                 </div>
               </li>
 
-              <li class="nav-item active">
-                <a class="nav-link" href="http://bokarosteel.com">BokaroSteel.com <span class="sr-only">(current)</span></a>
+             
+              <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Links
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="http://bokarosteel.com">BokaroSteel.com</a>
+                  <a class="dropdown-item" href="https://email.sail.in">E-Mail</a>
+                  <a class="dropdown-item" href="http://10.143.2.143:8024/Forms/LogIn.aspx">Attendance System</a>
+                  <a class="dropdown-item" href="sail.co.in">SAIL Corporate Web Site</a>
+                  <a class="dropdown-item" href="india.gov.in">Govt. of India</a>
+                  <a class="dropdown-item" href="steel.gov.in">Steel Ministry</a>
+                  <a class="dropdown-item" href="who.int/classifications/ied/en/">WHO ICD Codification</a>
+                  <a class="dropdown-item" href="www.mohfw.gov.in">Ministry of Health </a>
+
+
+                </div>
               </li>
 
               <li class="nav-item active">
