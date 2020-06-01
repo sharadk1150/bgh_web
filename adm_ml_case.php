@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Process the HTML form data with the POST method</title>
+  <title>Admission Medico Legal Cases</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
@@ -8,10 +8,10 @@
 <!-- Nav Bar for position at the top of page-->  
 <div class="container">
 <nav class="navbar navbar-dark fixed-top" style="background-color: bisque; height:50px; position: absolute;">
-<form  class="form-inline" name="myform" action="get_adm_date.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
+<form  class="form-inline" name="myform" action="adm_ml_case.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
   
 <div class="form-group">  
-        <label for="stdate">Admission Start Date</label>  
+        <label for="stdate">Medico Legal Admission Start Date</label>  
         <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
     </div>
      
@@ -50,12 +50,12 @@ if (array_key_exists('check_submit', $_POST))
             //print '<p>$myeid is ' . $myeid . '</p>';
             //print '<p>Data Showing For the Date:' . $myeid . '</p>';
             // <table class="table table-dark">
-                print '<table class="table table-sm table-bordered table-striped table-dark w-auto"  border="1">';
+            print '<table class="table table-sm table-bordered table-striped table-dark w-auto"  border="1">';
             
             print '<thead>';
             
             print '<tr>'; 
-                print '<td  colspan="9">' . 'Admission Data From : ' . date('d-m-Y', strtotime($mystdate)) . ' To '. date('d-m-Y', strtotime($myendate)) .  '</td>';
+                print '<td colspan="9">' . 'Medico Legal Admission Data From : ' . date('d-m-Y', strtotime($mystdate)) . ' To '. date('d-m-Y', strtotime($myendate)) .  '</td>';
             print '</tr>';
             
             print '<tr>';
@@ -98,10 +98,11 @@ if (array_key_exists('check_submit', $_POST))
         // and to remove SQL Injection attacks.
 
         $query = "select (hospno||'/'||hospyr) hospno, pat_name, pat_age,pat_sex gender, 
-                  pfrom1, admdate, admtime, ent_nonent ent, medlegal,pat_local_add, pat_admit_unit, 
+                  pfrom1, to_char(admdate,'DD.MM.RR') admdate, admtime, ent_nonent ent, medlegal,pat_local_add, pat_admit_unit, 
                   pat_provdiag 
                   from WARD_ADMISSION_VW 
-                  where to_char(admdate,'YYYY-MM-DD') between :EIDBV and :EIDBV1 order by hospno";
+                  where medlegal='Y' and 
+                        to_char(admdate,'YYYY-MM-DD') between :EIDBV and :EIDBV1 order by hospno ";
         $s = oci_parse($c, $query);
 
         $mystdate = $stdate;

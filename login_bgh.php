@@ -4,14 +4,24 @@
 <!DOCTYPE html>
 <html>
 <title>W3.CSS</title>
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 <body onload="document.getElementById('id01').style.display='block'">
 
+<style>
+         body {
+                background-image:   url("sail_bsl_01.jpg");
+                background-repeat:  no-repeat;
+                background-size:    1600px 800px;
+              }
+      </style>
+
+</head>
 <div class="w3-container">
-  <h2>Bokaro General Hospital(Authorised Users Only)</h2>
+  
 
 <!--
 <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-green w3-large">Login</button>
@@ -32,10 +42,10 @@
       <form class="w3-container" action="/action_page.php" method="post">
         
         <div class="w3-section">
-          <label><b>uname</b></label>
+          <label><b>UserName</b></label>
           <input minlength="5" maxlength="12" size="12" class="w3-input w3-border w3-margin-bottom" type="text"  placeholder="Enter Username" name="uname" required>
           
-          <label><b>psw</b></label>
+          <label><b>PassWord</b></label>
           <input minlength="4" maxlength="12" size="12" class="w3-input w3-border" type="password"  placeholder="Enter Password" name="psw" required>
           
           <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" name="submit" id="submit">Login</button>

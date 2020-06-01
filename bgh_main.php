@@ -41,13 +41,16 @@ session_start();
             
         }
 ?>
-    
+   
+   
+
     <!-- NAVBAR FROM BOOTSTRAP -->
     <!-- class="navbar navbar-dark bg-primary" -->
     <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
         <nav class="navbar  sticky-top navbar-expand-lg navbar-dark bg-primary justified"> 
-        <a class="navbar-brand" href="#">BGH</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#"><img src="bgh_logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="SAIL"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -88,9 +91,9 @@ session_start();
                 <a class="dropdown-item" href="adm_source_wise.php">Source Wise Admission</a>
                 <a class="dropdown-item" href="adm_diag_wise.php">Diagnosis Wise Admission</a>
                 <a class="dropdown-item" href="adm_census_data.php">Census Daily Data</a>
-                <a class="dropdown-item" href="adm_wrkacdt_case.php">Work Acident Cases</a>
+                <a class="dropdown-item" href="adm_wrkacdt_case.php">Work Accident Cases</a>
                 <a class="dropdown-item" href="adm_ml_case.php">Medico Legal Cases</a>
-                <a class="dropdown-item" href="#">Gender Wise Admissions</a>
+                <a class="dropdown-item" href="adm_genderwise_adm.php">Gender Wise Admissions</a>
                 <a class="dropdown-item" href="#">Entitled/Non-Entitled Admissions</a>
               </div>
             </li>
