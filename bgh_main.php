@@ -204,10 +204,14 @@ session_start();
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="list_doctor_01.php">List of Doctor's</a>
                   <a class="dropdown-item" href="list_bgh_or_employees.php">List of BGH Staff</a>
-                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="misc_party_wise_entitled_01.php">Party Wise Entitled Patient</a>
                   <a class="dropdown-item" href="grnt_list_for_admin.php">BSL Guarantor for Admin</a>
                   <a class="dropdown-item" href="medissue_csr_13.php">CSR-Medicine Issued to Medical Camps</a>
                   <a class="dropdown-item" href="medissue_csr_20.php">CSR-Medicine Issued to SSK(HC-5)</a>
+                  <a class="dropdown-item" href="misc_bgh_mid_employee_01.php">View Details of Entitled Person</a>
+
+                  
+
                 </div>
               </li>
 
@@ -326,7 +330,7 @@ session_start();
       <div class="card border-success mb-3" style="max-width: 18rem;">
         <div class="card-header bg-transparent border-success">Header</div>
         <div class="card-body text-success">
-          <h5 class="card-title">Important Message</h5>
+          <h5 class="card-title">Covid-19</h5>
           <p class="card-text">Some Important Message Will Go Here.</p>
         </div>
         <div class="card-footer bg-transparent border-success">Footer</div>
