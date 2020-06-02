@@ -61,7 +61,7 @@ if (array_key_exists('check_submit', $_POST))
                 if (isset($_POST['stdate'])){$stdate    =  $_POST['stdate'];}
                 if (isset($_POST['endate'])){$endate    =  $_POST['endate'];}
    
-        function do_fetch($mystdate, $myendate, $tot_ent, $tot_nonent, $tot_ent_death, $tot_nent_death, $s)            
+        function do_fetch($mystdate, $myendate, $tot_ent, $tot_nonent, $tot_ent_death, $tot_nent_death, $tot_pmjay, $tot_pmjay_death,  $s)            
             {
                 print '<table class="table table-sm table-bordered table-striped table-dark w-auto table-hover">'; 
                 print '<thead class="thead-light">';
@@ -83,6 +83,18 @@ if (array_key_exists('check_submit', $_POST))
                         print '<td>' .$tot_nonent . '</td>';
                         print '<td>' .$tot_nent_death . '</td>';
                 print '</tr>';
+                print '<tr>';
+                        print '<td>' . 'PMJAY' . '</td>';
+                        print '<td>' .$tot_pmjay . '</td>';
+                        print '<td>' .$tot_pmjay_death . '</td>';
+                print '</tr>';
+                print '<tr>';
+                        print '<td>' . 'TOTAL' . '</td>';
+                        print '<td>' . ($tot_ent+$tot_nonent+$tot_pmjay) . '</td>';
+                        print '<td>' . ($tot_ent_death+$tot_nent_death+$tot_pmjay_death) . '</td>';
+                print '</tr>';
+
+
             
                 print '</table>';            
 
@@ -123,6 +135,12 @@ if (array_key_exists('check_submit', $_POST))
                   and to_char(admdate,'YYYY-MM-DD') between :EIDBV and :EIDBV2
                   group by ent_nonent";
 
+        $pmjay = "select count(ent_nonent) tot_pmjay 
+                  from ward_admission_vw
+                  where ent_nonent='P'
+                  and to_char(admdate,'YYYY-MM-DD') between :EIDBV and :EIDBV2
+                  group by ent_nonent";
+
         $endeath = "select count(ent) tot_ent_death 
                   from WARD_STAT_DEATH_VIEW
                   where ent='Y'
@@ -134,7 +152,12 @@ if (array_key_exists('check_submit', $_POST))
                   where ent='N'
                   and to_char(death_dt,'YYYY-MM-DD') between :EIDBV and :EIDBV2
                   group by ent";
-    
+
+        $pmjaydeath = "select nvl(count(ent),0) tot_pmjay_death 
+                  from WARD_STAT_DEATH_VIEW
+                  where ent='P'
+                  and to_char(death_dt,'YYYY-MM-DD') between :EIDBV and :EIDBV2
+                  group by ent";
     
         $s = oci_parse($c, $query);
         oci_define_by_name($s, 'TOT_ENT', $tot_ent);    
@@ -144,7 +167,7 @@ if (array_key_exists('check_submit', $_POST))
         oci_bind_by_name($s, ":EIDBV2", $myendate);    
         oci_execute($s);
         oci_fetch($s); 
-//        echo "Total Entitled:" . $tot_ent ."\n";
+//      echo "Total Entitled:" . $tot_ent ."\n";
         oci_free_statement($s);
 
         $s = oci_parse($c, $neadm);
@@ -155,7 +178,7 @@ if (array_key_exists('check_submit', $_POST))
         oci_bind_by_name($s, ":EIDBV2", $myendate);        
         oci_execute($s);
         oci_fetch($s); 
-//         echo "Total Entitled:" . $tot_nonent ."\n";
+//      echo "Total Entitled:" . $tot_nonent ."\n";
         oci_free_statement($s);
     
         $s = oci_parse($c, $endeath);
@@ -166,7 +189,7 @@ if (array_key_exists('check_submit', $_POST))
         oci_bind_by_name($s, ":EIDBV2", $myendate);        
         oci_execute($s);
         oci_fetch($s); 
-//         echo "Total Entitled Death:" . $tot_ent_death ."\n";
+//      echo "Total Entitled Death:" . $tot_ent_death ."\n";
         oci_free_statement($s);
     
         $s = oci_parse($c, $nendeath);
@@ -177,10 +200,35 @@ if (array_key_exists('check_submit', $_POST))
         oci_bind_by_name($s, ":EIDBV2", $myendate);        
         oci_execute($s);
         oci_fetch($s); 
-//         echo "Total Non-Entitled Death:" . $tot_nent_death ."\n";
+//      echo "Total Non-Entitled Death:" . $tot_nent_death ."\n";
         oci_free_statement($s);
-    
-    
+
+// pmjay admission
+        $s = oci_parse($c, $pmjay);
+        oci_define_by_name($s, 'TOT_PMJAY', $tot_pmjay);
+        $mystdate = $stdate;
+        oci_bind_by_name($s, ":EIDBV", $mystdate);
+        $myendate = $endate;
+        oci_bind_by_name($s, ":EIDBV2", $myendate);        
+        oci_execute($s);
+        oci_fetch($s); 
+//      echo "Total Non-Entitled Death:" . $tot_nent_death ."\n";
+        oci_free_statement($s);
+
+
+
+        // pmjay death
+        $s = oci_parse($c, $pmjaydeath);
+        oci_define_by_name($s, 'TOT_PMJAY_DEATH', $tot_pmjay_death);
+        $mystdate = $stdate;
+        oci_bind_by_name($s, ":EIDBV", $mystdate);
+        $myendate = $endate;
+        oci_bind_by_name($s, ":EIDBV2", $myendate);        
+        oci_execute($s);
+        oci_fetch($s); 
+//      echo "Total PMJAY Death:" . (int)$tot_pmjay_death ."\n";
+        oci_free_statement($s);
+
     
     
     /*   
@@ -190,7 +238,7 @@ if (array_key_exists('check_submit', $_POST))
         }
 */        
     
-        do_fetch($mystdate, $myendate, $tot_ent, $tot_nonent, $tot_ent_death, $tot_nent_death, $s);
+        do_fetch($mystdate, $myendate, $tot_ent, $tot_nonent, $tot_ent_death, $tot_nent_death, $tot_pmjay, (int)$tot_pmjay_death, $s);
         oci_close($c);
 
 } 
