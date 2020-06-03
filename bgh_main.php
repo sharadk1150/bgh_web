@@ -268,6 +268,10 @@ session_start();
                   <a class="dropdown-item" href="steel.gov.in">Steel Ministry</a>
                   <a class="dropdown-item" href="who.int/classifications/ied/en/">WHO ICD Codification</a>
                   <a class="dropdown-item" href="www.mohfw.gov.in">Ministry of Health </a>
+                  <a class="dropdown-item" href="file_upload.php">File Upload </a>
+                  <a class="dropdown-item" href="file_upload_1.php">File Upload New </a>
+
+
 
 
                 </div>

@@ -10,7 +10,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-    $('.search-box input[type="text"]').on("keyup input", function(){
+    $('.search-box input[type="search"]').on("keyup input", function(){
         /* Get input value on change */
         var inputVal = $(this).val();
         var resultDropdown = $(this).siblings(".result");
@@ -25,7 +25,7 @@ $(document).ready(function(){
     });       
     // Set search input value on click of result item
     $(document).on("click", ".result p", function(){
-        $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+        $(this).parents(".search-box").find('input[type="search"]').val($(this).text());
         $(this).parent(".result").empty();
     });
 });
@@ -64,6 +64,16 @@ $(document).ready(function(){
 -->    
 
 
+  <form class="form-inline">
+   <div class="search-box mr-sm-3">
+        <input class="form-control mr-sm-2" id="result" type="search" size="50" placeholder="Search" aria-label="Search">
+        <div class="result"></div>
+    </div>     
+    
+  </form>
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+<!--
 <form  class="form-inline" name="myform" action="#" method="POST">
                 <input type="hidden" name="check_submit" value="1" />
     <form class="form-inline">   
@@ -83,7 +93,7 @@ $(document).ready(function(){
     </form>            
   </form>
 </div>
- 
+ --> 
 
     
 <!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
