@@ -143,11 +143,12 @@ session_start();
                   <a class="dropdown-item" href="pharma_med_master_wms.php">WMS Med Master</a>
                   <a class="dropdown-item" href="pharma_allctr_stock.php">All Counter Stock</a>
                   <a class="dropdown-item" href="pharma_substore_stock.php">SubStore Stock</a>
-                  <a class="dropdown-item" href="#">WMS-Store Stock</a>                  
+                  <a class="dropdown-item" href="pharma_wms_stock.php">WMS-Store Stock</a>                  
                   <a class="dropdown-item" href="pharma_na_order.php">LP-NA Medicines</a>
                   <a class="dropdown-item" href="pharma_nl_order.php">LP-NL Medicines</a>
                   <a class="dropdown-item" href="pharma_expiry_01.php">Pharma Expired Drug (Counter)</a>
-                  <a class="dropdown-item" href="pharma_expiry_02.php">Pharma Expired Drug (All)</a>                  
+                  <a class="dropdown-item" href="pharma_expiry_02.php">Pharma Expired Drug (All)</a> 
+                  <a class="dropdown-item" href="pharma_med_dist_01.php">Medicine Distribution Trend</a>                                  
                 </div>
               </li>  
 
@@ -167,7 +168,8 @@ session_start();
                   Statistics
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Stats Cloud System</a>
+                  <a class="dropdown-item" href="https://apex.oracle.com/pls/apex/sharadk/r/ward-admission-vw-2019/login?session=102603820669007
+">Stats Cloud System</a>
                   <a class="dropdown-item" href="stat_mortality_01.php">Mortality Data</a>
                   <a class="dropdown-item" href="stat_mortality_02.php">Mortality DepartmentWise</a>                 
                   <a class="dropdown-item" href="labour_room_br_01.php">Birth Report Summary</a>
@@ -372,13 +374,22 @@ session_start();
         </div>
       </div>
 </div>       
-        <div class="footer">
-            <footer>Developed by C and IT in Consultation With Bokaro General Hospital, Bokaro</footer>
-        </div>
+
+
+	<!-- copyright -->
+
+  <div class="copyright">
+  <center>
+		  <h6>&copy; 2020 BGH, Bokaro General Hospital. All rights reserved | Developed by C&IT Department With ❤ For BGH</a>
+			</h6>
+  </center>
+		</div>
+		<!-- //copyright -->
       
 <!-- CARD LAYOUT FROM THE BOOTSTRAP GOES UPTO HERE -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>    
+    
     </body>
-        </html>
+    </html>
