@@ -143,7 +143,8 @@ session_start();
                   <a class="dropdown-item" href="pharma_med_master_wms.php">WMS Med Master</a>
                   <a class="dropdown-item" href="pharma_allctr_stock.php">All Counter Stock</a>
                   <a class="dropdown-item" href="pharma_substore_stock.php">SubStore Stock</a>
-                  <a class="dropdown-item" href="pharma_wms_stock.php">WMS-Store Stock</a>                  
+                  <a class="dropdown-item" href="pharma_wms_stock.php">WMS-Store Stock</a>  
+                  <a class="dropdown-item" href="pharma_current_stock_combined.php">Combined Medicine Stock</a>  
                   <a class="dropdown-item" href="pharma_na_order.php">LP-NA Medicines</a>
                   <a class="dropdown-item" href="pharma_nl_order.php">LP-NL Medicines</a>
                   <a class="dropdown-item" href="pharma_expiry_01.php">Pharma Expired Drug (Counter)</a>
