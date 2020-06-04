@@ -272,9 +272,6 @@ session_start();
                   <a class="dropdown-item" href="file_upload.php">File Upload </a>
                   <a class="dropdown-item" href="file_upload_1.php">File Upload New </a>
 
-
-
-
                 </div>
               </li>
 
