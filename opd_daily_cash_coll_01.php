@@ -24,7 +24,7 @@
         }
             
     
-    ?>
+?>
     
 <!-- <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
 .navbar-expand{-sm|-md|-lg|-xl}

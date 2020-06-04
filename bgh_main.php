@@ -14,6 +14,7 @@ session_start();
         <link rel="stylesheet" href="bgh_main_style.css">
         <link rel="stylesheet "href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="shortcut icon" href="http://demo.opendocman.com/templates/tweeter/images/favicon.ico">
         <style>                      
             .dropdown .dropdown-menu a:hover
             {    
@@ -282,6 +283,12 @@ session_start();
               <li class="nav-item active">
                 <a class="nav-link" href="bgh_com_escalation.html"><i class="fa fa-phone"></i><span class="sr-only">(current)</span></a>
               </li>
+
+              <li class="nav-item active">
+                <a class="nav-link" href="#"><?php echo $_SESSION["login"]; ?> <span class="sr-only">(current)</span></a>
+              </li>
+
+             
           </ul>
         </div>
       </nav>
