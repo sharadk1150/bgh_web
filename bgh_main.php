@@ -71,6 +71,7 @@ session_start();
                 <a class="dropdown-item" href="#">Entitled OPD Visits</a>                
                 <a class="dropdown-item" href="#">Non-Entitled OPD Visits</a>
                 <a class="dropdown-item" href="#">Gender Wise OPD Visits</a>
+                <a class="dropdown-item" href="opd_pat_seen_01.php">Doctor Wise Patient Seen</a>
                 <a class="dropdown-item" href="#">Third Party OP Billing</a>
                 <a class="dropdown-item" href="#">OP Billing of Mediclaim</a>
                 <a class="dropdown-item" href="#">Inv. Billing of Mediclaim</a>
@@ -78,7 +79,9 @@ session_start();
                 
               </div>
             </li>
-                        
+            
+
+
             <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 IPD/WARD

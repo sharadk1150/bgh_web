@@ -3,7 +3,30 @@
 //include_once("connection.php");
 //include_once('libs/fpdf.php');
 require('.\fpdf182\fpdf.php');
+require('.\phpmailer\phpmailer\src\PHPMailer.php');
+require('.\phpmailer\phpmailer\src\SMTP.php');
+require('.\phpmailer\phpmailer\src\Exception.php');
 
+// The value of the ref number will be vased from the url and 
+// has to be reffered here
+// Inintialize URL to the variable 
+//$url = 'http://bghmis.sailbsl.in/cas_mlcase_email.php?refno=Tonny'; 
+$url = 'http://localhost/cas_mlcase_email.php?refno';   
+// Use parse_url() function to parse the URL  
+// and return an associative array which 
+// contains its various components 
+$url_components = parse_url($url); 
+  
+// Use parse_str() function to parse the 
+// string passed via URL 
+parse_str($url_components['query'], $params); 
+      
+// Display result 
+echo ' Hi '.$params['refno']; 
+
+$refno = $params['refno'];
+
+// Upto here the parsing is done.............
 
 class PDF extends FPDF
 {
@@ -52,10 +75,10 @@ $header = array('hospno', 'hospyr', 'reference_no', 'reference_date', 'entry_fro
  
 
 $query = "select rownum, hospno, hospyr, reference_no, reference_date, entry_from, pat_name, pat_age, pat_age_yrs, pat_gender,
-entry_by_doct, entry_date, entry_time from CASUALTY_MEDICO_LEGAL_VW";
+entry_by_doct, entry_date, entry_time from CASUALTY_MEDICO_LEGAL_VW where reference_no=:EIDBV";
 $s = oci_parse($c, $query);    
-//$myeid = $stdate;
-//oci_bind_by_name($s, ":EIDBV", $myeid);
+$myeid = $refno;
+oci_bind_by_name($s, ":EIDBV", $myeid);
 
 //$myendt = $endate;
 //oci_bind_by_name($s,":EIDBV2", $myendt);
@@ -101,15 +124,80 @@ while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC))
                         }
 
 
-//                        $pdf->Cell(40,12,$column,1);
+//$pdf->Cell(40,12,$column,1);
 
-$file_name = md5(rand()) . '.pdf';
+//$file_name = md5(rand()) . '.pdf';
 //print $file_name;
 //$pdf->Output();
-$file = $pdf->Output();
-file_put_contents($file_name, $file);
+//$file = $pdf->Output();
+//file_put_contents($file_name, $file);
 
 
+// random hash necessary to send mixed content
+//$separator = md5(time());
+
+//$eol = PHP_EOL;
+
+// attachment name
+//$filename = "_Desiredfilename.pdf";
+
+// encode data (puts attachment in proper format)
+//$pdfdoc = $pdf->Output("", "S");
+//$pdfdoc = $pdf->Output("", "S");
+
+//$attachment = chunk_split(base64_encode($pdfdoc));
+//$attachment = $pdfdoc;
+
+
+$attachment='BGH_ML_CASE.pdf';
+$pdf->output("F", $attachment);
+//file_put_contents($attachment, $file);
+
+//-------------------- Sending mail from here ------------------------------
+$mail = new PHPMailer\PHPMailer\PHPMailer();
+//Enable SMTP debugging. 
+$mail->SMTPDebug = 0;                               
+//Set PHPMailer to use SMTP.
+$mail->isSMTP();            
+//Set SMTP host name                          
+$mail->Host = "smtp.gmail.com";
+//Set this to true if SMTP host requires authentication to send email
+$mail->SMTPAuth = true;                          
+//Provide username and password     
+$mail->Username = "citbgh@gmail.com";                 
+$mail->Password = "citbgh@827001";                           
+//If SMTP requires TLS encryption then set it
+$mail->SMTPSecure = "tls";                           
+//Set TCP port to connect to 
+$mail->Port = 587;                                   
+
+$mail->From = "citbgh@gmail.com.com";
+$mail->FromName = "Computer and Information Technology BGH";
+
+$mail->addAddress("singh.sharadk@gmail.com", "Recepient Name");
+
+//Provide file path and name of the attachments
+//$mail->addAttachment("file.txt", "File.txt");        
+//$mail->addAttachment("README.MD"); //Filename is optional
+$mail->addAttachment($attachment); //Filename is optional
+
+$mail->isHTML(true);
+
+$mail->Subject = "Subject Text";
+$mail->Body = "<i>Mail body in HTML</i>";
+$mail->AltBody = "This is the plain text version of the email content";
+
+if(!$mail->send()) 
+{
+    echo "Mailer Error: " . $mail->ErrorInfo;
+} 
+else 
+{
+    echo "Message has been sent successfully";
+}
+
+
+//--------------------- sending mail as attachement up to here --------------------
 
 
 //$pdf->"a.pdf";
