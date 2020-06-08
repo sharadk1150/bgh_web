@@ -11,22 +11,26 @@ require('.\phpmailer\phpmailer\src\Exception.php');
 // has to be reffered here
 // Inintialize URL to the variable 
 //$url = 'http://bghmis.sailbsl.in/cas_mlcase_email.php?refno=Tonny'; 
-$url = 'http://localhost/cas_mlcase_email.php?refno';   
+//$url = 'http://localhost/cas_mlcase_email.php?refno';   
 // Use parse_url() function to parse the URL  
 // and return an associative array which 
 // contains its various components 
-$url_components = parse_url($url); 
+//$url_components = parse_url($url); 
   
 // Use parse_str() function to parse the 
 // string passed via URL 
-parse_str($url_components['query'], $params); 
+//parse_str($url_components['query'], $params); 
       
 // Display result 
-echo ' Hi '.$params['refno']; 
+//echo ' Hi '.$params['refno']; 
 
-$refno = $params['refno'];
+//$refno = $params['refno'];
 
 // Upto here the parsing is done.............
+
+if (isset($_GET) & !empty($_GET)) {
+    $refno = $_GET['refno'];
+}
 
 class PDF extends FPDF
 {
@@ -35,15 +39,19 @@ function Header()
 {
     // Logo
     //$this->Image('bgh_logo.jpg',10,-1,30);
-    $this->Image('bgh_logo.jpg',10,5,30);
+    //$this->Image('bgh_logo.jpg',10,5,30);
 
-    $this->SetFont('Arial','B',13);
+    $this->SetFont('Arial','B',10);
     // Move to the right
-    $this->Cell(80);
+//    $this->Cell(80);
     // Title
-    $this->Cell(80,10,'List of Medico Legal Cases at Bokaro General Hospital',1,0,'C');
+//    $this->Cell(80,10,'List of Medico Legal Cases at Bokaro General Hospital, Bokaro',1,0,'C');
+     $this->Cell(300,10,'List of Medico Legal Cases at Bokaro General Hospital, Bokaro',0,0,'C');
+
     // Line break
-    $this->Ln(20);
+    //$this->Ln(20);
+     $this->Ln();
+    
 }
  
 // Page footer
@@ -58,24 +66,22 @@ function Footer()
 }
 }
  
-//$db = new dbObj();
-//$connString =  $db->getConnstring();
-//$display_heading = array('id'=>'ID', 'employee_name'=> 'Name', 'employee_age'=> 'Age','employee_salary'=> 'Salary',);
- 
 $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD"); 
 $display_heading= array('hospno', 'hospyr', 'reference_no', 'reference_date', 'entry_from', 'pat_name', 'pat_age', 'pat_age_yrs', 
                     'pat_gender',
                     'entry_by_doct', 'entry_date', 'entry_time');
 
-//$result = mysqli_query($connString, "SELECT id, employee_name, employee_age, employee_salary FROM employee") or die("database error:". mysqli_error($connString));
-//$header = mysqli_query($connString, "SHOW columns FROM employee");
 
 $header = array('hospno', 'hospyr', 'reference_no', 'reference_date', 'entry_from', 'pat_name', 'pat_age', 'pat_age_yrs', 'pat_gender',
 'entry_by_doct', 'entry_date', 'entry_time');
- 
 
-$query = "select rownum, hospno, hospyr, reference_no, reference_date, entry_from, pat_name, pat_age, pat_age_yrs, pat_gender,
-entry_by_doct, entry_date, entry_time from CASUALTY_MEDICO_LEGAL_VW where reference_no=:EIDBV";
+$query = "SELECT reference_no, (HOSPNO||'/'||HOSPYR) HOSPNO, PAT_NAME, PAT_AGE, PAT_AGE_YRS, PAT_GENDER, 
+            NVL(STATUS_DESC,STATUS_OTHERS) STATUS_DESC, PROV_DIAG,  
+            (PAT_LOCAL_ADD||'-'||PAT_LOCAL_TEL) pat_local_add, 
+            (PAT_NEXTTO_KIN||'-'||PAT_KIN_TELNO) PAT_NEXTTO_KIN
+            FROM CASUALTY_MEDICO_LEGAL_VW
+            WHERE REFERENCE_NO>=:EIDBV
+            order by reference_no asc";
 $s = oci_parse($c, $query);    
 $myeid = $refno;
 oci_bind_by_name($s, ":EIDBV", $myeid);
@@ -92,66 +98,93 @@ oci_execute($s);
 $pdf = new PDF();
 //header
 $pdf->AddPage('L');
+
+$start_x=   $pdf->GetX(); //initial x (start of column position)
+$current_y = $pdf->GetY();
+$current_x = $pdf->GetX();
+
 //foter page
 $pdf->AliasNbPages();
 $pdf->SetFont('Arial','B',8);
 
-//foreach($header as $heading) 
-//{
-//        $pdf->Cell(40,12,$display_heading[$heading['Field']],1);
-//}
-
 
 while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) 
                         {     
-                            $pdf->Ln();                                                   
+//                            $pdf->Ln();
+                            $pdf->SetFont('Arial','',8);
+                            $current_y = $pdf->GetY();
+                            $current_x = $pdf->GetX();                                                   
                             foreach ($row as $item=>$value) 
-                            {                       
-                              
+                            {                                                     
                                 //  print $item .'\n';
                                 //  print $value . '\n';
-                                  if ($item=="PAT_NAME")
-                                  {
+                                if ($item=="REFERENCE_NO"){
+                                    $pdf->Cell(10,8,$value,1);
+                                    $current_x+=10;
+                                }                                
+                                elseif ($item=="HOSPNO")
+                                {
+                                      $pdf->Cell(25,8,$value,1);
+                                      $current_x+=25; //calculate position for next cell
+                                }
+                                elseif ($item=="PAT_NAME")
+                                {
                                         $pdf->Cell(50,8,$value,1);
-                                  }
-                                  else {
-                                        $pdf->Cell(15,8,$value,1);
-                                  }
-                            //    $pdf->Cell(32,9,$item,1);
-                                                                
+                                        $current_x+=50; //calculate position for next cell
+                                }
+                                elseif ($item=="PAT_AGE")
+                                {
+                                        $pdf->Cell(5,8,$value,1);
+                                        $current_x+=5; //calculate position for next cell
+                                }
+                                elseif ($item=="PAT_AGE_YRS")
+                                {
+                                        $pdf->Cell(5,8,$value,1);
+                                        $current_x+=5; //calculate position for next cell
+                                }
+                                elseif ($item=="PAT_GENDER")
+                                {
+                                        $pdf->Cell(5,8,$value,1);
+                                        $current_x+=5; //calculate position for next cell
+                                }
+                                elseif ($item=="PAT_AGE")
+                                {
+                                        $pdf->Cell(5,8,$value,1);
+                                        $current_x+=5; //calculate position for next cell
+                                }                                
+                                elseif ($item=="STATUS_DESC") {
+                                    $pdf->Cell(25,8,$value,1);
+                                    $current_x+=25; //calculate position for next cell
+                                }
+                                elseif ($item=="PROV_DIAG") {
+                                    $pdf->Cell(40,8,$value,1);
+                                    $current_x+=40; //calculate position for next cell
+                                }                                  
+                                elseif ($item=="PAT_LOCAL_ADD") {
+                                    $pdf->SetFont('Arial','',6);
+                                    $pdf->MultiCell(50,8,$value,1,'C');
+                                    $current_x+=50; //calculate position for next cell
+                                    $pdf->SetXY($current_x, $current_y);  
+                                }
+                                elseif ($item=="PAT_NEXTTO_KIN") { 
+                                    $pdf->SetFont('Arial','',6);
+                                    $current_y = $pdf->GetY();
+                                    $pdf->SetXY($current_x, $current_y);                                  
+                                    $pdf->MultiCell(50,8,$value,1,'C');
+                                    $current_x+=500; //calculate position for next cell
+                                }                                    
+                                else {
+                                        $pdf->Cell(25,8,$value,1);
+                                        $current_x+=50;
+                                  }                                                                
                             }
                                 
                         }
 
 
-//$pdf->Cell(40,12,$column,1);
-
-//$file_name = md5(rand()) . '.pdf';
-//print $file_name;
-//$pdf->Output();
-//$file = $pdf->Output();
-//file_put_contents($file_name, $file);
-
-
-// random hash necessary to send mixed content
-//$separator = md5(time());
-
-//$eol = PHP_EOL;
-
-// attachment name
-//$filename = "_Desiredfilename.pdf";
-
-// encode data (puts attachment in proper format)
-//$pdfdoc = $pdf->Output("", "S");
-//$pdfdoc = $pdf->Output("", "S");
-
-//$attachment = chunk_split(base64_encode($pdfdoc));
-//$attachment = $pdfdoc;
-
-
+$pdf->Output();
 $attachment='BGH_ML_CASE.pdf';
 $pdf->output("F", $attachment);
-//file_put_contents($attachment, $file);
 
 //-------------------- Sending mail from here ------------------------------
 $mail = new PHPMailer\PHPMailer\PHPMailer();
@@ -184,7 +217,7 @@ $mail->addAttachment($attachment); //Filename is optional
 $mail->isHTML(true);
 
 $mail->Subject = "Subject Text";
-$mail->Body = "<i>Mail body in HTML</i>";
+$mail->Body = "<i>Dear Sir, Please Find attached the intimtion Of Medico Legal Cases at Bokaro General Hospital, Bokaro</i>";
 $mail->AltBody = "This is the plain text version of the email content";
 
 if(!$mail->send()) 
@@ -193,7 +226,7 @@ if(!$mail->send())
 } 
 else 
 {
-    echo "Message has been sent successfully";
+    echo "Message has been sent successfully, Close the Browser Please";
 }
 
 
