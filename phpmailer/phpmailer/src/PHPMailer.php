@@ -1991,7 +1991,9 @@ class PHPMailer
                 $secure = static::ENCRYPTION_STARTTLS;
             }
             //Do we need the OpenSSL extension?
-            $sslext = defined('OPENSSL_ALGO_SHA256');
+//            $sslext = defined('OPENSSL_ALGO_SHA256');
+            $sslext = defined('OPENSSL_ALGO_SHA1');
+            
             if (static::ENCRYPTION_STARTTLS === $secure || static::ENCRYPTION_SMTPS === $secure) {
                 //Check for an OpenSSL constant rather than using extension_loaded, which is sometimes disabled
                 if (!$sslext) {
