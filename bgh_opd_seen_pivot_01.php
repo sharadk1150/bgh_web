@@ -79,17 +79,43 @@ if (array_key_exists('check_submit', $_POST))
 //                print '</thead>';
 //var_dump($nrows_opddate);
 
-
-                  foreach ($res as $col)
-                  {
-//                    print '<tr>';
-
-                      foreach ($col as $item) 
-                      {
-
-
+                //date
+                foreach ($res as $col)
+                {
+                    print '<tr>';
+                    foreach ($col as $item) 
+                    {
                         print '<th scope="col">'. $item. '</th>';
+                    }
+                    print '</tr>';
+                }    
+                // doctor        
+                foreach ($res as $col)
+                {
+                    foreach ($col as $item) 
+                    {
+                        foreach ($res2 as $doct)
+                        {
+                            foreach ($doct as $doct_item) 
+                            {
+                                
+        
+                                print '<td>'. $doct_item. '</td>';
+                            }
+                        }            
+        
 
+                        print '<td>'. $item. '</td>';
+                    }
+                }            
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         oci_bind_by_name($y,":OPDT1", $item);
                         oci_execute($y);
                         while ($row = oci_fetch_array($y, OCI_RETURN_NULLS+OCI_ASSOC)) 
@@ -158,6 +184,22 @@ if (array_key_exists('check_submit', $_POST))
         oci_execute($s);        
         $nrows_opddate = oci_fetch_all($s, $res);
 
+        
+        $query_3 = "select distinct doctor_code 
+                  from 
+                  bgh_opd_registration 
+                  where 
+                  to_char(opd_date,'DD-MON-YY') BETWEEN  :EIDBV and :EIDBV2
+                  order by doctor_code";
+        $z = oci_parse($c, $query_3);
+        $myeid = $stdate;
+        oci_bind_by_name($z, ":EIDBV", $myeid);
+        $myendt = $endate;
+        oci_bind_by_name($z,":EIDBV2", $myendt);
+        oci_execute($z);        
+        $nrows_opdddoc = oci_fetch_all($z, $res2);
+        
+        
         $query_2 = "select doctor_code, count(huid_no) 
                   from 
                   bgh_opd_registration 
@@ -167,7 +209,7 @@ if (array_key_exists('check_submit', $_POST))
 
         $y = oci_parse($c, $query_2);
 
-        do_fetch($myeid, $myendt,  $res, $y);
+        do_fetch($myeid, $myendt,  $res, $y, $z);
 
         oci_close($c);
 

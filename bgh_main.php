@@ -98,6 +98,8 @@ session_start();
                 <a class="dropdown-item" href="adm_wrkacdt_case.php">Work Accident Cases</a>
                 <a class="dropdown-item" href="adm_ml_case.php">Medico Legal Cases</a>
                 <a class="dropdown-item" href="adm_genderwise_adm.php">Gender Wise Admissions</a>
+                <a class="dropdown-item" href="adm_cas_report_adm.php">Admission Report for Casualty</a>
+
                 <a class="dropdown-item" href="#">Entitled/Non-Entitled Admissions</a>
               </div>
             </li>
