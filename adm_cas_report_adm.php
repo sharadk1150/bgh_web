@@ -55,10 +55,9 @@ if (array_key_exists('check_submit', $_POST))
 {
             $stdate =  $_POST['stdate'];
             $endate =  $_POST['endate'];
-    
+/*    
         function do_fetch($myeid, $myendt,  $s)
         {
-//            date("d/m/Y", strtotime($str));
                 print '<table class="table table-sm table-bordered table-striped table-dark w-auto table-hover">';            
                 print '<thead class="thead-light">';
                 print '<tr>'; 
@@ -69,20 +68,6 @@ if (array_key_exists('check_submit', $_POST))
                 print '<th scope="col">Total Patient</th>';            
                 print '</tr>';
                 print '</thead>';
-            
-/*
-$s = oci_parse($c, "select postal_code from locations");
-oci_execute($s);
-while ($row = oci_fetch_array($s, OCI_ASSOC)) {
- echo $row["POSTAL_CODE"] . "<br>\n";
-}
-*/
-//            cat_name, count(*) tot_count
-            
-//                        while ($row_1 = oci_fetch_array($scount, OCI_RETURN_NULLS+OCI_ASSOC)) {
-//                        print '<b>' . $row_1["CAT_NAME"] . " =  " . $row_1["TOT_COUNT"] . " ; " . '<b>';
-//                        }
-                        
             
                         while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) 
                         {
@@ -97,39 +82,42 @@ while ($row = oci_fetch_array($s, OCI_ASSOC)) {
                             }
                 print '</table>';
         }
-    
+*/
+
         // Create connection to Oracle
         $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
-        // Use bind variable to improve resuability, 
-        // and to remove SQL Injection attacks.
-        $query = "select cat_name, count(*) tot_count from ward_admission_vw_grade 
-        where  to_char(admdate,'YYYY-MM-DD') between :EIDBV and :EIDBV2 group by cat_name order by 2 desc";
+        $query = "select count(*) 
+                  from ward_admission_vw 
+                  where pfrom1='C' and ent_nonent='Y' and  
+                  to_char(admdate, 'MON')=:BMONTH       and 
+                  to_char(admdate, 'YYYY')='2020'";    
+        $s = oci_parse($c, $query);    
+//        $myeid = $stdate;
+//        oci_bind_by_name($s, ":EIDBV", $myeid);    
+//        oci_execute($s);
+
+        $month_array = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+        $type_array  = ["ENTITLED", "NON-ENTITLED"];
+
+        foreach ($month_array as $month => $value) 
+        {
+             oci_bind_by_name($s, ":BMONTH", $value);
+             oci_execute($s);
+             $tcount = oci_fetch_all($s, $res);
+             print $month . '<\n>';
+             print $value . '<\n>';
+             var_dump($res);
+
+
+
+
+             
+        }
+
+
+
     
-//        $qcount = "select cat_name, count(*) tot_count from ward_admission_vw_grade 
-//        where  to_char(admdate,'YYYY-MM-DD') between :EIDBV and :EIDBV2 group by cat_name";
-    
-        $s = oci_parse($c, $query);
-//        $scount = oci_parse($c, $qcount);
-    
-        $myeid = $stdate;
-        oci_bind_by_name($s, ":EIDBV", $myeid);
-//        oci_bind_by_name($scount, ":EIDBV", $myeid);
-    
-        
-        $myendt = $endate;
-        oci_bind_by_name($s,":EIDBV2", $myendt);
-//        oci_bind_by_name($scount, ":EIDBV2", $myeid);
-    
-        oci_execute($s);
-//        oci_execute($scount);
-    
-    
-//        while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) {
-//            echo $row[0] . $row[1]. "<br>\n";
-//              echo $row["HOSPNO"];
-//        }
-    
-        do_fetch($myeid, $myendt,  $s);
+//        do_fetch($myeid, $myendt,  $s);
     
         oci_close($c);
 
