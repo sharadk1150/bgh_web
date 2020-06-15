@@ -23,112 +23,109 @@
             ;            
         }
 ?>
-    
-<nav class="navbar navbar-dark fixed-top bg-primary">
-  <h6> Admission Data</h6>
+
+<nav class="controller">
+<nav class="navbar navbar-dark fixed-top bg-secondary">  
+<h3> ** Casualty Admisison Report ** </h3>
 </nav>
 <br><br><br>
+
+
+<nav class="navbar navbar-dark  bg-warning">  
 <form  name="myform" action="adm_cas_report_adm.php" method="POST">
                 <input type="hidden" name="check_submit" value="1" />
-    <form class="form-inline">   
-        <div class="form-group row">
-            <label for="stdate" class="col-sm-1 col-form-label">From Date</label> 
-                <div class="col-sm-2">
-                    <input type="date" class="form-control" id="stdate" name="stdate" 
-                    value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
-                </div>    
-                   
-            <label for="endate" class="col-sm-1 col-form-label">To Date</label> 
-                <div class="col-sm-2">
-                    <input type="date" class="form-control" id="endate" name="endate"
-                    value="<?php echo isset($_POST['endate']) ? $_POST['endate']:''; ?>">
-                </div>    
-                   
-                    <button type="submit" name="submit" class="btn btn-primary">Get Data....</button>               
-        </div>
-    </form>            
-  </form>
+     
+
+        <div class="form-group col-sm-4">
+                <label for="repyear">Report Year:</label>
+                <select class="form-control" id="repyear" name="repyear">
+                    <option>2016</option>
+                    <option>2017</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                    <option>2020</option>
+                </select>
+                
+        </div>   
+        <button type="submit" name="submit" class="btn btn-success">Get Data....</button> 
+       
+</form>     
+</nav>  
+<nav class="controller">
+
+            
 
 
 <?php
 if (array_key_exists('check_submit', $_POST)) 
 {
-            $stdate =  $_POST['stdate'];
-            $endate =  $_POST['endate'];
-/*    
-        function do_fetch($myeid, $myendt,  $s)
-        {
-                print '<table class="table table-sm table-bordered table-striped table-dark w-auto table-hover">';            
-                print '<thead class="thead-light">';
-                print '<tr>'; 
-                print '<td colspan="9">' . 'Category Wise Admission From : ' . date("d-m-Y", strtotime($myeid)) .  '  To Date : ' . date("d-m-Y", strtotime($myendt)) . '</td>';
-                print '</tr>';
-                print '<tr>';
-                print '<th scope="col">Category</th>';
-                print '<th scope="col">Total Patient</th>';            
-                print '</tr>';
-                print '</thead>';
-            
-                        while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) 
-                        {
-                
-                            print '<tr class="bg-primary">';
-                            foreach ($row as $item) 
-                            {                                
-                                print '<td>'.($item?htmlentities($item):'&nbsp;').'</td>';
-                                                                
-                            }
-                                print '</tr>';
-                            }
-                print '</table>';
-        }
-*/
+        $repyear =  $_POST['repyear'];
 
         // Create connection to Oracle
         $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
-        $query = "select count(*) 
+        $query = "select count(*) tot_count 
                   from ward_admission_vw 
-                  where pfrom1='C' and ent_nonent='Y' and  
+                  where pfrom1='C' and ent_nonent=:BTYPE and  
                   to_char(admdate, 'MON')=:BMONTH       and 
-                  to_char(admdate, 'YYYY')='2020'";    
+                  to_char(admdate, 'YYYY')=:REPYEAR";    
         $s = oci_parse($c, $query);    
-//        $myeid = $stdate;
-//        oci_bind_by_name($s, ":EIDBV", $myeid);    
-//        oci_execute($s);
+        oci_bind_by_name($s,   ":REPYEAR",   $repyear);     
+
 
         $month_array = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-        $type_array  = ["ENTITLED", "NON-ENTITLED"];
-
-        foreach ($month_array as $month => $value) 
+        $type_array  = ["Y", "N", "P"];
+// print the First Row as the months        
+        print '<table class="table table-sm table-bordered table-striped table-dark w-auto table-hover">';            
+        print '<thead class="thead-light">';
+        print '<td colspan="9">' . 'Casualty Admission Report For the Year : ' . $repyear . '</td>';
+        print '<tr>';
+        print '<th scope="col"> Month=====> </th>';
+            foreach ($month_array as $month => $value)
+            {               
+                print '<th scope="col">'.($value?htmlentities($value):'&nbsp;').'</th>';
+            }
+        print '</tr>';
+        print '</thead>';
+           
+        foreach ($type_array as $ttype => $tvalue) 
         {
-             oci_bind_by_name($s, ":BMONTH", $value);
-             oci_execute($s);
-             $tcount = oci_fetch_all($s, $res);
-             print $month . '<\n>';
-             print $value . '<\n>';
-             var_dump($res);
+            print '<tr>'; 
+            if ($tvalue=='Y'){
+                print '<td>' . 'ENTITLED' . '</td>'; 
+            }
+            elseif ($tvalue=='N') {
+                print '<td>' . 'NOT-ENTITLED' . '</td>'; 
+            }
+            elseif ($tvalue=='P') {
+                print '<td>' . 'AYUSHMAN' . '</td>'; 
+            }
+            
+            oci_bind_by_name($s,   ":BTYPE",   $tvalue);     
 
 
+            foreach ($month_array as $month => $mvalue) 
+            {
+                oci_bind_by_name($s,   ":BMONTH",   $mvalue);   
+                oci_define_by_name($s, 'TOT_COUNT', $tot_count);     
+                oci_execute($s);
 
-
+                while (oci_fetch($s)) 
+                {
+                   print '<td>' . $tot_count . '</td>';
+                }            
              
+            }
+           
+            print '</tr>';  
+
+           
         }
 
+        print '</table>';
 
-
-    
-//        do_fetch($myeid, $myendt,  $s);
-    
         oci_close($c);
-
-} 
-else 
-{
-    
 }
 ?> 
-
- 
  
   
     
