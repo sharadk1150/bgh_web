@@ -88,6 +88,7 @@ session_start();
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="#">Admissions Dashboard</a>
+                <a class="dropdown-item" href="adm_all_admissions.php">All Admissions Searhable</a>
                 <a class="dropdown-item" href="get_adm_date.php">All Admissions</a>
                 <a class="dropdown-item" href="get_adm_employee.php">ON Roll Employee</a>
                 <a class="dropdown-item" href="adm_cat_wise.php">Category Wise Admission</a>
