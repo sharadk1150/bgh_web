@@ -10,7 +10,7 @@
 <nav class="navbar navbar-dark fixed-top" style="background-color: bisque; height:50px; position: absolute;">
 <form  class="form-inline" name="myform" action="get_adm_date.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
   
-<div class="form-group">  
+    <div class="form-group">  
         <label for="stdate">Admission Start Date</label>  
         <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
     </div>
