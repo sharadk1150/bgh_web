@@ -181,6 +181,8 @@ session_start();
                   <a class="dropdown-item" href="stat_mortality_01.php">Mortality Data</a>
                   <a class="dropdown-item" href="stat_mortality_02.php">Mortality DepartmentWise</a>                 
                   <a class="dropdown-item" href="labour_room_br_01.php">Birth Report Summary</a>
+                  <a class="dropdown-item" href="birth_report.php">Birth Report Detail</a>
+                  
                 </div>
               </li>
 
