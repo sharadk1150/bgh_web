@@ -59,13 +59,40 @@
 <br><br><br>
 
 <?php
+
 if (array_key_exists('check_submit', $_POST)) 
 {
             $stdate =  $_POST['stdate'];
             $endate =  $_POST['endate'];
+            
+            
+           
+
+            function do_fetch_slip($conn, $myeid, $myendt,  $doc_code)
+            {
+                $query1 = "select count(distinct tr_id) tot_count
+                from bgh_opd_patient_prescription
+                where 
+                opd_doc_code = :DOC_CODE and
+                sl_on = 'S' and 
+                to_char(opd_date,'YYYY-MM-DD') between :EIDBV and :EIDBV2";                
+                $t = oci_parse($conn, $query1);
     
+                oci_bind_by_name($t, ":EIDBV", $myeid);
+                oci_bind_by_name($t, ":EIDBV2", $myendt);
+                oci_bind_by_name($t, ":DOC_CODE", $doc_code);
+                oci_define_by_name($t, 'TOT_COUNT', $tot_count);   
+                oci_execute($t);
+                while (oci_fetch($t)) 
+                {
+                    print '<td>' . $tot_count . '</td>';
+                }            
+            }
+    
+        
         function do_fetch($myeid, $myendt,  $s)
         {
+            $conn = oci_connect("BGH", "hpv185e", "10.143.100.36/BGH6");
 //            date("d/m/Y", strtotime($str));
                 print '<table class="table table-sm table-bordered table-striped table-dark w-auto table-hover">';            
                 print '<thead class="thead-light">';
@@ -73,25 +100,15 @@ if (array_key_exists('check_submit', $_POST))
                 print '<td colspan="9">' . 'Billing party Wise From : ' . date("d-m-Y", strtotime($myeid)) .  '  To Date : ' . date("d-m-Y", strtotime($myendt)) . '</td>';
                 print '</tr>';
                 print '<tr>';
-                print '<th scope="col">Group-Name</th>';            
-                print '<th scope="col">Category-Name</th>';
-                print '<th scope="col">Total Bill (Rs.)</th>';            
+                print '<th scope="col">DoctorCode</th>';     
+                print '<th scope="col">DoctorName</th>';     
+
+                print '<th scope="col">OnLine</th>';
+                print '<th scope="col">Slips</th>';     
+
                 print '</tr>';
                 print '</thead>';
-            
-/*
-$s = oci_parse($c, "select postal_code from locations");
-oci_execute($s);
-while ($row = oci_fetch_array($s, OCI_ASSOC)) {
- echo $row["POSTAL_CODE"] . "<br>\n";
-}
-*/
-//            cat_name, count(*) tot_count
-            
-//                        while ($row_1 = oci_fetch_array($scount, OCI_RETURN_NULLS+OCI_ASSOC)) {
-//                        print '<b>' . $row_1["CAT_NAME"] . " =  " . $row_1["TOT_COUNT"] . " ; " . '<b>';
-//                        }
-                        
+                                    
             
                         while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) 
                         {
@@ -100,22 +117,23 @@ while ($row = oci_fetch_array($s, OCI_ASSOC)) {
                             foreach ($row as $item) 
                             {                                
                                 print '<td>'.($item?htmlentities($item):'&nbsp;').'</td>';
+//                                do_fetch_slip($conn, $myeid, $myendt,  $row["DOCTOR_CODE"]);
+//                                print $row["DOCTOR_CODE"];
                                                                 
                             }
+                            do_fetch_slip($conn, $myeid, $myendt,  $row["DOCTOR_CODE"]);
                                 print '</tr>';
                             }
                 print '</table>';
         }
-    
+
+        
+
+
         // Create connection to Oracle
         $c = oci_connect("BGH", "hpv185e", "10.143.100.36/BGH6");
         // Use bind variable to improve resuability, 
         // and to remove SQL Injection attacks.
-
-         
-
-
-
     
         $query = "select a.doctor_code, (b.title||' '|| b.name) drname, count(a.huid_no) pat_seen 
                   from bgh_opd_registration  a,

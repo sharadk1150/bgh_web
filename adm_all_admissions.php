@@ -6,13 +6,25 @@
     <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
     <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
 
-
+<!-- working
 <script>
     $(document).ready( function () {
         var table = $('#example').DataTable();
       } );
 </script>      
+-->
+<script>
+    $(document).ready( function () {
+        var table = $('#example').DataTable({ fixedHeader: true});
+      } );
+</script>      
 
+
+<!--
+$('#myTable').DataTable( {
+    fixedHeader: true
+} );
+-->
 
 <style>
     body 
