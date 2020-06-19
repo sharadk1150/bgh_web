@@ -9,8 +9,6 @@
 
 </head>
 <body>
-
-
 <?php
           
          $login_name = $_SESSION["login"];        
@@ -102,7 +100,7 @@ if (array_key_exists('check_submit', $_POST))
                             }
                 print '<tr>';
                         print '<td>' . 'Total Collection (Rs.)' .  '</td>';
-                        print '<td>' .  $gtotal .  '</td>';
+                        print '<td align="right">' .  $gtotal .  '</td>';
                 print '</tr>';   
             print '</table>';
                 
@@ -114,7 +112,7 @@ if (array_key_exists('check_submit', $_POST))
     
         // Create connection to Oracle
         $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD"); 
-        $query = "select visit_date, total 
+        $query = "select visit_date, to_number(total) total 
                   from VIEW_CTR_101_DAILY_CASH_TOTAL
                   where to_char(visit_date,'YYYY-MM-DD') between :EIDBV and :EIDBV2 
                   order by 1 desc";
