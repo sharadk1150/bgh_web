@@ -138,13 +138,13 @@ else
     
 }
 ?> 
-
- 
  
 <script>
 function myFunction() {
     alert("Demo Alert");
-    location.replace("opd_daily_cash_collgr01.html");
+//    location.replace("opd_daily_cash_collgr01.html");
+    location.replace("opd_daily_cash_coll_graph.php");
+
 }  
 </script>  
     

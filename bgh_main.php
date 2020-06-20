@@ -76,7 +76,7 @@ session_start();
                 <a class="dropdown-item" href="#">OP Billing of Mediclaim</a>
                 <a class="dropdown-item" href="#">Inv. Billing of Mediclaim</a>
                 <a class="dropdown-item" href="opd_daily_cash_coll_01.php">Daily OPD Cash Collection</a>
-                
+                <a class="dropdown-item" href=" opd_daily_cash_coll_graph.php">Daily OPD Cash Collection Graph</a>
               </div>
             </li>
             
@@ -134,7 +134,7 @@ session_start();
                   BloodBank
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="bbank_donor_rep_01.php">Blood Donor For a Period</a>
                   <a class="dropdown-item" href="#">Another action</a>
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
