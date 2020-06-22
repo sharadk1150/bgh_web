@@ -21,14 +21,13 @@ body{
 .menu-bar ul{
     display: inline-flex;
     list-style: none;
-    color: #fff;
+    color: #fff; 
 }
 
 .menu-bar ul li{
     width: 120px;
     margin: 15px;
-    padding: 15px;
-
+    padding: 15px;   
 }
 
 .menu-bar ul li a{
@@ -115,6 +114,7 @@ body{
 .navbar .navbar-nav {
     display: inline-flex;
     float: none;
+   
 }
 
 .navbar .navbar-collapse {

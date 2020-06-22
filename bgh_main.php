@@ -15,7 +15,14 @@ session_start();
         <link rel="stylesheet "href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="shortcut icon" href="http://demo.opendocman.com/templates/tweeter/images/favicon.ico">
-        <style>                      
+        <style>    
+            .dropdown-menu
+            {    
+              color: #fff;
+              background-color: #ffbf4c;
+              border-color: #fff;
+            }
+
             .dropdown .dropdown-menu a:hover
             {    
               color: #fff;
@@ -124,10 +131,9 @@ session_start();
                 <a class="dropdown-item" href="#">Guarantor Bill Details</a>
                 <a class="dropdown-item" href="bill_grntr_pending_01.php">Guarantor Bill Pending</a>
                 <a class="dropdown-item" href="wardbill_recovery_statement_01.php">Guarantor Recovery Statement</a>
-                <a class="dropdown-item" href="wardbill_headwise_billing_01.php">Bills Under Different Heads</a>
-
- 
-                                                
+                <a class="dropdown-item" href="wardbill_headwise_billing_01.php">Bills Under Different Heads</a>                                               
+                <a class="dropdown-item" href="bill_rate_master.php">IPD Charges</a>     
+                <a class="dropdown-item" href="ipd_daily_cash_coll_graph.php">IPD Daily Cash Coll. Graph</a>                     
               </div>
             </li>
 
@@ -333,21 +339,22 @@ session_start();
 
 <div class="card-deck">
 
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card mb-6" style="max-width: 540px;">
         <div class="row no-gutters">
           <div class="col-md-4">
             <img src="draksingh1.jpg" class="card-img" alt="...">
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">Dr. A K Singh</h5>
-              <p class="card-text">Message From DMS I/c (M and HS).</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              <h6 class="card-title">Dr. A K Singh</h6>
+              <p class="card-text">This Internal Web Site Developed in Collaboration with BGH and C and IT Team will help
+              in monitoring and getting the information in a faster and timely manner.</p>
+              <p class="card-text"><small class="text-muted">Dr A K Singh, DMHS I/c (M&HS), Bokaro general Hospital</small></p>
             </div>
           </div>
         </div>
       </div>
-
+<!--
       <div class="card border-success mb-3" style="max-width: 18rem;">
         <div class="card-header bg-transparent border-success">Header</div>
         <div class="card-body text-success">
@@ -356,6 +363,7 @@ session_start();
         </div>
         <div class="card-footer bg-transparent border-success">Footer</div>
       </div>
+-->
 
 
 
@@ -378,16 +386,16 @@ session_start();
         <div class="card-footer bg-transparent border-success">Footer</div>
     </div>
 
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card mb-6" style="max-width: 540px;">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="draksingh1.jpg" class="card-img" alt="...">
+            <img src="vkpandey.jpg" class="card-img" alt="...">
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">Dr. A K Singh</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              <h5 class="card-title">Sri V K Pandey</h5>
+              <p class="card-text">Access of Information to the concerned person without any dependency will help in monitoring the system.</p>
+              <p class="card-text"><small class="text-muted">Sri V K. Pandey, Executive Director(MM), SAIL, BSL</small></p>
             </div>
           </div>
         </div>

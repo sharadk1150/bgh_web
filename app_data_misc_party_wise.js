@@ -22,11 +22,12 @@ $(document).ready(function(){
                       minBarLength: 2,
                       label: 'Party Name',
                       backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-//                      backgroundColor: 'rgba(100, 200, 200, 0.75)',
+//                    backgroundColor: 'rgba(100, 200, 200, 0.75)',
                       borderColor: 'rgba(200, 100, 200, 0.75)',
                       hoverBackgroundColor: 'rgba(200, 200, 200, 6)',
                       hoverBorderColor: 'rgba(200, 200, 200, 1)',
-                      data: total
+                      data: [10, 20, 30, 40, 50, 60, 70]
+//                      data: total
                       
                   }
               ]
