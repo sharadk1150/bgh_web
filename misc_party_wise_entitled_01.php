@@ -4,23 +4,26 @@
 
 <html>
 <head>
-  <title>Party Wise Entitled</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  
-<style type="text/css">
-        #chart-container {
-            width: 800px;
-            height: auto;
-        }
-</style>
+    <title>Party Wise Entitled</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+<style>    
+.chart-container {
+  width: 80%;
+  height: 480px;
+  margin: 0 auto;
+}
+
+.pie-chart-container {
+  height: 360px;
+  width: 360px;
+  float: left;
+}
+</style>
 
 </head>
 <body>
-
-
-<?php
-          
+<?php          
          $login_name = $_SESSION["login"];        
         if (!isset($_SESSION["loggedIn"]))
         {  
@@ -29,53 +32,38 @@
         else
         {
             ;            
-        }
-            
-    
+        }    
     ?>
     
 <!-- <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
 .navbar-expand{-sm|-md|-lg|-xl}
   -->
- 
- <nav class="navbar navbar-dark fixed-top bg-warning">
-  <h6>BGH Party Wise Entitled Strength</h6>
-  </nav>
-<div class="container">
-
+<!-- 
+<nav class="navbar navbar-dark fixed-top bg-warning">
+    <h6>BGH Party Wise Entitled Strength</h6>
+</nav>
+<br><br>
+-->
+<div class="row row-cols-1 row-cols-md-3">
 <br><br><br>
-
-    <div id="chart-container">
-        <canvas id="mycanvas"></canvas>
-        
-    </div>
-
-
-
-
-<br><br><br>
-
-<?php
-    
+<?php    
 global $gtotal;
 $gtotal =0;    
-    
-
-    
         function do_fetch($s)
         {
-//            date("d/m/Y", strtotime($str));
-             
+                print '<div class="col mb-2">';
+                print '<div class="card" style="width:100rem;">';
+//                print '<div class="card  text-white bg-primary h-100">';
+                print '<div class="card-body">';
                 print '<table class="table table-sm table-bordered table-striped table-dark w-auto table-hover">';            
                 print '<thead class="thead-light">';
                 print '<tr>'; 
-                print '<td colspan="9">' . 'Employee Data'. '</td>';
+                print '<td colspan="9">' . 'Party Wise Count'. '</td>';
                 print '</tr>';
                 print '<tr>';
                 print '<th scope="col">Party Code</th>';
                 print '<th scope="col">Party Name</th>';
                 print '<th scope="col">Total Count</th>';
-
                 print '</tr>';
                 print '</thead>';
                           
@@ -102,13 +90,28 @@ $gtotal =0;
                         print '<td>' .  (int)$gtotal .  '</td>';
                 print '</tr>';   
             print '</table>';
+            print '<div>';
+            print '<div>';
+            print '<div>';
+
                 
 
                 print '<br>';
         }
-   
        
-    
+?>   
+        <div class="col mb-2">
+        <div class="card" style="width:50rem;">
+<!--            <div class="card text-white bg-warning  h-100 w-100rem">           -->
+            <div class="card-body">
+                <div id="chart-container">
+                    <canvas id="mycanvas"></canvas>        
+                </div>
+            </div>    
+            </div>    
+    </div>
+
+<?php    
         // Create connection to Oracle
         $c = oci_connect("BGH", "hpv185e", "10.143.100.36/BGH6"); 
         $query = "select a.party_code party_code, 
@@ -128,7 +131,6 @@ $gtotal =0;
 ?>
 
 
-</div>   
     
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

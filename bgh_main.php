@@ -90,7 +90,7 @@ session_start();
                 <a class="dropdown-item" href="#">Admissions Dashboard</a>
                 <a class="dropdown-item" href="adm_all_admissions.php">All Admissions Searhable</a>
                 <a class="dropdown-item" href="get_adm_date.php">All Admissions</a>
-                <a class="dropdown-item" href="get_adm_employee.php">ON Roll Employee</a>
+                <a class="dropdown-item" href="get_adm_employee.php">ON-Roll Employee IPD</a>
                 <a class="dropdown-item" href="adm_cat_wise.php">Category Wise Admission</a>
                 <a class="dropdown-item" href="adm_unit_wise.php">Unit Wise Admission</a>
                 <a class="dropdown-item" href="adm_source_wise.php">Source Wise Admission</a>
@@ -100,6 +100,8 @@ session_start();
                 <a class="dropdown-item" href="adm_ml_case.php">Medico Legal Cases</a>
                 <a class="dropdown-item" href="adm_genderwise_adm.php">Gender Wise Admissions</a>
                 <a class="dropdown-item" href="adm_cas_report_adm.php">Admission Report for Casualty</a>
+                <a class="dropdown-item" href="adm_unit_master.php">Unit Master</a>
+
 
                 <a class="dropdown-item" href="#">Entitled/Non-Entitled Admissions</a>
               </div>
