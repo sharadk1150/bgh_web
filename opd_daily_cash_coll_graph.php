@@ -74,7 +74,7 @@ function do_fetch()
         $query = "select visit_date, to_number(total) total 
                   from VIEW_CTR_101_DAILY_CASH_TOTAL
                   where to_char(visit_date,'YYYY-MM-DD') between '2020-06-01' and '2020-06-20' 
-                  order by 1 desc";
+                  order by 1 asc";
         $s = oci_parse($c, $query);    
 //        $myeid = $stdate;
 //        oci_bind_by_name($s, ":EIDBV", $myeid);
@@ -168,7 +168,7 @@ function do_fetch()
         $query = "select visit_date, to_number(total) total 
                   from VIEW_CTR_101_DAILY_CASH_TOTAL
                   where to_char(visit_date,'YYYY-MM-DD') between :EIDBV and :EIDBV2 
-                  order by 1 desc";
+                  order by 1 asc";
     
     
         $s = oci_parse($c, $query);    

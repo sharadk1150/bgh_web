@@ -33,7 +33,7 @@
  <nav class="navbar navbar-dark fixed-top bg-warning">
   <h6>BGH LP-WARD-NL Medicnes</h6>
 <div class="container">
-<form  class="form-inline" name="myform" action="pharma_nl_order.php" method="POST">
+<form  class="form-inline" name="myform" action="pharma_wardna_order.php" method="POST">
                 <input type="hidden" name="check_submit" value="1" />
     <form class="form-inline">   
         <div class="form-group row">
@@ -120,7 +120,7 @@ if (array_key_exists('check_submit', $_POST))
         $query = "select med_name, unit, sum(total) total
                   from BGH_WARD_LP_DRUGS
                   where to_char(na_date,'YYYY-MM-DD') between :EIDBV and :EIDBV2 and
-                  old_cat_no = '0' 
+                  old_cat_no != '0' 
                   group by med_name, unit
                   order by 3 desc";
     

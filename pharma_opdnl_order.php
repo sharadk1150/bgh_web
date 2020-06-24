@@ -4,7 +4,7 @@
 
 <html>
 <head>
-  <title>Pharma: WARD NL Medicines</title>
+  <title>Pharma: OPD NL Medicines</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
@@ -31,9 +31,9 @@
   -->
  
  <nav class="navbar navbar-dark fixed-top bg-warning">
-  <h6>BGH LP-WARD-NL Medicnes</h6>
+  <h6>BGH LP-OPD-NL Medicnes</h6>
 <div class="container">
-<form  class="form-inline" name="myform" action="pharma_nl_order.php" method="POST">
+<form  class="form-inline" name="myform" action="pharma_opdnl_order.php" method="POST">
                 <input type="hidden" name="check_submit" value="1" />
     <form class="form-inline">   
         <div class="form-group row">
@@ -75,7 +75,7 @@ if (array_key_exists('check_submit', $_POST))
                 print '<table class="table table-sm table-bordered table-striped table-dark w-auto table-hover">';            
                 print '<thead class="thead-light">';
                 print '<tr>'; 
-                print '<td colspan="9">' . 'Ward-NL Medicines From : ' . date("d-m-Y", strtotime($myeid)) .  '  To Date : ' . date("d-m-Y", strtotime($myendt)) . '</td>';
+                print '<td colspan="9">' . 'OPD-NL Medicines From : ' . date("d-m-Y", strtotime($myeid)) .  '  To Date : ' . date("d-m-Y", strtotime($myendt)) . '</td>';
                 print '</tr>';
                 print '<tr>';
                 print '<th scope="col">Med Name</th>';
@@ -118,9 +118,8 @@ if (array_key_exists('check_submit', $_POST))
         // Create connection to Oracle
         $c = oci_connect("BGH", "hpv185e", "10.143.100.36/BGH6"); 
         $query = "select med_name, unit, sum(total) total
-                  from BGH_WARD_LP_DRUGS
-                  where to_char(na_date,'YYYY-MM-DD') between :EIDBV and :EIDBV2 and
-                  old_cat_no = '0' 
+                  from bgh_opd_patient_presc_nl
+                  where to_char(na_date,'YYYY-MM-DD') between :EIDBV and :EIDBV2 
                   group by med_name, unit
                   order by 3 desc";
     

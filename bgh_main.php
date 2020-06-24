@@ -3,7 +3,6 @@
 session_start();
 ?>
 
-
 <html>
     <head>
     <!-- Required meta tags -->
@@ -22,7 +21,6 @@ session_start();
               background-color: #ffbf4c;
               border-color: #fff;
             }
-
             .dropdown .dropdown-menu a:hover
             {    
               color: #fff;
@@ -31,11 +29,9 @@ session_start();
             }
         </style>
         <title> Bokaro General Hospital, Bokaro</title>
-
     </head>
     <body>
-      <!-- Checking the Session Variable for Login from the login page -->
-      
+      <!-- Checking the Session Variable for Login from the login page -->      
 <?php
           
          $login_name = $_SESSION["login"];
@@ -49,8 +45,6 @@ session_start();
             
         }
 ?>
-   
-   
 
     <!-- NAVBAR FROM BOOTSTRAP -->
     <!-- class="navbar navbar-dark bg-primary" -->
@@ -58,14 +52,10 @@ session_start();
         <nav class="navbar  sticky-top navbar-expand-lg navbar-dark bg-primary justified"> 
         <a class="navbar-brand" href="#"><img src="bgh_logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="SAIL"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">            
           <ul class="navbar-nav">
-           
-           
             <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 OPD
@@ -86,8 +76,6 @@ session_start();
                 <a class="dropdown-item" href=" opd_daily_cash_coll_graph.php">Daily OPD Cash Collection Graph</a>
               </div>
             </li>
-            
-
 
             <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -108,7 +96,6 @@ session_start();
                 <a class="dropdown-item" href="adm_genderwise_adm.php">Gender Wise Admissions</a>
                 <a class="dropdown-item" href="adm_cas_report_adm.php">Admission Report for Casualty</a>
                 <a class="dropdown-item" href="adm_unit_master.php">Unit Master</a>
-
 
                 <a class="dropdown-item" href="#">Entitled/Non-Entitled Admissions</a>
               </div>
@@ -160,11 +147,15 @@ session_start();
                   <a class="dropdown-item" href="pharma_substore_stock.php">SubStore Stock</a>
                   <a class="dropdown-item" href="pharma_wms_stock.php">WMS-Store Stock</a>  
                   <a class="dropdown-item" href="pharma_current_stock_combined.php">Combined Medicine Stock</a>  
-                  <a class="dropdown-item" href="pharma_na_order.php">LP-NA Medicines</a>
-                  <a class="dropdown-item" href="pharma_nl_order.php">LP-NL Medicines</a>
+                  <a class="dropdown-item" href="pharma_na_order.php">LP-OPD-NA Medicines</a>
+                  <a class="dropdown-item" href="pharma_opdnl_order.php">LP-OPD-NL Medicines</a>
+                  <a class="dropdown-item" href="pharma_wardna_order.php">LP-WARD-NA Medicines</a>
+                  <a class="dropdown-item" href="pharma_nl_order.php">LP-WARD-NL Medicines</a>
                   <a class="dropdown-item" href="pharma_expiry_01.php">Pharma Expired Drug (Counter)</a>
                   <a class="dropdown-item" href="pharma_expiry_02.php">Pharma Expired Drug (All)</a> 
-                  <a class="dropdown-item" href="pharma_med_dist_01.php">Medicine Distribution Trend</a>                                  
+                  <a class="dropdown-item" href="pharma_med_dist_01.php">Medicine Distribution Trend</a>  
+                  <a class="dropdown-item" href="pharma_na_trend.php">NA-Medicine Distribution Trend</a> 
+                                                  
                 </div>
               </li>  
 
@@ -229,9 +220,6 @@ session_start();
                   <a class="dropdown-item" href="medissue_csr_13.php">CSR-Medicine Issued to Medical Camps</a>
                   <a class="dropdown-item" href="medissue_csr_20.php">CSR-Medicine Issued to SSK(HC-5)</a>
                   <a class="dropdown-item" href="misc_bgh_mid_employee_01.php">View Details of Entitled Person</a>
-
-                  
-
                 </div>
               </li>
 
@@ -271,7 +259,6 @@ session_start();
                   <a class="dropdown-item" href="#">BGH-MIS-Server-2</a>
                 </div>
               </li>
-
              
               <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -288,23 +275,18 @@ session_start();
                   <a class="dropdown-item" href="www.mohfw.gov.in">Ministry of Health </a>
                   <a class="dropdown-item" href="file_upload.php">File Upload </a>
                   <a class="dropdown-item" href="file_upload_1.php">File Upload New </a>
-
                 </div>
               </li>
 
               <li class="nav-item active">
                 <a class="nav-link" href="bgh_complaints.html">Complaints <span class="sr-only">(current)</span></a>
               </li>  
-
               <li class="nav-item active">
                 <a class="nav-link" href="bgh_com_escalation.html"><i class="fa fa-phone"></i><span class="sr-only">(current)</span></a>
               </li>
-
               <li class="nav-item active">
                 <a class="nav-link" href="#"><?php echo $_SESSION["login"]; ?> <span class="sr-only">(current)</span></a>
               </li>
-
-             
           </ul>
         </div>
       </nav>
@@ -376,7 +358,6 @@ session_start();
         <div class="card-footer bg-transparent border-success">Footer</div>
       </div>
 
-
     <div class="card border-success mb-3" style="max-width: 18rem;">
         <div class="card-header bg-transparent border-success">Header</div>
         <div class="card-body text-success">
@@ -401,8 +382,6 @@ session_start();
         </div>
       </div>
 </div>       
-
-
 	<!-- copyright -->
 
   <div class="copyright">
@@ -412,11 +391,10 @@ session_start();
   </center>
 		</div>
 		<!-- //copyright -->
-      
+
 <!-- CARD LAYOUT FROM THE BOOTSTRAP GOES UPTO HERE -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>    
-    
-    </body>
-    </html>
+</body>
+</html>

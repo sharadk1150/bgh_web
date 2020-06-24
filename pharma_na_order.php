@@ -6,13 +6,10 @@
 <head>
   <title>Pharma: NA Medicines</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
 </head>
 <body>
 
-
-<?php
-          
+<?php          
          $login_name = $_SESSION["login"];        
         if (!isset($_SESSION["loggedIn"]))
         {  
@@ -22,13 +19,11 @@
         {
             ;            
         }
-            
-    
-    ?>
+?>
     
 <!-- <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
 .navbar-expand{-sm|-md|-lg|-xl}
-  -->
+-->
  
  <nav class="navbar navbar-dark fixed-top bg-warning">
   <h6>BGH NA Medicnes</h6>
@@ -41,8 +36,7 @@
                 <div class="mr-sm-3">
                     <input type="date" class="form-control" id="stdate" name="stdate" 
                     value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
-                </div>    
-                   
+                </div>                       
             <label for="endate" class="mr-sm-3 col-form-label">To Date</label> 
                 <div class="mr-sm-3">
                     <input type="date" class="form-control" id="endate" name="endate"
@@ -54,23 +48,17 @@
   </form>
 </div>  
 </nav>
-
 <br><br><br>
-
-<?php
-    
-global $gtotal;
-$gtotal =0;    
-    
+<?php    
+    global $gtotal;
+    $gtotal =0;        
 if (array_key_exists('check_submit', $_POST)) 
 {
             $stdate =  $_POST['stdate'];
-            $endate =  $_POST['endate'];
-            
-    
+            $endate =  $_POST['endate'];                
         function do_fetch($myeid, $myendt, $s)
         {
-//            date("d/m/Y", strtotime($str));
+//              date("d/m/Y", strtotime($str));
              
                 print '<table class="table table-sm table-bordered table-striped table-dark w-auto table-hover">';            
                 print '<thead class="thead-light">';
@@ -82,11 +70,8 @@ if (array_key_exists('check_submit', $_POST))
                 print '<th scope="col">Med Name</th>';
                 print '<th scope="col">Unit</th>';
                 print '<th scope="col">Quantity</th>';
-            
-            
                 print '</tr>';
-                print '</thead>';
-                          
+                print '</thead>';                          
                         $x = 0;
                         while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) 
                         {
@@ -94,8 +79,7 @@ if (array_key_exists('check_submit', $_POST))
                             if ($x%2==0) {
                                 print '<tr class="bg-primary">';}
                             else {
-                                print '<tr class="bg-information">';}                                
-                            
+                                print '<tr class="bg-information">';}                                                            
                             foreach ($row as $item) 
                             {                                
                                 print '<td>'.($item?htmlentities($item):'&nbsp;').'</td>';
@@ -103,15 +87,8 @@ if (array_key_exists('check_submit', $_POST))
                             }
                                 print '</tr>';
                             }
-//                print '<tr>';
-//                        print '<td>' . 'Total Refund Made (Rs.)' .  '</td>';
-//                        print '<td>' .  $x .  '</td>';
-//                print '</tr>';   
-//                    $GLOBALS['gtotal'] = $GLOBALS['gtotal']  + $x;
             print '</table>';
-                
-
-                print '<br>';
+            print '<br>';
         }
    
   
