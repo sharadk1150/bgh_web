@@ -80,7 +80,7 @@ $query = "SELECT reference_no, (HOSPNO||'/'||HOSPYR) HOSPNO, PAT_NAME, PAT_AGE, 
             (PAT_LOCAL_ADD||'-'||PAT_LOCAL_TEL) pat_local_add, 
             (PAT_NEXTTO_KIN||'-'||PAT_KIN_TELNO) PAT_NEXTTO_KIN
             FROM CASUALTY_MEDICO_LEGAL_VW
-            WHERE REFERENCE_NO>=:EIDBV
+            WHERE REFERENCE_NO=:EIDBV
             order by reference_no asc";
 $s = oci_parse($c, $query);    
 $myeid = $refno;
@@ -205,21 +205,28 @@ $mail->SMTPSecure = "tls";
 $mail->Port = 587;                                   
 
 $mail->From = "citbgh@gmail.com.com";
-$mail->FromName = "Computer and Information Technology BGH";
+$mail->FromName = "Bokaro General Hospital";
 
-$mail->addAddress("singh.sharadk@gmail.com", "Recepient Name");
+// List of recipients
+$recipients = array(
+	"singh.sharadk@gmail.com" => "Name 1",
+	"sharadk.singh@sail.in"   => "Name 2",
+);
 
-//Provide file path and name of the attachments
-//$mail->addAttachment("file.txt", "File.txt");        
-//$mail->addAttachment("README.MD"); //Filename is optional
+// $mail->addAddress("singh.sharadk@gmail.com",   "Recepient Name");
 $mail->addAttachment($attachment); //Filename is optional
-
 $mail->isHTML(true);
-
-$mail->Subject = "Subject Text";
-$mail->Body = "<i>Dear Sir, Please Find attached the intimtion Of Medico Legal Cases at Bokaro General Hospital, Bokaro</i>";
-$mail->AltBody = "This is the plain text version of the email content";
-
+$mail->Subject = "Bokaro general Hospital: Medico Legal Case Intimation ";
+//$mail->Body = "<p>Dear Sir, Please Find attached the intimtion Of Medico Legal Cases at Bokaro General Hospital, Bokaro
+//---- Bokaro General Hospital
+//</p>";
+//$mail->AltBody = "This is the plain text version of the email content";
+$html_body = "<p>Dear Sir, Please Find attached the intimtion Of Medico Legal Cases at Bokaro General Hospital, Bokaro
+<br>
+---- Bokaro General Hospital
+</p>";
+$text_body = "This is the plain text version of the email content";
+/*
 if(!$mail->send()) 
 {
     echo "Mailer Error: " . $mail->ErrorInfo;
@@ -228,6 +235,36 @@ else
 {
     echo "Message has been sent successfully, Close the Browser Please";
 }
+*/
+
+//------------------------------------------------------------------------------
+
+// Send a message to each recipient.
+// Headers that are unique for each message should be set within the foreach loop
+foreach ($recipients as $email => $name) {
+
+	// Generate headers that are unique for each message
+	$mail->ClearAllRecipients();
+	$mail->AddAddress($email, $name);
+
+	// Generate the message
+	$mail->MsgHTML($html_body);
+	$mail->AltBody = $text_body;
+
+	// Send the message 
+	if($mail->Send()) {
+		echo "Message sent!\n";
+	} else {
+		echo "Mailer Error: " . $mail->ErrorInfo . "\n";
+	}
+
+}
+
+// Close the SMTP session
+$mail->SmtpClose();
+
+
+
 
 
 //--------------------- sending mail as attachement up to here --------------------
