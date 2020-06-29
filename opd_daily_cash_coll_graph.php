@@ -229,11 +229,13 @@ function myFunction()
 <!-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> 
 <script src="https://code.highcharts.com/highcharts.src.js"></script>
 <script src="http://code.highcharts.com/highcharts.js"></script>
--->
-<script src="../highcharts.src.js"></script>
-<script src="../highcharts.js"></script>
-
 <script src="http://code.highcharttable.org/master/jquery.highchartTable-min.js"></script>
+-->
+<script src="../highcharts/highcharts.src.js"></script>
+<script src="../highcharts/highcharts.js"></script>
+<script src="../highcharts/jquery.highchartTable.js"></script>
+
+
 
 </body>
 </html>
