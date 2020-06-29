@@ -191,12 +191,38 @@
 
 
 
+<!-- Working Fine Option 1  -->
 
 <script>
         $(document).ready( function () {
-        $('.mydatatable').DataTable();
+        $('.mydatatable').DataTable({
+            order:[[3, 'desc']],
+            pagingType: 'full_numbers',
+            "scrollY": "500",
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging": false
+        });
     });
 </script>
+
+<!-- The following is working 
+
+<script>
+        $(document).ready( function () {
+        $('.mydatatable').DataTable({
+            "scrollY": "500",
+            "scrollX": true,
+
+            "scrollCollapse": true,
+            "paging": false
+        });
+    });
+</script>
+-->
+
+
+
 
 
 </body>
