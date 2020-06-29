@@ -367,7 +367,7 @@ session_start();
         <div class="card-footer bg-transparent border-success">Footer</div>
     </div>
 
-    <div class="card mb-6" style="max-width: 540px;">
+    <div class="card mb-6 bg-primary" style="max-width: 540px;">
         <div class="row no-gutters">
           <div class="col-md-4">
             <img src="vkpandey.jpg" class="card-img" alt="...">
