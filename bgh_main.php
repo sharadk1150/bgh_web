@@ -27,6 +27,31 @@ session_start();
               background-color: #b91773;
               border-color: #fff;
             }
+
+            .dropdown-submenu 
+            {
+            position: relative;
+            }
+
+            .dropdown-submenu a::after 
+            {
+              transform: rotate(-90deg);
+              position: absolute;
+              right: 6px;
+              top: .8em;
+            }
+
+            .dropdown-submenu .dropdown-menu 
+            {
+              top: 0;
+              left: 100%;
+              margin-left: .1rem;
+              margin-right: .1rem;
+            }
+
+
+
+
         </style>
         <title> Bokaro General Hospital, Bokaro</title>
     </head>
@@ -96,15 +121,13 @@ session_start();
                 <a class="dropdown-item" href="adm_genderwise_adm.php">Gender Wise Admissions</a>
                 <a class="dropdown-item" href="adm_cas_report_adm.php">Admission Report for Casualty</a>
                 <a class="dropdown-item" href="adm_unit_master.php">Unit Master</a>
-
                 <a class="dropdown-item" href="#">Entitled/Non-Entitled Admissions</a>
               </div>
             </li>
             
             <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Billing
-              </a>
+                Billing</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="#">Billing Dashboard</a>
                 <a class="dropdown-item" href="bill_cat_wise.php">Category Wise Billing</a>
@@ -120,7 +143,19 @@ session_start();
                 <a class="dropdown-item" href="wardbill_recovery_statement_01.php">Guarantor Recovery Statement</a>
                 <a class="dropdown-item" href="wardbill_headwise_billing_01.php">Bills Under Different Heads</a>                                               
                 <a class="dropdown-item" href="bill_rate_master.php">IPD Charges</a>     
-                <a class="dropdown-item" href="ipd_daily_cash_coll_graph.php">IPD Daily Cash Coll. Graph</a>                     
+                <a class="dropdown-item" href="ipd_daily_cash_coll_graph.php">IPD Daily Cash Coll. Graph</a>  
+                
+                <div class="dropdown-submenu">
+                  <a class="dropdown-item dropdown-toggle" href="#">Mediclaim</a>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="mediclaim_tpa_processing.php">Mediclaim TPA Processing Status</a></li>
+                    <li><a class="dropdown-item" href="#">Mediclaim Receipt FYr Wise</a></li>
+                    <li><a class="dropdown-item" href="#">Mediclaim Option-1</a></li>
+                    <li><a class="dropdown-item" href="#">Mediclaim Option-2</a></li>
+                </div>
+
+
+
               </div>
             </li>
 
@@ -153,8 +188,10 @@ session_start();
                   <a class="dropdown-item" href="pharma_nl_order.php">LP-WARD-NL Medicines</a>
                   <a class="dropdown-item" href="pharma_expiry_01.php">Pharma Expired Drug (Counter)</a>
                   <a class="dropdown-item" href="pharma_expiry_02.php">Pharma Expired Drug (All)</a> 
-                  <a class="dropdown-item" href="pharma_med_dist_01.php">Medicine Distribution Trend</a>  
-                  <a class="dropdown-item" href="pharma_na_trend.php">NA-Medicine Distribution Trend</a> 
+                  <a class="dropdown-item" href="pharma_med_dist_01.php">OPD-Medicine Distribution Trend</a>  
+                  <a class="dropdown-item" href="pharma_na_trend.php">OPD-NA-Medicine Distribution Trend</a> 
+                  <a class="dropdown-item" href="pharma_nl_trend.php">OPD-NL-Medicine Distribution Trend</a> 
+
                                                   
                 </div>
               </li>  
@@ -396,5 +433,22 @@ session_start();
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>    
-</body>
+
+<script>
+      $('.dropdown-menu a.dropdown-toggle').on('click', function(e) 
+      {
+      if (!$(this).next().hasClass('show')) {
+      $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+      }
+      var $subMenu = $(this).next(".dropdown-menu");
+      $subMenu.toggleClass('show');
+      $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+      $('.dropdown-submenu .show').removeClass("show");
+      });
+  return false;
+});  
+
+</script>
+
+  </body>
 </html>
