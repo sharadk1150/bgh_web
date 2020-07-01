@@ -190,7 +190,11 @@ session_start();
                   <a class="dropdown-item" href="pharma_expiry_02.php">Pharma Expired Drug (All)</a> 
                   <a class="dropdown-item" href="pharma_med_dist_01.php">OPD-Medicine Distribution Trend</a>  
                   <a class="dropdown-item" href="pharma_na_trend.php">OPD-NA-Medicine Distribution Trend</a> 
-                  <a class="dropdown-item" href="pharma_nl_trend.php">OPD-NL-Medicine Distribution Trend</a> 
+                  <a class="dropdown-item" href="pharma_nl_trend.php">OPD-NL-Medicine Distribution Trend</a>
+                  <a class="dropdown-item" href="#">WARD-Medicine Distribution Trend</a>  
+                  <a class="dropdown-item" href="ward_na_trend.php">WARD-NA-Medicine Distribution Trend</a> 
+                  <a class="dropdown-item" href="ward_nl_trend.php">WARD-NL-Medicine Distribution Trend</a>
+
 
                                                   
                 </div>

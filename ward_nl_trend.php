@@ -28,7 +28,7 @@
 </style>
 
     <meta charset=utf-8 />
-    <title>OPD - LP-NA Trend</title>
+    <title>WARD - LP- NA Trend</title>
     </head>
     <body>
 
@@ -36,10 +36,15 @@
 
 
     <!--<div class="container"> -->
-<nav class="navbar navbar-dark fixed-top" style="background-color: powderblue; height:50px; position: absolute;">
-<form  class="form-inline" name="myform" action="pharma_na_trend.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
-  
-<h3> OPD LOCAL PURCHASE Not Available  MEDICINES </h3>
+<nav class="navbar navbar-light fixed-top" style="background-color: powderblue; height:50px; position: absolute;">
+<form  class="form-inline" name="myform" action="ward_nl_trend.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
+<!--  
+<div class="form-group">  
+        <label for="stdate">Report Year</label>  
+        <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
+</div>     
+-->
+      <h3> WARD LOCAL PURCHASE Not Listed  MEDICINES </h3>
       <select name="rep_year" id="rep_year">
           <?php 
               $conn = oci_connect("bgh", "hpv185e", "10.143.100.36/BGH6");
@@ -62,11 +67,12 @@
 <?php
 if (array_key_exists('check_submit', $_POST)) 
 {
-    if (isset($_POST['rep_year'])){$repyear=$_POST['rep_year'];}
+  if (isset($_POST['rep_year'])){$repyear=$_POST['rep_year'];}
 
          
-        function do_fetch( $s, $repyear)
+        function do_fetch($s, $repyear)
         {
+            
             print '<div class="datatable-wide">';
             print '<table class="table table-striped  table-bordered mydatatable" style="width:100%">'; 
             print '<thead>';        
@@ -136,11 +142,11 @@ if (array_key_exists('check_submit', $_POST))
         // Create connection to Oracle
         $c = oci_connect("bgh", "hpv185e", "10.143.100.36/BGH6");
 
-        $query = "select  substr(b.med_desc,1,50) med_desc, a.year, 
+        $query = "select  substr(a.med_name,1,50) med_desc, a.year, 
         a.jan, a.feb, a.mar, a.apr, a.may, a.jun, a.jul, a.aug, a.sep,a.oct, a.nov, a.dec,
         (nvl(a.jan,0)+nvl(a.feb,0)+nvl(a.mar,0)+nvl(a.apr,0)+nvl(a.may,0)+nvl(a.jun,0)+nvl(a.jul,0)+nvl(a.aug,0)+nvl(a.sep,0)+nvl(a.oct,0)+nvl(a.nov,0)+nvl(a.dec,0)) total
-        from BGH_OPD_LPNA_TREND a, bgh_med_master b
-        where a.old_cat_no=b.old_cat_no and 
+        from bgh_ward_lpnl_trend a
+        where 
         (nvl(a.jan,0)+nvl(a.feb,0)+nvl(a.mar,0)+nvl(a.apr,0)+nvl(a.may,0)+nvl(a.jun,0)+nvl(a.jul,0)+nvl(a.aug,0)+nvl(a.sep,0)+nvl(a.oct,0)+nvl(a.nov,0)+nvl(a.dec,0))>0 and
         a.year=:EIDBV order by 4 desc";
         $s = oci_parse($c, $query);

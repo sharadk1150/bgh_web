@@ -36,19 +36,23 @@
 
 
     <!--<div class="container"> -->
-<nav class="navbar navbar-dark fixed-top" style="background-color: #0040ff; height:50px; position: absolute;">
+<nav class="navbar navbar-dark fixed-top" style="background-color: powderblue; height:50px; position: absolute;">
 <form  class="form-inline" name="myform" action="pharma_nl_trend.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
   
-<div class="form-group">  
-        <label for="stdate">----------->Admission Start Date</label>  
-        <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
-    </div>     
-         
-    <div class="form-group">  
-        <label for="endate">----------->Admission To Date</label>  
-        <input class="form-control mr-sm-2" type="date" id="endate" name="endate" placeholder="ToDate"   aria-label="todate" value="<?php echo isset($_POST['endate']) ? $_POST['endate']:''; ?>">
-    </div>  
-          
+<h3> OPD LOCAL PURCHASE Not Listed  MEDICINES </h3>
+      <select name="rep_year" id="rep_year">
+          <?php 
+              $conn = oci_connect("bgh", "hpv185e", "10.143.100.36/BGH6");
+              $sql = 'select rep_year_code, rep_year_value from rep_year';
+              $stid = oci_parse($conn, $sql);
+              oci_execute($stid);
+              while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC))
+              {
+                  echo $row['REP_YEAR_CODE']; 
+                  echo "<option value=" . $row['REP_YEAR_CODE'] . ">" . $row['REP_YEAR_VALUE'] . "</option>";
+              }
+          ?>
+      </select>
     <button class="btn btn-success my-2 my-sm-0" type="submit" name="submit">Get Data...</button>
 </form>
 </nav>
@@ -58,10 +62,9 @@
 <?php
 if (array_key_exists('check_submit', $_POST)) 
 {
-  if (isset($_POST['stdate'])){$stdate    =  $_POST['stdate'];}
-  if (isset($_POST['endate'])){$endate    =  $_POST['endate'];}
+    if (isset($_POST['rep_year'])){$repyear=$_POST['rep_year'];}
          
-        function do_fetch( $s)
+        function do_fetch( $s, $repyear)
         {
             print '<div class="datatable-wide">';
             print '<table class="table table-striped  table-bordered mydatatable" style="width:100%">'; 
@@ -138,11 +141,11 @@ if (array_key_exists('check_submit', $_POST))
         from BGH_OPD_LPNL_TREND a
         where 
         (nvl(a.jan,0)+nvl(a.feb,0)+nvl(a.mar,0)+nvl(a.apr,0)+nvl(a.may,0)+nvl(a.jun,0)+nvl(a.jul,0)+nvl(a.aug,0)+nvl(a.sep,0)+nvl(a.oct,0)+nvl(a.nov,0)+nvl(a.dec,0))>0 and
-        a.year='2020' order by 4 desc";
+        a.year=:EIDBV order by 4 desc";
         $s = oci_parse($c, $query);
 
-//        $mystdate = $stdate;
-//        oci_bind_by_name($s, ":EIDBV", $mystdate);
+        $myrepyear = $repyear;
+        oci_bind_by_name($s, ":EIDBV", $myrepyear);
 
 //        $myendate = $endate;
 //        oci_bind_by_name($s, ":EIDBV1", $myendate);
@@ -150,7 +153,7 @@ if (array_key_exists('check_submit', $_POST))
         oci_execute($s);
 // fecth data
 //        do_fetch($mystdate, $myendate, $s);
-        do_fetch($s);
+        do_fetch($s, $repyear);
     
 
         // Close the Oracle connection
