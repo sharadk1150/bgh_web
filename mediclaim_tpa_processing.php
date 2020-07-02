@@ -14,28 +14,30 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
 
+<style>
+    body 
+    {
+    font: 90%/1.45em "Helvetica Neue", HelveticaNeue, Verdana, Arial, Helvetica, sans-serif;
+    margin: 5;
+    padding: 5;
+    color: #333;
+    background-color: #fff;
+    }
+
+    <div class="datatable-wide">
+        <table ...>
+        </table>
+    </div>
+ 
+    div.datatable-wide {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+</style>
 
 
-<!--  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.min.css"> -->
-<!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js">
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.bootstrap4.min.js">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
--->
-<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.css"> -->
-<
 
 
-
-<!-- The Following is working 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
-<script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
--->
-
-
-
-
-  
 </head>
 <body>
 <?php          
@@ -52,7 +54,7 @@
 
 <div class="container">
 <nav class="navbar navbar-dark fixed-top" style="background-color: bisque; height:50px; position: absolute;">
-<h3>List of Doctor's</h3>
+<h3>Online Claims Processing Status (Data From TPA's Web Site)</h3>
 </nav>
 </div>    
 <br><br><br>
@@ -63,32 +65,45 @@
     
         function do_fetch($s)            
             {
-                print '<div class="container mb-3 mt-3">';
+//                print '<div class="container mb-3 mt-3">';
+                print '<div class="datatable-wide">';
                 print '<table class="table table-striped  table-bordered mydatatable" style="width:100%">';            
                 print '<thead>';
                 print  '<tr>';
-                    print '<th>Title</th>';
-                    print '<th>Name</th>';
-                    print '<th>Code</th>';
-                    print '<th>Department</th>';
-                    print '<th>Grade</th>';
-                    print '<th>Design</th>';
-                    print '<th>Mobile</th>';
-                    print '<th>E-mail</th>';
+                    print '<th>RepDate</th>';
+                    print '<th>Under Process</th>';
+                    print '<th>Under Process Amount</th>';
+                    print '<th>Under ADR</th>';
+                    print '<th>ADR-Amount</th>';
+                    print '<th>Claims Paid</th>';
+                    print '<th>Claims Paid Amount</th>';
+                    print '<th>Claims Repudiated</th>';
+                    print '<th>Repudiated Claim Amount</th>';
+                    print '<th>Claims Pending</th>';
+                    print '<th>Pending Amount </th>';
+                    print '<th>Total Claims</th>';
+                    print '<th>Total Claims Amount</th>';
                 print  '</tr>';
-                print '</thead>';
-                print '<tfoot>';
-                print  '<tr>';
-                    print '<th>Title</th>';
-                    print '<th>Name</th>';
-                    print '<th>Code</th>';
-                    print '<th>Department</th>';
-                    print '<th>Grade</th>';
-                    print '<th>Design</th>';
-                    print '<th>Mobile</th>';
-                    print '<th>E-mail</th>';
-                print  '</tr>';
+                    print '</thead>';
+                    print '<tfoot>';
+                    print  '<tr>';
+                    print '<th>RepDate</th>';
+                    print '<th>Under Process</th>';
+                    print '<th>Under Process Amount</th>';
+                    print '<th>Under ADR</th>';
+                    print '<th>ADR Amount</th>';
+                    print '<th>Claims Paid</th>';
+                    print '<th>Claims Paid Amount</th>';
+                    print '<th>Claims Repudiated</th>';
+                    print '<th>Repudiated Claim Amount</th>';
+                    print '<th>Claims Pending</th>';
+                    print '<th>Pending Amount </th>';
+                    print '<th>Total Claims</th>';
+                    print '<th>Total Claims Amount</th>';
+            print  '</tr>';
                 print '</tfoot>';
+
+
 //                        $tot_claims=0;
 //                        $tot_rec=0;
 // Print the data in Table    
@@ -117,20 +132,32 @@
 
                 print '</table>';
                 print '</div>';
+  //              print '</div>';
         }
     
     
         // Create connection to Oracle
-        $c = oci_connect("bgh", "hpv185e", "10.143.100.36/BGH6");
+        $c = oci_connect("ward", "hpv185e", "10.143.55.53/BGHWARD");
         // Use bind variable to improve resuability, 
         // and to remove SQL Injection attacks.
 
     
-        $query = "select a.title, a.name, a.code,a.department, b.gradep, b.desdescp,  b.mob, b.email
-                  from bgh_doctdic a, emp_master b
-                  where 
-                  a.blocked='N' and 
-                  a.staff=b.stno order by name";
+        $query = "  select 
+                    REP_DATE, 
+                    UNDER_PROCESS_NUMBER, 
+                    UNDER_PROCESS_AMOUNT, 
+                    ADR_NO, 
+                    ADR_AMOUNT, 
+                    PAID_CLAIM_NO, 
+                    PAID_CLAIM_AMOUNT, 
+                    REPUDIATED_CLAIM_NO, 
+                    REPUDIATED_CLAIM_AMOUNT, 
+                    PENDING_FOR_PAYMENT_NO, 
+                    PENDING_FOR_PAYMENT_AMOUNT, 
+                    TOTAL_NO, 
+                    TOTAL_AMOUNT
+                    from MDI_MEDICLAIM_PROCESSING
+                    order by 1 desc";
     
 //        $qcount = "select sum(tot_rate) TOT_VALUE from BGH_MED_STOCK_ISSUE_VW 
 //        where  ctrno = '20' and to_char(issue_dt,'YYYY-MM-DD') between :EIDBV and :EIDBV2";
@@ -177,34 +204,29 @@
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.bootstrap4.min.js"></script>
 
 
-
-<!--
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>  
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.bootstrap4.min.js"></script>
-
-
+<!-- Working Fine Option 1  
+<script>
+        $(document).ready( function () {
+        $('.mydatatable').DataTable();
+    });
+</script>
 -->
 
 
 
-<!-- Working Fine Option 1  -->
-
 <script>
         $(document).ready( function () {
         $('.mydatatable').DataTable({
-            order:[[3, 'desc']],
             pagingType: 'full_numbers',
-            "scrollY": "500",
+            "scrollY": "500px",
             "scrollX": true,
             "scrollCollapse": true,
-            "paging": false
+            "paging": false,
+            "fixedColumns":   true
         });
     });
 </script>
+
 
 <!-- The following is working 
 
