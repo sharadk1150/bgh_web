@@ -242,7 +242,7 @@ session_start();
                   Investigation
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="opd_lab_trend.php">OPD-LAB Test Trends</a>
                   <a class="dropdown-item" href="wardlab_status_rep_01.php">WardLab Tests Report</a>
                   <a class="dropdown-item" href="wardlab_non_conformity_01.php">WardLab Non Conformity Report</a>
                   <a class="dropdown-item" href="wardlab_inv_fy_wise.php">FY Year Wise Ward Lab Summary</a>
