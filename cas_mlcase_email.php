@@ -210,7 +210,9 @@ $mail->FromName = "Bokaro General Hospital";
 // List of recipients
 $recipients = array(
 	"singh.sharadk@gmail.com" => "Name 1",
-	"sharadk.singh@sail.in"   => "Name 2",
+    "sharadk.singh@sail.in"   => "Name 2",
+    "yashwantkumarsingh007@gmail.com"   => "Name 3",
+    "bokps-sector4@jhpolice.gov.in"   => "Name 4"    
 );
 
 // $mail->addAddress("singh.sharadk@gmail.com",   "Recepient Name");

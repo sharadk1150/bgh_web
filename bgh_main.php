@@ -116,6 +116,7 @@ session_start();
                 <a class="dropdown-item" href="adm_source_wise.php">Source Wise Admission</a>
                 <a class="dropdown-item" href="adm_diag_wise.php">Diagnosis Wise Admission</a>
                 <a class="dropdown-item" href="adm_census_data.php">Census Daily Data</a>
+                
                 <a class="dropdown-item" href="adm_wrkacdt_case.php">Work Accident Cases</a>
                 <a class="dropdown-item" href="adm_ml_case.php">Medico Legal Cases</a>
                 <a class="dropdown-item" href="adm_genderwise_adm.php">Gender Wise Admissions</a>
@@ -243,6 +244,8 @@ session_start();
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="opd_lab_trend.php">OPD-LAB Test Trends</a>
+                  <a class="dropdown-item" href="ipd_lab_trend.php">IPD-LAB Test Trends</a>
+
                   <a class="dropdown-item" href="wardlab_status_rep_01.php">WardLab Tests Report</a>
                   <a class="dropdown-item" href="wardlab_non_conformity_01.php">WardLab Non Conformity Report</a>
                   <a class="dropdown-item" href="wardlab_inv_fy_wise.php">FY Year Wise Ward Lab Summary</a>
@@ -261,10 +264,6 @@ session_start();
                   <a class="dropdown-item" href="medissue_csr_13.php">CSR-Medicine Issued to Medical Camps</a>
                   <a class="dropdown-item" href="medissue_csr_20.php">CSR-Medicine Issued to SSK(HC-5)</a>
                   <a class="dropdown-item" href="misc_bgh_mid_employee_01.php">View Details of Entitled Person</a>
-
-
-                  
-
                 </div>
               </li>
 
@@ -320,12 +319,6 @@ session_start();
                   <a class="dropdown-item" href="www.mohfw.gov.in">Ministry of Health </a>
                   <a class="dropdown-item" href="https://mor.nlm.nih.gov/RxNav/">RxNav </a>
                   <a class="dropdown-item" href="https://openi.nlm.nih.gov/">BioMedical Serach Engine</a>
-
-                  
-
-
-                  
-
                   <a class="dropdown-item" href="file_upload.php">File Upload </a>
                   <a class="dropdown-item" href="file_upload_1.php">File Upload New </a>
                 </div>
