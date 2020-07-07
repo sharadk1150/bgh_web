@@ -115,8 +115,7 @@ session_start();
                 <a class="dropdown-item" href="adm_unit_wise.php">Unit Wise Admission</a>
                 <a class="dropdown-item" href="adm_source_wise.php">Source Wise Admission</a>
                 <a class="dropdown-item" href="adm_diag_wise.php">Diagnosis Wise Admission</a>
-                <a class="dropdown-item" href="adm_census_data.php">Census Daily Data</a>
-                
+                <a class="dropdown-item" href="adm_census_data.php">Census Daily Data</a>                
                 <a class="dropdown-item" href="adm_wrkacdt_case.php">Work Accident Cases</a>
                 <a class="dropdown-item" href="adm_ml_case.php">Medico Legal Cases</a>
                 <a class="dropdown-item" href="adm_genderwise_adm.php">Gender Wise Admissions</a>
@@ -144,8 +143,7 @@ session_start();
                 <a class="dropdown-item" href="wardbill_recovery_statement_01.php">Guarantor Recovery Statement</a>
                 <a class="dropdown-item" href="wardbill_headwise_billing_01.php">Bills Under Different Heads</a>                                               
                 <a class="dropdown-item" href="bill_rate_master.php">IPD Charges</a>     
-                <a class="dropdown-item" href="ipd_daily_cash_coll_graph.php">IPD Daily Cash Coll. Graph</a>  
-                
+                <a class="dropdown-item" href="ipd_daily_cash_coll_graph.php">IPD Daily Cash Coll. Graph</a>                  
                 <div class="dropdown-submenu">
                   <a class="dropdown-item dropdown-toggle" href="#">Mediclaim</a>
                     <ul class="dropdown-menu">
@@ -195,9 +193,6 @@ session_start();
                   <a class="dropdown-item" href="#">WARD-Medicine Distribution Trend</a>  
                   <a class="dropdown-item" href="ward_na_trend.php">WARD-NA-Medicine Distribution Trend</a> 
                   <a class="dropdown-item" href="ward_nl_trend.php">WARD-NL-Medicine Distribution Trend</a>
-
-
-                                                  
                 </div>
               </li>  
 
@@ -223,7 +218,7 @@ session_start();
                   <a class="dropdown-item" href="stat_mortality_02.php">Mortality DepartmentWise</a>                 
                   <a class="dropdown-item" href="labour_room_br_01.php">Birth Report Summary</a>
                   <a class="dropdown-item" href="birth_report.php">Birth Report Detail</a>
-                  
+                  <a class="dropdown-item" href="stat_adm_census_monthly.php">Census Daily Data</a>
                 </div>
               </li>
 
@@ -289,8 +284,7 @@ session_start();
                   <a class="dropdown-item" href="http://10.143.55.35">Pacs System</a>
                   <a class="dropdown-item" href="#">About PACS System</a>
                   <a class="dropdown-item" href="#">Work Order PACS</a>
-                  <a class="dropdown-item" href="#">AMC PACS</a>
-                  
+                  <a class="dropdown-item" href="#">AMC PACS</a>                  
                 </div>
               </li>
 
@@ -321,6 +315,7 @@ session_start();
                   <a class="dropdown-item" href="https://openi.nlm.nih.gov/">BioMedical Serach Engine</a>
                   <a class="dropdown-item" href="file_upload.php">File Upload </a>
                   <a class="dropdown-item" href="file_upload_1.php">File Upload New </a>
+                  <a class="dropdown-item" href="https://bspapp.sail-bhilaisteel.com/cprs/cprs_login.htm">Check PaySlip</a>
                 </div>
               </li>
 
