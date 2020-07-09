@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <style>
     body 
@@ -95,16 +96,29 @@
 //                        $tot_claims=0;
 //                        $tot_rec=0;
 // Print the data in Table    
+//foreach ($type_array as $ttype => $tvalue) 
+//
+//{
+//    print '<tr>'; 
+//    if ($tvalue=='Y'){
+//        print '<td>' . 'ENTITLED' . '</td>'; 
+//    }
+//    elseif ($tvalue=='N') {
+//        print '<td>' . 'NOT-ENTITLED' . '</td>'; 
+//    }
+//    elseif ($tvalue=='P') {
+//        print '<td>' . 'AYUSHMAN' . '</td>'; 
+//    }
+
+
                         print '<tbody>';
                         while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) 
                         {      
-//                            $tot_claims = $tot_claims + $row["NO_OF_CLAIM"];                      
-//                            $tot_rec    = $tot_rec    + $row["CLAIM_AMT"];                      
                             print '<tr>';
 
-                            foreach ($row as $item) 
+                            foreach ($row as $item => $tvalue) 
                             { 
-                                
+                                if ($item=='CODE')
                                 print '<td>'.($item?htmlentities($item):'&nbsp;').'</td>';
                                                                 
                             }

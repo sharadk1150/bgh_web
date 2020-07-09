@@ -143,7 +143,9 @@ session_start();
                 <a class="dropdown-item" href="wardbill_recovery_statement_01.php">Guarantor Recovery Statement</a>
                 <a class="dropdown-item" href="wardbill_headwise_billing_01.php">Bills Under Different Heads</a>                                               
                 <a class="dropdown-item" href="bill_rate_master.php">IPD Charges</a>     
-                <a class="dropdown-item" href="ipd_daily_cash_coll_graph.php">IPD Daily Cash Coll. Graph</a>                  
+                <a class="dropdown-item" href="ipd_daily_cash_coll_graph.php">IPD Daily Cash Coll. Graph</a> 
+                <a class="dropdown-item" href="billing_grntr_monthly_advice.php">Grntr</a> 
+
                 <div class="dropdown-submenu">
                   <a class="dropdown-item dropdown-toggle" href="#">Mediclaim</a>
                     <ul class="dropdown-menu">
