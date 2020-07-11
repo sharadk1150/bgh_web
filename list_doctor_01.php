@@ -9,35 +9,38 @@
 <html>
 <head>
   <title>Misc. List Of Doctor's</title>
-
+<!--
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+-->
+<!--
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 <style>
-    body 
-    {
-    font: 90%/1.45em "Helvetica Neue", HelveticaNeue, Verdana, Arial, Helvetica, sans-serif;
-    margin: 5;
-    padding: 5;
-    color: #333;
-    background-color: #fff;
-    }
+.table-hover tbody tr:hover td, 
+.table-hover tbody tr:hover th 
+{
+  background-color: yellow;
+}
 
-    <div class="datatable-wide">
-        <table ...>
-        </table>
-    </div>
- 
-    div.datatable-wide {
-        padding-left: 5px;
-        padding-right: 5px;
-    }
 </style>
-
-
-
 
 </head>
 <body>
@@ -67,8 +70,12 @@
         function do_fetch($s)            
             {
 //                print '<div class="container mb-3 mt-3">';
-                print '<div class="datatable-wide">';
-                print '<table class="table table-striped  table-bordered mydatatable" style="width:100%">';            
+//                print '<div class="datatable-wide">';
+                print '<div class="table-responsive">';
+
+//                print '<table class="table table-striped  table-bordered mydatatable" style="width:100%">';            
+                print '<table class="table table-hover table-striped table-bordered mydatatable" style="width:100%">';            
+
                 print '<thead>';
                 print  '<tr>';
                     print '<th>Title</th>';
@@ -93,33 +100,24 @@
                     print '<th>E-mail</th>';
                 print  '</tr>';
                 print '</tfoot>';
-//                        $tot_claims=0;
-//                        $tot_rec=0;
-// Print the data in Table    
-//foreach ($type_array as $ttype => $tvalue) 
-//
-//{
-//    print '<tr>'; 
-//    if ($tvalue=='Y'){
-//        print '<td>' . 'ENTITLED' . '</td>'; 
-//    }
-//    elseif ($tvalue=='N') {
-//        print '<td>' . 'NOT-ENTITLED' . '</td>'; 
-//    }
-//    elseif ($tvalue=='P') {
-//        print '<td>' . 'AYUSHMAN' . '</td>'; 
-//    }
 
 
                         print '<tbody>';
                         while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) 
                         {      
                             print '<tr>';
-
                             foreach ($row as $item => $tvalue) 
                             { 
-                                if ($item=='CODE')
-                                print '<td>'.($item?htmlentities($item):'&nbsp;').'</td>';
+                                if ($item!='CODE') 
+                                {
+                                print '<td>'.($tvalue?htmlentities($tvalue):'&nbsp;').'</td>';
+                                }
+                                elseif ($item=='CODE') 
+                                {
+                                    
+                                    print '<td><a href="#" class="hover" id='.($tvalue?htmlentities($tvalue):'&nbsp;').'>'.
+                                    ($tvalue?htmlentities($tvalue):'&nbsp;').'</a></td>';
+                                }
                                                                 
                             }
                                 print '</tr>';
@@ -187,12 +185,18 @@
 <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
 <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
 -->
-
+<!--
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>  
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>  
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.bootstrap4.min.js"></script>
+-->
+
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.bootstrap4.min.js"></script>
+
 
 
 <!-- Working Fine Option 1  
@@ -204,21 +208,39 @@
 -->
 
 
-
-<script>
-        $(document).ready( function () {
+<script>  
+      $(document).ready(function(){  
         $('.mydatatable').DataTable({
-            order:[[3, 'desc']],
-            pagingType: 'full_numbers',
-            "scrollY": "500px",
+            "scrollY": "500",
             "scrollX": true,
             "scrollCollapse": true,
-            "paging": false,
-            "fixedColumns":   true
+            "paging": false
         });
-    });
-</script>
 
+
+           $('.hover').popover({  
+                title:fetchData,  
+                html:true,  
+                placement:'right'  
+
+           });  
+           function fetchData(){  
+                var fetch_data = '';  
+                var element = $(this);  
+                var id = element.attr("id");  
+                $.ajax({  
+                     url:"fetch.php",  
+                     method:"POST",  
+                     async:false,  
+                     data:{id:id},  
+                     success:function(data){  
+                          fetch_data = data;  
+                     }  
+                });  
+                return fetch_data;  
+           }  
+      });  
+ </script>  
 
 <!-- The following is working 
 

@@ -49,9 +49,6 @@ session_start();
               margin-right: .1rem;
             }
 
-
-
-
         </style>
         <title> Bokaro General Hospital, Bokaro</title>
     </head>
@@ -151,7 +148,7 @@ session_start();
                     <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="mediclaim_tpa_processing.php">Mediclaim TPA Processing Status</a></li>
                     <li><a class="dropdown-item" href="#">Mediclaim Receipt FYr Wise</a></li>
-                    <li><a class="dropdown-item" href="#">Mediclaim Option-1</a></li>
+                    <li><a class="dropdown-item" href="mediclaim_admtobill_status.php">Mediclaim Adm To Bill Status</a></li>
                     <li><a class="dropdown-item" href="#">Mediclaim Option-2</a></li>
                 </div>
 
