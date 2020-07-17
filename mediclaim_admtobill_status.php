@@ -12,30 +12,27 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 <style>
-    body 
-    {
+ body 
+ {
         font: 90%/1.45em "Helvetica Neue", HelveticaNeue, Verdana, Arial, Helvetica, sans-serif;
         margin: 0;
         padding: 0;
         color: #333;
         background-color: #fff;
-    }
-
+ }
     
 .table-hover tbody tr:hover td, 
 .table-hover tbody tr:hover th 
 {
   background-color: yellow;
 }
-
-
 </style>
     <meta charset=utf-8 />
     <title>Mediclaim: Admission To Billing Status</title>
   </head>
   <body>
 <div class="container">
-<nav class="navbar navbar-dark fixed-top" style="background-color: yellow; height:50px; position: absolute;">
+<nav class="navbar navbar-dark navbar-expand-sm bg-primary fixed-top" style="height:50px; position: absolute;">
 <form  class="form-inline" name="myform" action="mediclaim_admtobill_status.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
 <div class="form-group">  
         <label for="stdate">Admission Start Date</label>  
@@ -57,11 +54,12 @@ if (array_key_exists('check_submit', $_POST))
   if (isset($_POST['stdate'])){$stdate    =  $_POST['stdate'];}
   if (isset($_POST['endate'])){$endate    =  $_POST['endate'];}
          
+
         function do_fetch($mystdate, $myendate, $s)
         {            
             print '<div class="table-responsive">';
             print '<table class="table table-hover table-striped table-bordered mydatatable" style="width:100%">';            
-            
+            print '<p id="billnotmade"></p>';
             print '<thead>';           
             print '<tr>';
                 print '<th scope="col">MinNo</th>';
@@ -94,12 +92,27 @@ if (array_key_exists('check_submit', $_POST))
             print '<th scope="col">Billdt</th>';            
             print '<th scope="col">DisToBill</th>';            
             print '<th scope="col">BillTotal</th>';            
-        print '</tr>';
+            print '</tr>';
             print '</tfoot>';                           
             print '<tbody>';    
                         while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) 
                         {
-                            print '<tr>';
+                           
+
+
+                            if ($row["HBILLNO"] == NULL){
+                                print '<tr class="bg-primary">';
+                            }
+                            elseif ($row["DIS_TO_BILL"]>7){
+                                print '<tr class="bg-warning">';
+                            }
+                            else{
+                                print '<tr class="bg-active">';
+                            }
+
+
+
+
                             foreach ($row as $item) 
                             {
                                 print '<td>'.($item?htmlentities($item):'&nbsp;').'</td>';
@@ -124,11 +137,11 @@ if (array_key_exists('check_submit', $_POST))
         oci_bind_by_name($s, ":EIDBV", $mystdate);
         $myendate = $endate;
         oci_bind_by_name($s, ":EIDBV1", $myendate);
-// Execute the query
+        // Execute the query
         oci_execute($s);
-// fecth data
+        // fecth data
         do_fetch($mystdate, $myendate, $s);
-//        do_fetch($s);
+        // do_fetch($s);
         // Close the Oracle connection
         oci_close($c);
 } 
@@ -140,9 +153,6 @@ else
 
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.bootstrap4.min.js"></script>
-
-
-
 
 
 <script>  

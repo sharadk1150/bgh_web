@@ -424,11 +424,16 @@ session_start();
 </div>       
 	<!-- copyright -->
 
+  
+
+	<!-- //copyright -->
+
   <div class="copyright">
-  <center>
-		  <h6>&copy; 2020 BGH, Bokaro General Hospital. All rights reserved | Developed by C&IT Department With ❤ For BGH</a>
-			</h6>
-  </center>
+      <div class="row justify-content-center">
+		    <h6>&copy; 2020 BGH, Bokaro General Hospital. All rights reserved | Developed by C&IT Department With ❤ For BGH</a>
+			  </h6>
+      </div>  
+  
 		</div>
 		<!-- //copyright -->
 
