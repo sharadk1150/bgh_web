@@ -171,8 +171,8 @@
                         <div class="col-md-2">
                             <!-- <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender">  -->
                                 <select name="gender" id="gender" class="form-control">
-                                    <option>Male</option>
-                                    <option>Female</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
                                 </select>
                         </div>                        
                         <div class="col-md-4">
@@ -268,8 +268,8 @@
                         <div class="col-md-2">
                             <!-- <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender">  -->
                                 <select name="hospi" id="hospi" class="form-control">
-                                    <option>Yes</option>
-                                    <option>No</option>
+                                    <option value="Y">Yes</option>
+                                    <option value="N">No</option>
                                 </select>
                         </div>
                         
@@ -286,7 +286,7 @@
                 
 					
 				 <div class="form-group row">
-                        <label for="genrem" class="col-md-2 col-form-label">Details if Any</label>
+                        <label for="feedback" class="col-md-2 col-form-label">Details if Any</label>
                         <div class="col-md-10">
                             <textarea class="form-control" id="feedback" name="feedback" maxlength="100" rows="2"></textarea>
                         </div>
@@ -302,11 +302,7 @@
                         </div>
                         <div class="col-md-2">
                             <input type="button" name="view" class="btn btn-success" value="View Data" id="butview">                            
-                        </div>
-
-                    
-                    
-                    
+                        </div>                    
                 </div>	
                 </form>
                 
@@ -367,11 +363,35 @@
 $(document).ready(function() {
 	$('#butsave').on('click', function() {
 		$("#butsave").attr("disabled", "disabled");
-		var bslemp     = $('#bslemp').val();
-		var staffno    = $('#staffno').val();
-		var orgname    = $('#orgname').val();
-		var reportedby = $('#reportedby').val();
-		var telnum     = $('#telnum').val();
+		var bslemp      = $('#bslemp').val();
+		var staffno     = $('#staffno').val();
+		var orgname     = $('#orgname').val();
+		var reportedby  = $('#reportedby').val();
+		var areacode    = $('#areacode').val();        
+		var telnum      = $('#telnum').val();
+		var repfor      = $('#repfor').val();
+		var reptype     = $('#reptype').val();
+		var emailid     = $('#emailid').val();
+		var repforother = $('#repforother').val();
+		var reptypother = $('#reptypother').val();
+		var gender      = $('#gender').val();
+		var age         = $('#age').val();
+		var curradd1    = $('#curradd1').val();
+		var curradd2    = $('#curradd2').val();
+		var curradd3    = $('#curradd3').val();
+		var arrstate    = $('#arrstate').val();
+		var arrcity     = $('#arrcity').val();
+		var arrdate     = $('#arrdate').val();
+        
+		var sympcode     = $('#sympcode').val();
+		var sympdays     = $('#sympdays').val();
+		var hospi        = $('#hospi').val();
+		var hospname     = $('#hospname').val();
+		var remarks      = $('#remarks').val();
+		var feedback     = $('#feedback').val();
+        
+        
+        
         
 		if(bslemp!="" && staffno!="" && orgname!="" && reportedby!=""){
 			$.ajax({
@@ -382,9 +402,30 @@ $(document).ready(function() {
                     staffno   	:staffno,
                     orgname   	:orgname,
                     reportedby	:reportedby,
-                    telnum      :telnum       
-				},
+                    areacode    :areacode,
+                    telnum      :telnum,
+                    repfor      :repfor,
+                    reptype     :reptype,
+                    emailid     :emailid,
+                    repforother :repforother,
+                    reptypother :reptypother,
+                    gender      :gender,
+                    age         :age,
+                    curradd1    :curradd1,
+                    curradd2    :curradd2,
+                    curradd3    :curradd3,
+                    arrstate    :arrstate,
+                    arrcity     :arrcity,
+                    arrdate     :arrdate,
+                    sympcode    :sympcode,
+                    sympdays    :sympdays,
+                    hospi       :hospi,
+                    hospname    :hospname,
+                    remarks     :remarks,
+                    feedback    :feedback
+                },
 				cache: false,
+                
 				success: function(dataResult){
 					var dataResult = JSON.parse(dataResult);
 					if(dataResult.statusCode==200){

@@ -16,9 +16,27 @@
 	$staffno   =  $_POST['staffno'];
 	$orgname   =  $_POST['orgname'];
 	$reportedby=  $_POST['reportedby'];
+	$areacode  =  $_POST['areacode'];
 	$telnum    =  $_POST['telnum'];
+	$repfor    =  $_POST['repfor'];
+	$reptype   =  $_POST['reptype'];
+	$emailid    =  $_POST['emailid'];
+	$repforother    =  $_POST['repforother'];
+	$reptypother   =  $_POST['reptypother'];
+	$gender =  $_POST['gender'];
+	$age      =  $_POST['age'];
+	$curradd1     =  $_POST['curradd1'];
+	$curradd2     =  $_POST['curradd2'];
+	$curradd3     =  $_POST['curradd3'];
+	$arrstate     =  $_POST['arrstate'];
+	$arrcity      =  $_POST['arrcity'];
 
-   
+    $sympcode  = $_POST['sympcode'];
+    $sympdays  = $_POST['sympdays'];
+    $hospi     = $_POST['hospi'];
+    $hospname  = $_POST['hospname'];
+    $remarks   = $_POST['remarks'];
+    $feedback  = $_POST['feedback'];
 
 
 /*
@@ -26,8 +44,6 @@
     $gender=$_POST['gender'];
     $age=$_POST['age'];
     $arrstate=$_POST['arrstate'];
-
-
     $arrcity  =        $_POST['arrcity'];
     $arrdate   =       $_POST['arrdate'];
     $sympcode  =        $_POST['sympcode'];
@@ -55,19 +71,44 @@
 */
 
 
-   $sql = "INSERT INTO COVID_TRACKING_TRANS (bsl_emp, org_name, staff_no, reported_by, telnum)
+   $sql = "INSERT INTO COVID_TRACKING_TRANS (bsl_emp, org_name, staff_no, reported_by, areacode, telnum, rep_for, rep_type, emailid, 
+   repforother, reptypother, gender, age, curradd1, curradd2, curradd3, ARRIVAL_FROM_STATE, ARRIVAL_FROM_CITY, 
+   SYMP_CODE, SYMPDAYS, HOSPI, HOSPNAME, REMARKS, FEEDBACK)
             VALUES 
-            (:bslemp, :orgname, :staffno, :reportedby, :telnum)";
+            (:bslemp, :orgname, :staffno, :reportedby, :areacode, :telnum, :repfor, :reptype, :emailid, 
+            :repforother, :reptypother, :gender, :age, :curradd1, :curradd2, :curradd3, :arrstate, :arrcity,
+            :sympcode, :sympdays, :hospi, :hospname, :remarks, :feedback)";
 
 
 
    $compiled = oci_parse($db, $sql);
 
-oci_bind_by_name($compiled, ':bslemp'    	,	$bslemp);    
-oci_bind_by_name($compiled, ':staffno'   	,	$staffno);   
-oci_bind_by_name($compiled, ':orgname'  	,	$orgname);   
-oci_bind_by_name($compiled, ':reportedby'	,	$reportedby);
-oci_bind_by_name($compiled, ':telnum'	    ,	$telnum);
+oci_bind_by_name($compiled, ':bslemp'    	,$bslemp);    
+oci_bind_by_name($compiled, ':staffno'   	,$staffno);   
+oci_bind_by_name($compiled, ':orgname'  	,$orgname);   
+oci_bind_by_name($compiled, ':reportedby'	,$reportedby);
+oci_bind_by_name($compiled, ':areacode'	    ,$areacode);
+oci_bind_by_name($compiled, ':telnum'	    ,$telnum);
+oci_bind_by_name($compiled, ':repfor'   	,$repfor);   
+oci_bind_by_name($compiled, ':reptype'  	,$reptype);  
+oci_bind_by_name($compiled, ':emailid'	    ,$emailid);
+oci_bind_by_name($compiled, ':repforother'   	,$repforother);   
+oci_bind_by_name($compiled, ':reptypother'  	,$reptypother);  
+oci_bind_by_name($compiled, ':gender'   ,$gender);   
+oci_bind_by_name($compiled, ':age'  	,$age);  
+oci_bind_by_name($compiled, ':curradd1'  ,$curradd1);  
+oci_bind_by_name($compiled, ':curradd2'  ,$curradd2);   
+oci_bind_by_name($compiled, ':curradd3'  ,$curradd3);  
+oci_bind_by_name($compiled, ':arrstate'  ,$arrstate);  
+oci_bind_by_name($compiled, ':arrcity'  ,$arrcity);   
+
+oci_bind_by_name($compiled, ':sympcode'  ,$sympcode);   
+oci_bind_by_name($compiled, ':sympdays'  ,$sympdays);   
+oci_bind_by_name($compiled, ':hospi'     ,$hospi);   
+oci_bind_by_name($compiled, ':hospname'  ,$hospname);   
+oci_bind_by_name($compiled, ':remarks'   ,$remarks);   
+oci_bind_by_name($compiled, ':feedback'  ,$feedback);   
+
 
 
 
