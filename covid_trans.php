@@ -297,9 +297,7 @@
 <!--                        <button type="submit" class="btn btn-primary">Save Data</button> -->
                             <input type="button" name="save" class="btn btn-primary" value="Save to database" id="butsave">                            
                         </div>
-                        <div class="col-md-4">
-                            <input type="button" name="view" class="btn btn-success" value="View Data" id="butview">                            
-                        </div>
+                        
                         <div class="col-md-2">
                             <input type="button" name="view" class="btn btn-success" value="View Data" id="butview">                            
                         </div>                    
@@ -350,7 +348,7 @@
     </div>
 
     
-    <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS. -->
 <!--    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -381,7 +379,6 @@ $(document).ready(function() {
 		var curradd3    = $('#curradd3').val();
 		var arrstate    = $('#arrstate').val();
 		var arrcity     = $('#arrcity').val();
-		var arrdate     = $('#arrdate').val();
         
 		var sympcode     = $('#sympcode').val();
 		var sympdays     = $('#sympdays').val();
@@ -389,6 +386,10 @@ $(document).ready(function() {
 		var hospname     = $('#hospname').val();
 		var remarks      = $('#remarks').val();
 		var feedback     = $('#feedback').val();
+		var name         = $('#name').val();
+        
+		var arrdate     = $('#arrdate').val();
+		var sampdate    = $('#sampdate').val();
         
         
         
@@ -416,13 +417,15 @@ $(document).ready(function() {
                     curradd3    :curradd3,
                     arrstate    :arrstate,
                     arrcity     :arrcity,
-                    arrdate     :arrdate,
                     sympcode    :sympcode,
                     sympdays    :sympdays,
                     hospi       :hospi,
                     hospname    :hospname,
                     remarks     :remarks,
-                    feedback    :feedback
+                    feedback    :feedback,
+                    name        :name,
+                    arrdate     :arrdate,
+                    sampdate    :sampdate                    
                 },
 				cache: false,
                 
@@ -448,6 +451,19 @@ $(document).ready(function() {
 	});
 });
 </script>
+
+<script>
+    function callpage(){
+        alert('am in the call page function');
+        window.location.replace("https://www.tutorialrepublic.com/");
+    }      
+        
+    }
+    
+    const element = document.querySelector('#butview');
+    element.addEventListener('click', callpage, false);
+</script>    
+    
     
  
     

@@ -7,15 +7,16 @@
   <title>OPD: Cash Collection</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<!-- <script src="https://code.highcharts.com/highcharts.src.js"></script> -->
-
-<!--
-<script src="jquery.highchartTable.js" type="text/javascript"></script>
-
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharttable.org/master/jquery.highchartTable-min.js"></script>
--->
-
+  <style>
+  label,h6 {
+        color:blue;
+        text-align: left;
+        margin-top: 5px;
+        padding: 0px;
+        font-weight: bold;
+        font-style: normal;        
+    }
+</style>    
 </head>
 <body>
 <?php
@@ -36,6 +37,7 @@
   -->
   
  <nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
   <h6>BGH OPD Daily Cash Collection</h6>
 <div class="container">
 <form  class="form-inline" name="myform" action="opd_daily_cash_coll_graph.php" method="POST">

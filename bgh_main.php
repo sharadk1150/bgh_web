@@ -135,7 +135,7 @@ session_start();
                 <a class="dropdown-item" href="bill_collection_01.php">IPD Cash Collection</a>
                 <a class="dropdown-item" href="bill_refund_01.php">IPD Refunds</a>
                 <a class="dropdown-item" href="bill_refund_02.php">Misc. Refunds</a>                                
-                <a class="dropdown-item" href="#">Guarantor Bill Details</a>
+                <a class="dropdown-item" href="grntr_admtobill_status.php">Guarantor Adm To Bill</a>
                 <a class="dropdown-item" href="bill_grntr_pending_01.php">Guarantor Bill Pending</a>
                 <a class="dropdown-item" href="wardbill_recovery_statement_01.php">Guarantor Recovery Statement</a>
                 <a class="dropdown-item" href="wardbill_headwise_billing_01.php">Bills Under Different Heads</a>                                               

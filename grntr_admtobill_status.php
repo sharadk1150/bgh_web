@@ -31,11 +31,15 @@
     <title>Mediclaim: Admission To Billing Status</title>
   </head>
   <body>
+
+
+  
+ 
 <div class="container">
-<nav class="navbar navbar-dark navbar-expand-sm bg-primary fixed-top" style="height:50px; position: absolute;">
+<nav class="navbar navbar-dark navbar-expand-sm bg-primary fixed-top" style="height:50px; position: absolute;"> 
 <a class="navbar-brand" href="bgh_main.php"><img src="bgh_logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="SAIL"></a>
 
-<form  class="form-inline" name="myform" action="mediclaim_admtobill_status.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
+<form  class="form-inline" name="myform" action="grntr_admtobill_status.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
     <div class="form-group row">  
         <label for="stdate" class="col-md-2">Admission Start Date</label>  
         <input class="form-control col-md-3" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
@@ -138,7 +142,7 @@ if (array_key_exists('check_submit', $_POST))
         $query = "select stno, (hospno||'/'||hospyr) hospno, patname, age,unit,
         admdate, admtime, bdisdt, bdistm, hbillno, bbilldt,
                    dis_to_bill, bill_grand_total
-                  from MEDICLAIM_ADM_REL_BILL_VW
+                  from GRNTR_ADM_REL_BILL_VW
                   where to_char(admdate,'YYYY-MM-DD') between :EIDBV and :EIDBV1 order by hospno";
         $s = oci_parse($c, $query);
         $mystdate = $stdate;

@@ -35,6 +35,17 @@ $('#myTable').DataTable( {
         color: #333;
         background-color: #fff;
     }
+
+    label,h6 {
+        color:blue;
+        text-align: left;
+        margin-top: 5px;
+        padding: 0px;
+        font-weight: bold;
+        font-style: normal;        
+    }
+
+
 </style>
 
     <meta charset=utf-8 />
@@ -46,21 +57,27 @@ $('#myTable').DataTable( {
 
 
 <!--<div class="container"> -->
-<nav class="navbar navbar-dark fixed-top" style="background-color: #0040ff; height:50px; position: absolute;">
+
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>BGH IPD Admissions Data</h6>
+<div class="container">
 <form  class="form-inline" name="myform" action="adm_all_admissions.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
   
 <div class="form-group">  
-        <label for="stdate">----------->Admission Start Date</label>  
+        <label for="stdate">Admission Start Date</label>  
         <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
     </div>     
          
+         
     <div class="form-group">  
-        <label for="endate">----------->Admission To Date</label>  
+        <label for="endate">Admission To Date</label>  
         <input class="form-control mr-sm-2" type="date" id="endate" name="endate" placeholder="ToDate"   aria-label="todate" value="<?php echo isset($_POST['endate']) ? $_POST['endate']:''; ?>">
     </div>  
           
     <button class="btn btn-success my-2 my-sm-0" type="submit" name="submit">Get Data...</button>
 </form>
+</div>
 </nav>
 <br><br><br>
 
