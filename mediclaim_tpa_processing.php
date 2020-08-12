@@ -52,11 +52,13 @@
         }
 ?>
 
-<div class="container">
-<nav class="navbar navbar-dark fixed-top" style="background-color: bisque; height:50px; position: absolute;">
-<h3>Online Claims Processing Status (Data From TPA's Web Site)</h3>
+<nav class="navbar navbar-dark fixed-top bg-warning">
+<a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>BGH IPD Mediclaim Processing</h6>
+    <div class="container">
+        <h3>Online Claims Processing Status (Data From TPA's Web Site)</h3>
+    </div>        
 </nav>
-</div>    
 <br><br><br>
 
 
@@ -65,7 +67,6 @@
     
         function do_fetch($s)            
             {
-//                print '<div class="container mb-3 mt-3">';
                 print '<div class="datatable-wide">';
                 print '<table class="table table-striped  table-bordered mydatatable" style="width:100%">';            
                 print '<thead>';
@@ -104,8 +105,6 @@
                 print '</tfoot>';
 
 
-//                        $tot_claims=0;
-//                        $tot_rec=0;
 // Print the data in Table    
                         print '<tbody>';
                         while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) 
@@ -122,17 +121,11 @@
                             }
                                 print '</tr>';
                             }
-//                            Print '<tr>';
-//                                    print '<td colspan="3">' . 'Totals' . '</td>';
-//                                    print '<td>' . $tot_claims . '</td>';
-//                                    print '<td>' . $tot_rec . '</td>';
-//                            print '</tr'>
 
                 print '<tbody>';
 
                 print '</table>';
                 print '</div>';
-  //              print '</div>';
         }
     
     
@@ -140,8 +133,6 @@
         $c = oci_connect("ward", "hpv185e", "10.143.55.53/BGHWARD");
         // Use bind variable to improve resuability, 
         // and to remove SQL Injection attacks.
-
-    
         $query = "  select 
                     REP_DATE, 
                     UNDER_PROCESS_NUMBER, 

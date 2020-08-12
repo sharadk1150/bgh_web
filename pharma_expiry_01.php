@@ -26,63 +26,56 @@
             ;            
         }
 ?>
-    
-<nav class="navbar navbar-dark fixed-top bg-primary">
-  <h6> Pharma: Counter Wise Expiry, Damage, Breakage</h6>
-</nav>
-<br><br><br>
 
+<nav class="navbar navbar-dark fixed-top bg-warning">
+  <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
 
-
- <form  name="myform" action="pharma_expiry_01.php" method="POST"> <input type="hidden" name="check_submit" value="1" />
+    <div class="container">        
+        <form  name="myform" action="pharma_expiry_01.php" method="POST"> <input type="hidden" name="check_submit" value="1" />    
+          <form class="form-inline">   
  
- <!-- print '<form  name="myform" action=' . $_SERVER['PHP_SELF'].  ' method="POST"> <input type="hidden" name="check_submit" value="1" />'; -->
+            <div class="form-group row">
+                <label for="finyear" class="col-form-label">Finacial Year</label>
+                <div class="mr-sm-3">
+                <select id="finyear" name="finyear" class="form-control">       
+                    <?php          
+                      $c = oci_connect("BGH", "hpv185e", "10.143.100.36/BGH6");
+                      $sql = "select distinct fin_year from bgh_pharma_expiry_vw order by fin_year desc";  
+                      $stid = oci_parse($c, $sql);  
+                      $success = oci_execute($stid);
+                      while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)){
+                      print '<option> ' . $row["FIN_YEAR"] . '</option>';
+                      }  
+                      oci_close($c);  
+                    ?>                    
+                </select>
+                </div>
      
-<form class="form-inline">   
- 
-   <div class="form-group row">
-      <label for="finyear" class="col-sm-1 col-form-label">Finacial Year</label>
-      <div class="col-sm-2">
-      <select id="finyear" name="finyear" class="form-control">
-       
-    <?php
-          
-        $c = oci_connect("BGH", "hpv185e", "10.143.100.36/BGH6");
-        $sql = "select distinct fin_year from bgh_pharma_expiry_vw order by fin_year desc";  
-        $stid = oci_parse($c, $sql);  
-        $success = oci_execute($stid);
-        while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)){
-            print '<option> ' . $row["FIN_YEAR"] . '</option>';
-        }  
-         oci_close($c);  
-    ?>      
-       
-       
-      </select>
-      </div>
-     
-      <label for="ctrno" class="col-sm-1 col-form-label">Counter No</label>
-      <div class="col-sm-2">
-      <select id="ctrno" name="ctrno" class="form-control">
+                <label for="ctrno" class="col-form-label">Counter No</label>
+                <div class="col-sm-2">
+                <select id="ctrno" name="ctrno" class="form-control">
+                    <?php                  
+                      $c = oci_connect("BGH", "hpv185e", "10.143.100.36/BGH6");
+                      $sql = "select distinct ctrno from bgh_pharma_expiry_vw order by 1";  
+                      $stid = oci_parse($c, $sql);  
+                      $success = oci_execute($stid);
+                      while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)){
+                      print '<option> ' . $row["CTRNO"] . '</option>';
+                      }  
+                      oci_close($c);  
+                    ?>              
+                </select>
+                </div>                   
+                    <button class="btn btn-success my-2 my-sm-0" type="submit" name="submit">Get Data...</button>
 
-    <?php                  
-        $c = oci_connect("BGH", "hpv185e", "10.143.100.36/BGH6");
-        $sql = "select distinct ctrno from bgh_pharma_expiry_vw order by 1";  
-        $stid = oci_parse($c, $sql);  
-        $success = oci_execute($stid);
-        while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)){
-            print '<option> ' . $row["CTRNO"] . '</option>';
-        }  
-         oci_close($c);  
-    ?>              
-        
-        
-      </select>
-      </div>                   
-    <button type="submit" name="submit" class="btn btn-primary">Get Data....</button>               
-    </div>
+
+          </div>
     </form>
 </form>
+
+</div>
+</nav>
+<br><br>
 
 
 <?php

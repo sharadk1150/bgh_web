@@ -24,27 +24,31 @@
         }
 ?>
 
+
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>BGH IPD Report for Casualty</h6>
 <div class="container">
-<nav class="navbar navbar-dark fixed-top" style="background-color: bisque; height:50px; position: absolute;">
 <form  class="form-inline" name="myform" action="adm_cas_report_adm.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
   
-    <div class="form-group">  
-        <label for="repyear">IPD Admissions from Casualty for the Year :</label>
+    <div class="form-group">        
+                <label for="repyear">IPD Admissions from Casualty for the Year :</label>
                 <select class="form-control mr-sm-2" type="text"  id="repyear" name="repyear">
-                    <option>2016</option>
-                    <option>2017</option>
-                    <option>2018</option>
-                    <option>2019</option>
-                    <option>2020</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
                 </select>
-    </div>
+    </div>    
+
+
+
     <button class="btn btn-success my-2 my-sm-0" type="submit" name="submit">Get Data...</button>
 </form>
+</div>
 </nav>
-   
-<!-- Nav Bar for position at the top of page--> 
 <br><br><br>
-
 
 <?php
 if (array_key_exists('check_submit', $_POST)) 

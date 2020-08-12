@@ -32,29 +32,30 @@
     </head>
     <body>
 
+<!-- Nav Bar for position at the top of page-->  
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+ <div class="container">
 
+  <h6>BGH IPD Billing Guarantor Monthly Recovery Advice</h6>
 
-
-    <!--<div class="container"> -->
-<nav class="navbar navbar-dark fixed-top" style="background-color: powderblue; height:50px; position: absolute;">
-<form  class="form-inline" name="myform" action="billing_grntr_monthly_advice.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
-  
-<h3> Billing: Monthly Recovery From Guarantor </h3>
-      <select name="rep_year" id="rep_year">
-          <?php 
-              $conn = oci_connect("bgh", "hpv185e", "10.143.100.36/BGH6");
-              $sql = 'select rep_year_code, rep_year_value from rep_year';
-              $stid = oci_parse($conn, $sql);
-              oci_execute($stid);
-              while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC))
-              {
-                  echo $row['REP_YEAR_CODE']; 
-                  echo "<option value=" . $row['REP_YEAR_CODE'] . ">" . $row['REP_YEAR_VALUE'] . "</option>";
-              }
-          ?>
-      </select>
-    <button class="btn btn-success my-2 my-sm-0" type="submit" name="submit">Get Data...</button>
-</form>
+        <form  class="form-inline" name="myform" action="billing_grntr_monthly_advice.php" method="POST"> <input type="hidden" name="check_submit" value="1" />       
+            <select name="rep_year" id="rep_year">
+                <?php 
+                    $conn = oci_connect("bgh", "hpv185e", "10.143.100.36/BGH6");
+                    $sql = 'select rep_year_code, rep_year_value from rep_year';
+                    $stid = oci_parse($conn, $sql);
+                    oci_execute($stid);
+                    while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC))
+                    {
+                        echo $row['REP_YEAR_CODE']; 
+                        echo "<option value=" . $row['REP_YEAR_CODE'] . ">" . $row['REP_YEAR_VALUE'] . "</option>";
+                    }
+                ?>
+            </select>
+            <button class="btn btn-success my-2 my-sm-0" type="submit" name="submit">Get Data...</button>
+        </form>
+</div>        
 </nav>
 <br><br><br>
 
@@ -134,7 +135,7 @@ if (array_key_exists('check_submit', $_POST))
         $query = "select 
         to_number(year) year, jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec,
         nvl(jan,0)+nvl(feb,0)+nvl(mar,0)+ nvl(apr,0)+nvl(may,0)+nvl(jun,0)+ nvl(jul,0)+ nvl(aug,0)+nvl(sep,0)+nvl(oct,0)+nvl(nov,0)+nvl(dec,0) year_total
-        from GUARANTORS_RECOVERY_ADVICE order by 1 desc";
+        from GUARANTORS_RECOVERY_ADVICE order by to_number(year) desc";
         $s = oci_parse($c, $query);
 
         $myrepyear = $repyear;

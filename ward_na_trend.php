@@ -32,18 +32,9 @@
     </head>
     <body>
 
-
-
-
-    <!--<div class="container"> -->
-<nav class="navbar navbar-light fixed-top" style="background-color: powderblue; height:50px; position: absolute;">
+<nav class="navbar navbar-dark fixed-top bg-warning">
+<a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
 <form  class="form-inline" name="myform" action="ward_na_trend.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
-<!--  
-<div class="form-group">  
-        <label for="stdate">Report Year</label>  
-        <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
-</div>     
--->
       <h3> WARD LOCAL PURCHASE Not Available  MEDICINES </h3>
       <select name="rep_year" id="rep_year">
           <?php 

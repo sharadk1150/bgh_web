@@ -29,28 +29,26 @@
 
      
 <!-- Nav Bar for position at the top of page-->  
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>BGH IPD Billing Headwise</h6>
 <div class="container">
-<nav class="navbar navbar-dark fixed-top" style="background-color: bisque; height:50px; position: absolute;">
 <form  class="form-inline" name="myform" action="wardbill_headwise_billing_01.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
   
-<div class="form-group">  
-        <label for="stdate">From Billing  Date </label>  
-        <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
-    </div>
-     
-         
     <div class="form-group">  
-        <label for="enddt">To Billing Date </label>  
+        <label for="stdate">Bill From Date</label>  
+        <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
+    </div>     
+                  
+    <div class="form-group">  
+        <label for="endate">Bill To Date</label>  
         <input class="form-control mr-sm-2" type="date" id="endate" name="endate" placeholder="ToDate"   aria-label="todate" value="<?php echo isset($_POST['endate']) ? $_POST['endate']:''; ?>">
     </div>  
           
     <button class="btn btn-success my-2 my-sm-0" type="submit" name="submit">Get Data...</button>
 </form>
+</div>
 </nav>
-</div>    
-<!-- Nav Bar for position at the top of page-->      
-
-
 <br><br><br>
 
 <?php
@@ -114,7 +112,8 @@ if (array_key_exists('check_submit', $_POST))
                  from wardbill_rgstrpat a, wardbill_catedic b
                  where a.hcatno=b.code and 
                  to_char(a.hbilldt,'YYYY-MM-DD') between :EIDBV and :EIDBV2
-                 group by a.hcatno, b.name";
+                 group by a.hcatno, b.name
+                 order by a.hcatno";
     
 
         $s = oci_parse($c, $query);

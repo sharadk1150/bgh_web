@@ -43,35 +43,27 @@ $('#myTable').DataTable( {
   <body>
 
 
-  <nav class="navbar navbar-dark fixed-top bg-warning">
-  <h6>Blood Bank: Donor List Between Two Dates</h6>
+<!-- Nav Bar for position at the top of page-->  
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>BGH BloodBank Donor</h6>
 <div class="container">
-<form  class="form-inline" name="myform" action="bbank_donor_rep_01.php" method="POST">
-                <input type="hidden" name="check_submit" value="1" />
-    <form class="form-inline">   
-        <div class="form-group row">
-            <label for="stdate" class="mr-sm-3 col-form-label"> From Date</label> 
-                <div class="mr-sm-3">
-                    <input type="date" class="form-control" id="stdate" name="stdate" 
-                    value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
-                </div>                       
-            <label for="endate" class="mr-sm-3 col-form-label"> To Date</label> 
-                <div class="mr-sm-3">
-                    <input type="date" class="form-control" id="endate" name="endate"
-                    value="<?php echo isset($_POST['endate']) ? $_POST['endate']:''; ?>">
-                </div>                                            
-            <button type="submit" name="submit" class="btn btn-primary">Get Data.</button>                       
-            <button type="button" onclick="myFunction()" name="btngraph" class="btn btn-success">Show Graph.</button>                       
-
-        </div>
-    </form>            
-  </form>
-</div>  
+<form  class="form-inline" name="myform" action="bbank_donor_rep_01.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
+  
+    <div class="form-group">  
+        <label for="stdate">From Date</label>  
+        <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
+    </div>     
+                  
+    <div class="form-group">  
+        <label for="endate">To Date</label>  
+        <input class="form-control mr-sm-2" type="date" id="endate" name="endate" placeholder="ToDate"   aria-label="todate" value="<?php echo isset($_POST['endate']) ? $_POST['endate']:''; ?>">
+    </div>  
+          
+    <button class="btn btn-success my-2 my-sm-0" type="submit" name="submit">Get Data...</button>
+</form>
+</div>
 </nav>
-
-
-
-<br><br><br>
 <br><br><br>
 
 <?php
@@ -82,19 +74,7 @@ if (array_key_exists('check_submit', $_POST))
          
         function do_fetch($mystdate, $myendate, $s)
         {
-            //Fetch the results in an associative array
-            //print '<p>$myeid is ' . $myeid . '</p>';
-            //print '<p>Data Showing For the Date:' . $myeid . '</p>';
-            // <table class="table table-dark">
-            // print '<table class="table table-sm table-bordered table-striped table-dark w-auto"  border="1">';
-            
-//            print '<table id="example" class="display" style="width:100%">';
-//            print '<table id="example" class="table table-striped table-bordered" style="width:100%">';                
             print '<table id="example" class="display nowrap table-bordered" width="100%">';          
-//            print '<tr>'; 
-//              print '<td  colspan="9">' . 'Donor Data From : ' . date('d-m-Y', strtotime($mystdate)) . ' To '. date('d-m-Y', strtotime($myendate)) .  '</td>';
-//            print '</tr>';  
-
             print '<thead>';           
             print '<tr>';
                 print '<th scope="col">DonorName</th>';

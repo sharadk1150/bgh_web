@@ -6,8 +6,7 @@
 <head>
   <title>WMS Current Stock</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
->    
+    
 
 </head>
 <body>
@@ -26,14 +25,14 @@
         }            
     ?>
     
-<!-- <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-.navbar-expand{-sm|-md|-lg|-xl}
--->
-
- <nav class="navbar navbar-dark fixed-top bg-warning">
-  <h6>WMS Current Stock</h6>
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+ <div class="container">
+    <h2>BGH Pharmacy Ward Medical Store Stock</h3>
+ </div>   
 </nav>
 <br><br>
+
 <?php
 
     function do_fetch_med($s)

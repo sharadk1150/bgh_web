@@ -30,17 +30,19 @@
 
      
 <!-- Nav Bar for position at the top of page-->  
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>BGH IPD Guarantor Recovery Statement</h6>
 <div class="container">
-<nav class="navbar navbar-dark fixed-top" style="background-color: bisque; height:50px; position: absolute;">
 <form  class="form-inline" name="myform" action="wardbill_recovery_statement_01.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
   
    <div class="form-group">         
-      <label for="yer">Year For Recovery Statement:</label>
+      <label for="year">Year For Recovery Statement:</label>
       <select id="year" name="year" class="form-control mr-sm-2">       
             <?php
 
             $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
-            $sql = "select year from q_year order by 1";  
+            $sql = "select year from q_year order by to_number(year) desc";  
             $stid = oci_parse($c, $sql);  
             $success = oci_execute($stid);          
                 while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)){

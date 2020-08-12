@@ -26,35 +26,26 @@
     
     ?>
     
-<!-- <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-.navbar-expand{-sm|-md|-lg|-xl}
-  -->
- 
- <nav class="navbar navbar-dark fixed-top bg-warning">
-  <h6>BGH LP-OPD-NL Medicnes</h6>
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>BGH Not Listed Medicines</h6>
 <div class="container">
-<form  class="form-inline" name="myform" action="pharma_opdnl_order.php" method="POST">
-                <input type="hidden" name="check_submit" value="1" />
-    <form class="form-inline">   
-        <div class="form-group row">
-            <label for="stdate" class="mr-sm-3 col-form-label">From Date</label> 
-                <div class="mr-sm-3">
-                    <input type="date" class="form-control" id="stdate" name="stdate" 
-                    value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
-                </div>    
-                   
-            <label for="endate" class="mr-sm-3 col-form-label">To Date</label> 
-                <div class="mr-sm-3">
-                    <input type="date" class="form-control" id="endate" name="endate"
-                    value="<?php echo isset($_POST['endate']) ? $_POST['endate']:''; ?>">
-                </div>                                            
-            <button type="submit" name="submit" class="btn btn-primary">Get Data.</button>                       
-        </div>
-    </form>            
-  </form>
-</div>  
+<form  class="form-inline" name="myform" action="pharma_opdnl_order.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
+  
+    <div class="form-group">  
+        <label for="stdate">Bill From Date</label>  
+        <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
+    </div>     
+                  
+    <div class="form-group">  
+        <label for="endate">Bill To Date</label>  
+        <input class="form-control mr-sm-2" type="date" id="endate" name="endate" placeholder="ToDate"   aria-label="todate" value="<?php echo isset($_POST['endate']) ? $_POST['endate']:''; ?>">
+    </div>  
+          
+    <button class="btn btn-success my-2 my-sm-0" type="submit" name="submit">Get Data...</button>
+</form>
+</div>
 </nav>
-
 <br><br><br>
 
 <?php

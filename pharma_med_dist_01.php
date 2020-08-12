@@ -35,16 +35,14 @@
 
 
 
-    <!--<div class="container"> -->
+<!--<div class="container"> 
 <nav class="navbar navbar-dark fixed-top" style="background-color: powderblue; height:50px; position: absolute;">
-<form  class="form-inline" name="myform" action="pharma_med_dist_01.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
-<!--  
-<div class="form-group">  
-        <label for="stdate">Report Year</label>  
-        <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
-</div>     
 -->
-    <h3>Medicine Distribution from OPD Pharmacy Counters</h3>
+
+<nav class="navbar navbar-dark fixed-top bg-warning">
+<a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+<form  class="form-inline" name="myform" action="pharma_med_dist_01.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
+    <h6>Medicine Distribution from OPD Pharmacy Counters</h6>
 
       <select name="rep_year" id="rep_year">
           <?php 

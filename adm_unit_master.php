@@ -42,58 +42,20 @@ $('#myTable').DataTable( {
   </head>
   <body>
 
-  <div class="container">
-  <nav class="navbar navbar-dark fixed-top bg-warning">
-  <h2>Currently Active Units and Unit Incharge</h2>
-
-<!--
-<form  class="form-inline" name="myform" action="bbank_donor_rep_01.php" method="POST">
-                <input type="hidden" name="check_submit" value="1" />
-    <form class="form-inline">   
-        <div class="form-group row">
-            <label for="stdate" class="mr-sm-3 col-form-label"> From Date</label> 
-                <div class="mr-sm-3">
-                    <input type="date" class="form-control" id="stdate" name="stdate" 
-                    value=" ?>"> 
-                </div>                       
-            <label for="endate" class="mr-sm-3 col-form-label"> To Date</label> 
-                <div class="mr-sm-3">
-                    <input type="date" class="form-control" id="endate" name="endate"
-                    value="?>">
-                </div>                                            
-            <button type="submit" name="submit" class="btn btn-primary">Get Data.</button>                       
-            <button type="button" onclick="myFunction()" name="btngraph" class="btn btn-success">Show Graph.</button>                       
-
-        </div>
-    </form>            
-  </form>
--->
-
-
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>BGH IPD Medico Legal Cases</h6>
+<div class="container">
+    <h2>Currently Active Units and Unit Incharge</h2>
+</div>
 </nav>
-</div>  
-
-
-<br><br><br><br>
-
+<br><br><br>
 
 <?php
          
         function do_fetch($s)
         {
-            //Fetch the results in an associative array
-            //print '<p>$myeid is ' . $myeid . '</p>';
-            //print '<p>Data Showing For the Date:' . $myeid . '</p>';
-            // <table class="table table-dark">
-            // print '<table class="table table-sm table-bordered table-striped table-dark w-auto"  border="1">';
-            
-//            print '<table id="example" class="display" style="width:100%">';
-//            print '<table id="example" class="table table-striped table-dark table-bordered" style="width:100%">';                
             print '<table id="example" class="display nowrap table-bordered" width="80%">';          
-//            print '<tr>'; 
-//              print '<td  colspan="9">' . 'Donor Data From : ' . date('d-m-Y', strtotime($mystdate)) . ' To '. date('d-m-Y', strtotime($myendate)) .  '</td>';
-//            print '</tr>';  
-
             print '<thead>';           
             print '<tr>';
                 print '<th scope="col">Unit-Code</th>';

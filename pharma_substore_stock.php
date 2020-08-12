@@ -30,10 +30,15 @@
 .navbar-expand{-sm|-md|-lg|-xl}
 -->
 
- <nav class="navbar navbar-dark fixed-top bg-warning">
-  <h6>BGH Pharmacy Substore Current Stock</h6>
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+ <div class="container">
+    <h2>BGH Pharmacy SubStore Stock</h3>
+ </div>   
 </nav>
 <br><br>
+
+
 <?php
 
     function do_fetch_med($s)

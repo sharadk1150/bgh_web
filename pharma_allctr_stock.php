@@ -5,9 +5,18 @@
 <html>
 <head>
   <title>Pharma Medicine Master for OPD</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">    
 
->    
+<style>
+    .navbar {
+        min-height: 10px;
+    }
+    .navbar-brand {
+        padding: 0 15px;
+        height: 40px;
+        line-height: 40px;
+    }
+</style>
 
 </head>
 <body>
@@ -26,14 +35,14 @@
         }            
     ?>
     
-<!-- <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-.navbar-expand{-sm|-md|-lg|-xl}
--->
-
- <nav class="navbar navbar-dark fixed-top bg-warning">
-  <h6>BGH Medicine Master for Ward Medical Store</h6>
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+ <div class="container">
+    <h2>BGH Pharmacy All Counter (Combined) Stock</h3>
+ </div>   
 </nav>
 <br><br>
+
 <?php
 
     function do_fetch_med($s)

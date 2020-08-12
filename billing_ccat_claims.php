@@ -24,38 +24,32 @@
         }
 ?>
     
-<nav class="navbar navbar-dark fixed-top bg-primary">
-  <h6>Billing: Third Party Claims</h6>
-</nav>
-<br><br><br>
-
-
-
- <form  name="myform" action="billing_ccat_claims.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
-<form class="form-inline">   
-   <div class="form-group row">
-      <label for="finyear" class="col-sm-1 col-form-label">Finacial Year</label>
-      <div class="col-sm-2">
-      <select id="finyear" name="finyear" class="form-control">       
-            <?php
-          
-            $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
-            $sql = "select distinct fin_yr from cat_wise_net_claim order by 1 desc";  
-            $stid = oci_parse($c, $sql);  
-            $success = oci_execute($stid);
-                while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)){
-                print '<option> ' . $row["FIN_YR"] . '</option>';
-            }  
-//          oci_free($stid);  
-            oci_close($c);  
-        ?>                    
-      </select>
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>BGH IPD Claims on Third Party</h6>
+<div class="container">
+    <form  class="form-inline" name="myform" action="billing_ccat_claims.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
+        <div class="form-group row">
+            <label for="finyear" class="col-sm-3 col-form-label">Finacial Year</label>
+        <div class="col-sm-4">
+            <select id="finyear" name="finyear" class="form-control">       
+                <?php          
+                    $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
+                    $sql = "select distinct fin_yr from cat_wise_net_claim order by 1 desc";  
+                    $stid = oci_parse($c, $sql);  
+                    $success = oci_execute($stid);
+                        while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)){
+                        print '<option> ' . $row["FIN_YR"] . '</option>';
+                        }  
+                        oci_close($c);  
+                ?>                    
+            </select>
       </div>     
             <button type="submit" name="submit" class="btn btn-primary">Get Data....</button>               
     </div>
     </form>
-</form>
-
+    </nav>
+<br><br><br>
 
 <?php
 if (array_key_exists('check_submit', $_POST)) 

@@ -35,30 +35,26 @@
 
   
  
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>BGH IPD Guarantor Bill Status</h6>
 <div class="container">
-<nav class="navbar navbar-dark navbar-expand-sm bg-primary fixed-top" style="height:50px; position: absolute;"> 
-<a class="navbar-brand" href="bgh_main.php"><img src="bgh_logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="SAIL"></a>
-
 <form  class="form-inline" name="myform" action="grntr_admtobill_status.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
-    <div class="form-group row">  
-        <label for="stdate" class="col-md-2">Admission Start Date</label>  
-        <input class="form-control col-md-3" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
-<!--    </div>      -->
-    
-<!--    <div class="form-group">  -->
-        <label for="endate" class="col-md-2">Admission To Date</label>  
-        <input class="form-control col-md-3" type="date" id="endate" name="endate" placeholder="ToDate"   aria-label="todate" value="<?php echo isset($_POST['endate']) ? $_POST['endate']:''; ?>">
-
-        <button class="btn btn-success col-md-2" type="submit" name="submit">Get Data...</button>
-
-   </div>            
-<!--    <button class="btn btn-success my-2 my-sm-0" type="submit" name="submit">Get Data...</button> -->
-
-
+  
+    <div class="form-group">  
+        <label for="stdate">Bill From Date</label>  
+        <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
+    </div>     
+                  
+    <div class="form-group">  
+        <label for="endate">Bill To Date</label>  
+        <input class="form-control mr-sm-2" type="date" id="endate" name="endate" placeholder="ToDate"   aria-label="todate" value="<?php echo isset($_POST['endate']) ? $_POST['endate']:''; ?>">
+    </div>  
+          
+    <button class="btn btn-success my-2 my-sm-0" type="submit" name="submit">Get Data...</button>
 </form>
-</nav>
 </div>
-
+</nav>
 <br><br><br>
 <?php
 if (array_key_exists('check_submit', $_POST)) 

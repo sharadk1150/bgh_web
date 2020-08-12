@@ -5,16 +5,17 @@
 </head>
 <body>
 
-<!-- Nav Bar for position at the top of page-->  
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>BGH IPD Medico Legal Cases</h6>
 <div class="container">
-<nav class="navbar navbar-dark fixed-top" style="background-color: bisque; height:50px; position: absolute;">
 <form  class="form-inline" name="myform" action="adm_ml_case.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
   
 <div class="form-group">  
-        <label for="stdate">Medico Legal Admission Start Date</label>  
+        <label for="stdate">Admission Start Date</label>  
         <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
-    </div>
-     
+    </div>     
+         
          
     <div class="form-group">  
         <label for="endate">Admission To Date</label>  
@@ -23,9 +24,8 @@
           
     <button class="btn btn-success my-2 my-sm-0" type="submit" name="submit">Get Data...</button>
 </form>
+</div>
 </nav>
-</div>    
-<!-- Nav Bar for position at the top of page--> 
 <br><br><br>
 
 

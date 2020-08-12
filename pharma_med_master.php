@@ -24,14 +24,14 @@
         }            
     ?>
     
-<!-- <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-.navbar-expand{-sm|-md|-lg|-xl}
--->
-
  <nav class="navbar navbar-dark fixed-top bg-warning">
-  <h6>BGH Medicine Master for OPD</h6>
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="30" alt="BGH-MAIN"></a> 
+ <div class="container">
+    <h2>BGH Pharma Medicine List</h3>
+ </div>   
 </nav>
 <br><br>
+
 <?php
 
     function do_fetch_med($s)

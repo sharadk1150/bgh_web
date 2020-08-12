@@ -35,10 +35,12 @@
 
 
 
-    <!--<div class="container"> -->
+<!--<div class="container"> 
 <nav class="navbar navbar-dark fixed-top" style="background-color: powderblue; height:50px; position: absolute;">
-<form  class="form-inline" name="myform" action="pharma_na_trend.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
-  
+-->
+<nav class="navbar navbar-dark fixed-top bg-warning">
+<a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+<form  class="form-inline" name="myform" action="pharma_na_trend.php" method="POST"> <input type="hidden" name="check_submit" value="1" />       
 <h3> OPD LOCAL PURCHASE Not Available  MEDICINES </h3>
       <select name="rep_year" id="rep_year">
           <?php 

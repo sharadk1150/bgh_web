@@ -30,8 +30,10 @@
 
      
 <!-- Nav Bar for position at the top of page-->  
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>BGH IPD Guarantor's Bill Pending</h6>
 <div class="container">
-<nav class="navbar navbar-dark fixed-top" style="background-color: bisque; height:50px; position: absolute;">
 <form  class="form-inline" name="myform" action="bill_grntr_pending_01.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
   
    <div class="form-group">         
@@ -117,7 +119,7 @@ if (array_key_exists('check_submit', $_POST))
     
         $query = "select staff_no, ret_dt, employee, design, deptt, hospno, hospyr, admdate, admtime, pat_name, pat_age,               pat_sex gender, pat_admit_unit 
                   from WARDBILL_GUARANTOR_BILLPENDING 
-                  where hospyr=:EIDBV order by 1";
+                  where hospyr=:EIDBV order by 8";
     
     
         $s = oci_parse($c, $query);
