@@ -33,18 +33,16 @@
     <body>
 
 
-
-
-    <!--<div class="container"> -->
+    <nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  
+<div class="container">
+<h3> IPD LAB Investigation Trend </h3>
+<!--<div class="container"> 
 <nav class="navbar navbar-light fixed-top" style="background-color: powderblue; height:50px; position: absolute;">
-<form  class="form-inline" name="myform" action="ipd_lab_trend.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
-<!--  
-<div class="form-group">  
-        <label for="stdate">Report Year</label>  
-        <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
-</div>     
 -->
-      <h3> Monthly Lab Investigation Report for IPD </h3>
+<form  class="form-inline" name="myform" action="ipd_lab_trend.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
+      
 
       <select name="rep_year" id="rep_year">
           <?php 
@@ -60,7 +58,7 @@
       </select>
 
       <select name="lab_code" id="lab_code">
-          <?php 
+            <?php 
               $conn = oci_connect("wardlab", "wardlab", "10.143.55.53/BGHWARD");
               $sql = 'select lab_code, lab_desc from lab_code_master where lab_code in (01, 02,03,04,10)';
               $stid = oci_parse($conn, $sql);
@@ -69,14 +67,11 @@
               {                
                   echo "<option value=" . $row['LAB_CODE'] . ">" . $row['LAB_DESC'] . "</option>";
               }
-          ?>
+            ?>
       </select>
-
-
-
-
     <button class="btn btn-success my-2 my-sm-0" type="submit" name="submit">Get Data...</button>
 </form>
+</div>
 </nav>
 <br><br><br>
 
@@ -86,9 +81,6 @@ if (array_key_exists('check_submit', $_POST))
 {
   if (isset($_POST['rep_year'])){$repyear=$_POST['rep_year'];}
   if (isset($_POST['lab_code'])){$labcode=$_POST['lab_code'];}
-  
-
-         
         function do_fetch($s, $repyear, $labcode)
         {
             

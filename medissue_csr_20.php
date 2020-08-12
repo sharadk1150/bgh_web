@@ -26,28 +26,29 @@
         }
 ?>
     
-<nav class="navbar navbar-dark fixed-top bg-primary">
-  <h6> Medicine Issued to CSR Sarwa Swasthya Kemdra (Counter: 20)</h6>
+<!-- Nav Bar for position at the top of page-->  
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>Medicine Issue To CSR-20</h6>
+<div class="container">
+<form  class="form-inline" name="myform" action="medissue_csr_20.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
+  
+<div class="form-group">  
+        <label for="stdate">From Date</label>  
+        <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
+    </div>     
+         
+         
+    <div class="form-group">  
+        <label for="endate">To Date</label>  
+        <input class="form-control mr-sm-2" type="date" id="endate" name="endate" placeholder="ToDate"   aria-label="todate" value="<?php echo isset($_POST['endate']) ? $_POST['endate']:''; ?>">
+    </div>  
+          
+    <button class="btn btn-success my-2 my-sm-0" type="submit" name="submit">Get Data...</button>
+</form>
+</div>
 </nav>
 <br><br><br>
-<form  name="myform" action="medissue_csr_20.php" method="POST">
-                <input type="hidden" name="check_submit" value="1" />
-    <form class="form-inline">   
-        <div class="form-group row">
-            <label for="stdate" class="col-sm-1 col-form-label">From Date</label> 
-                <div class="col-sm-2">
-                    <input type="date" class="form-control" id="stdate" name="stdate">
-                </div>    
-                   
-            <label for="endate" class="col-sm-1 col-form-label">To Date</label> 
-                <div class="col-sm-2">
-                    <input type="date" class="form-control" id="endate" name="endate">
-                </div>    
-                   
-                    <button type="submit" name="submit" class="btn btn-primary">Get Data....</button>               
-        </div>
-    </form>            
-  </form>
 
 
 <?php
@@ -75,7 +76,7 @@ if (array_key_exists('check_submit', $_POST))
                 print '<tr>';
                 while ($row_1 = oci_fetch_array($scount, OCI_RETURN_NULLS+OCI_ASSOC)) 
                 {            
-                    print '<b>' . 'Total Value of Medicine Issued to CSR Medical Camps is Rs.: ' . $row_1["TOT_VALUE"] . '</b>';
+                    print '<b>' . 'Total Value of Medicine Issued to CSR SSK is Rs.: ' . $row_1["TOT_VALUE"] . '</b>';
                 }                        
                 print '</tr>';
 

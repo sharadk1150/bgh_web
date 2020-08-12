@@ -26,13 +26,13 @@
     
     ?>
     
-<!-- <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-.navbar-expand{-sm|-md|-lg|-xl}
-  -->
- 
- <nav class="navbar navbar-dark fixed-top bg-warning">
-  <h6>BGH View The BGH Mid Employee Details</h6>
+<!-- Nav Bar for position at the top of page-->  
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>View Entitled Patient Details</h6>
 <div class="container">
+ 
+ 
 <form  class="form-inline" name="myform" action="misc_bgh_mid_employee_01.php" method="POST">
                 <input type="hidden" name="check_submit" value="1" />
     <form class="form-inline">   

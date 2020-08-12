@@ -28,23 +28,19 @@
 </style>
 
     <meta charset=utf-8 />
-    <title>WARD - LP- NA Trend</title>
+    <title>BGH-MIS System</title>
     </head>
     <body>
 
-
-
-
-    <!--<div class="container"> -->
+<nav class="navbar navbar-dark fixed-top bg-warning">
+<a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a>   
+<div class="container">
+<h3> OPD LAB Investigation Trend </h3>
+<!--<div class="container"> 
 <nav class="navbar navbar-light fixed-top" style="background-color: powderblue; height:50px; position: absolute;">
-<form  class="form-inline" name="myform" action="opd_lab_trend.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
-<!--  
-<div class="form-group">  
-        <label for="stdate">Report Year</label>  
-        <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
-</div>     
 -->
-      <h3> OPD LAB Investigation Trend </h3>
+<form  class="form-inline" name="myform" action="opd_lab_trend.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
+      
 
       <select name="rep_year" id="rep_year">
           <?php 
@@ -71,12 +67,9 @@
               }
           ?>
       </select>
-
-
-
-
     <button class="btn btn-success my-2 my-sm-0" type="submit" name="submit">Get Data...</button>
 </form>
+</div>
 </nav>
 <br><br><br>
 

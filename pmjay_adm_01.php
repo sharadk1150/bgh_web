@@ -26,12 +26,9 @@
     
     ?>
     
-<!-- <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-.navbar-expand{-sm|-md|-lg|-xl}
-  -->
- 
- <nav class="navbar navbar-dark fixed-top bg-warning">
-  <h6>BGH PMJAY-Admissions</h6>
+<nav class="navbar navbar-dark fixed-top bg-warning">
+<a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>PMJAY Admissions</h6>
 <div class="container">
 <form  class="form-inline" name="myform" action="pmjay_adm_01.php" method="POST">
                 <input type="hidden" name="check_submit" value="1" />

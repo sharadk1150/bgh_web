@@ -31,34 +31,28 @@
             ;            
         }
 ?>
-     
-<!-- Nav Bar for position at the top of page-->  
-<div class="container">
-<nav class="navbar navbar-dark fixed-top" style="background-color: bisque; height:50px; position: absolute;">
-<form  class="form-inline" name="myform" action="list_bgh_or_employees.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
-                           
-      <div class="form-group">
-      <label for="gradep">List Employees For Grade p  :</label>
-      <select id="gradep" name="gradep" class="form-control mr-sm-2">       
-      <?php
-          
-            $c = oci_connect("BGH", "hpv185e", "10.143.100.36/BGH6");
-            $sql = "select distinct gradep from bgh_employee_view  order by gradep";  
-            echo $sql;
-            $stid = oci_parse($c, $sql);  
-            $success = oci_execute($stid);
-                while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)){
-                print '<option> ' . $row["GRADEP"] . '</option>';
-            }  
-            oci_close($c);  
-      ?>                    
-      </select>
-      </div>        
-        <button class="btn btn-success my-2 my-sm-0" type="submit" name="submit">Get Data...</button>
-    </form>
 
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>BGH Employees's </h6>
+        <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
+    </div>     
+         
+         
+    <div class="form-group">  
+        <label for="endate">To Date</label>  
+        <input class="form-control mr-sm-2" type="date" id="endate" name="endate" placeholder="ToDate"   aria-label="todate" value="<?php echo isset($_POST['endate']) ? $_POST['endate']:''; ?>">
+    </div>  
+          
+    <button class="btn btn-success my-2 my-sm-0" type="submit" name="submit">Get Data...</button>
+</form>
+</div>
 </nav>
+<br><br><br>
+
 </div>    
+</nav>
+
 <!-- Nav Bar for position at the top of page-->      
 
 <br><br><br>

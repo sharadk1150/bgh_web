@@ -35,15 +35,13 @@
         }    
     ?>
     
-<!-- <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-.navbar-expand{-sm|-md|-lg|-xl}
-  -->
-<!-- 
 <nav class="navbar navbar-dark fixed-top bg-warning">
-    <h6>BGH Party Wise Entitled Strength</h6>
+<a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a>   
+<div class="container">
+<h3> Entitled Patient's : </h3>
+</div>
 </nav>
-<br><br>
--->
+
 <div class="row row-cols-1 row-cols-md-3">
 <br><br><br>
 <?php    

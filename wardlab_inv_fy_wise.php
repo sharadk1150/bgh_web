@@ -30,12 +30,17 @@
 
      
 <!-- Nav Bar for position at the top of page-->  
+<nav class="navbar navbar-dark fixed-top bg-warning">
+<a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a>   
 <div class="container">
-<nav class="navbar navbar-dark fixed-top" style="background-color: bisque; height:50px; position: absolute;">
+<h6> FY Wise WardLab Investigation </h6>
+<!--<div class="container"> 
+<nav class="navbar navbar-light fixed-top" style="background-color: powderblue; height:50px; position: absolute;">
+-->
 <form  class="form-inline" name="myform" action="wardlab_inv_fy_wise.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
   
    <div class="form-group">         
-      <label for="lab">Lab (IPD Only) For Which Data is Required:</label>
+      <label for="lab">Lab:</label>
       <select id="lab" name="lab" class="form-control mr-sm-2">       
             <?php
 

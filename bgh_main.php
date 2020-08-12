@@ -258,6 +258,8 @@ session_start();
                   <a class="dropdown-item" href="medissue_csr_13.php">CSR-Medicine Issued to Medical Camps</a>
                   <a class="dropdown-item" href="medissue_csr_20.php">CSR-Medicine Issued to SSK(HC-5)</a>
                   <a class="dropdown-item" href="misc_bgh_mid_employee_01.php">View Details of Entitled Person</a>
+                  <a class="dropdown-item" href="misc_bgh_covid_report.php">View Covid Report</a>
+
                 </div>
               </li>
 
