@@ -17,15 +17,16 @@
                 background-repeat:  no-repeat;
                 background-size:    1600px 800px;
               }
-      </style>
+          h1 {
+              text-align: center;
+              background-color: white; 
+            }    
+</style>
 
 </head>
+<body>
+<h1> Bokaro General Hospial </h1>  
 <div class="w3-container">
-  
-
-<!--
-<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-green w3-large">Login</button>
--->
 
   <div id="id01"  style.display="block" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-zoom"  style="max-width:300px">
@@ -35,7 +36,10 @@
 
         <i class='fas fa-clinic-medical' style='font-size:108px;color:red'></i>
         <br>
-        <h2> Login to BGH Information System</h2>
+        <h5>Login</h5>
+        <h5>BGH Information System</h5>
+
+
       </div>
 
       <form class="w3-container" action="/action_page.php" method="post">
