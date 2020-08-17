@@ -22,15 +22,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 -->
 
-
 <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="DataTables/datatables.min.css" rel="stylesheet" type="text/css" />
-<script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/popper.js/dist/popper.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
-
 
 
 
@@ -73,13 +70,8 @@
     
         function do_fetch($s)            
             {
-//                print '<div class="container mb-3 mt-3">';
-//                print '<div class="datatable-wide">';
                 print '<div class="table-responsive">';
-
-//                print '<table class="table table-striped  table-bordered mydatatable" style="width:100%">';            
                 print '<table class="table table-hover table-striped table-bordered mydatatable" style="width:100%">';            
-
                 print '<thead>';
                 print  '<tr>';
                     print '<th>Title</th>';
@@ -181,9 +173,11 @@
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.bootstrap4.min.js"></script>
 -->
-
-<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+
 
 <script>  
       $(document).ready(function(){  

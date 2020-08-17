@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
+ <!--
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
     <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
+ -->
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
+    <script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+
+
 
 <!-- working
 <script>
@@ -42,32 +51,12 @@ $('#myTable').DataTable( {
   </head>
   <body>
 
-  <div class="container">
-  <nav class="navbar navbar-dark fixed-top bg-warning">
-  <h2>IPD Charges for Normal and RD/CD Category</h2>
 
-<!--
-<form  class="form-inline" name="myform" action="bbank_donor_rep_01.php" method="POST">
-                <input type="hidden" name="check_submit" value="1" />
-    <form class="form-inline">   
-        <div class="form-group row">
-            <label for="stdate" class="mr-sm-3 col-form-label"> From Date</label> 
-                <div class="mr-sm-3">
-                    <input type="date" class="form-control" id="stdate" name="stdate" 
-                    value=" ?>"> 
-                </div>                       
-            <label for="endate" class="mr-sm-3 col-form-label"> To Date</label> 
-                <div class="mr-sm-3">
-                    <input type="date" class="form-control" id="endate" name="endate"
-                    value="?>">
-                </div>                                            
-            <button type="submit" name="submit" class="btn btn-primary">Get Data.</button>                       
-            <button type="button" onclick="myFunction()" name="btngraph" class="btn btn-success">Show Graph.</button>                       
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+ <h2>IPD Charges for Normal and RD/CD Category</h2>
+<div class="container">
 
-        </div>
-    </form>            
-  </form>
--->
 
 
 </nav>
@@ -157,11 +146,9 @@ print '</tr>';
 ?> 
 
 
-<!--
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
--->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>  
+
+<script src="node_modules/popper.js/dist/popper.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- </div> -->   
 </body>

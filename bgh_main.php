@@ -5,15 +5,16 @@ session_start();
 
 <html>
     <head>
+
     <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS and internal CSS -->        
         <link rel="stylesheet"    href="bgh_main_style.css">
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet"    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet"    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<!--    <link rel="shortcut icon" href="http://demo.opendocman.com/templates/tweeter/images/favicon.ico"> -->
+
         <style>    
             .dropdown-menu
             {    
@@ -95,7 +96,7 @@ session_start();
                 <a class="dropdown-item" href="#">OP Billing of Mediclaim</a>
                 <a class="dropdown-item" href="#">Inv. Billing of Mediclaim</a>
                 <a class="dropdown-item" href="opd_daily_cash_coll_01.php">Daily OPD Cash Collection</a>
-                <a class="dropdown-item" href=" opd_daily_cash_coll_graph.php">Daily OPD Cash Collection Graph</a>
+                <a class="dropdown-item" href="opd_daily_cash_coll_graph.php">Daily OPD Cash Collection Graph</a>
               </div>
             </li>
 
@@ -446,9 +447,9 @@ session_start();
 		<!-- //copyright -->
 
 <!-- CARD LAYOUT FROM THE BOOTSTRAP GOES UPTO HERE -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>    
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/popper.js/dist/popper.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <script>
       $('.dropdown-menu a.dropdown-toggle').on('click', function(e) 

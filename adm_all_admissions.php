@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
-    <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
+<!--  
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/datatables.net-bs4/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+-->
+
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="DataTables/datatables.min.css" rel="stylesheet" type="text/css" />
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/popper.js/dist/popper.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
 
 <!-- working
 <script>
@@ -13,11 +23,14 @@
       } );
 </script>      
 -->
+<!-- Working but put it below 
 <script>
     $(document).ready( function () {
         var table = $('#example').DataTable({ fixedHeader: true});
       } );
 </script>      
+-->
+
 
 
 <!--
@@ -98,7 +111,9 @@ if (array_key_exists('check_submit', $_POST))
             
 //            print '<table id="example" class="display" style="width:100%">';
 //            print '<table id="example" class="table table-striped table-bordered" style="width:100%">';                
-            print '<table id="example" class="display nowrap table-bordered" width="100%">';          
+//            print '<table id="example" class="display nowrap table-bordered" width="100%">';    
+            print '<table class="table table-hover table-striped table-bordered mydatatable" style="width:100%">'; 
+      
 //            print '<tr>'; 
 //              print '<td  colspan="9">' . 'Admission Data From : ' . date('d-m-Y', strtotime($mystdate)) . ' To '. date('d-m-Y', strtotime($myendate)) .  '</td>';
 //            print '</tr>';  
@@ -186,12 +201,22 @@ else
 }
 ?> 
 
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
 
-<!--
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
--->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>  
+
+
+<script>
+$(document).ready(function() {
+    $('.mydatatable').DataTable( {
+        "scrollY":        "500px",
+        "scrollCollapse": true,
+        "paging":         false
+    } );
+} );
+</script>  
+
+
 
 <!-- </div> -->   
 </body>
