@@ -3,11 +3,12 @@
 ?>
 <!DOCTYPE html>
 <html>
-<title>W3.CSS</title>
+<title>Bokaro General Hospital, Bokaro</title>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="icon" type="image/png" href="sail-logo.jpg"/>
 
 <body onload="document.getElementById('id01').style.display='block'">
 
@@ -25,7 +26,7 @@
 
 </head>
 <body>
-<h1> Bokaro General Hospial </h1>  
+<h1> Bokaro General Hospital </h1>  
 <div class="w3-container">
 
   <div id="id01"  style.display="block" class="w3-modal">

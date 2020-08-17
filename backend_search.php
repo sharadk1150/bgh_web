@@ -11,7 +11,8 @@ error_reporting(E_ALL);
 
 
     if(isset($_REQUEST['term']) and (strlen($_REQUEST['term']) >= 3)){
-        if($stmt = oci_parse($conn, "SELECT med_gen_name from BGH_MED_MASTER where upper(med_gen_name) like  upper(:s)")){
+        if($stmt = oci_parse($conn, "SELECT med_gen_name from BGH_MED_MASTER where upper(med_gen_name) 
+        like  upper(:s)")){
         $param_term = '%' . $_REQUEST['term'] . '%';    
         oci_bind_by_name( $stmt , ":s" , $param_term, -1);                                                                  
             if(oci_execute($stmt)){                                                                                         

@@ -13,7 +13,7 @@ session_start();
         <link rel="stylesheet"    href="bgh_main_style.css">
         <link rel="stylesheet"    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet"    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="shortcut icon" href="http://demo.opendocman.com/templates/tweeter/images/favicon.ico">
+<!--    <link rel="shortcut icon" href="http://demo.opendocman.com/templates/tweeter/images/favicon.ico"> -->
         <style>    
             .dropdown-menu
             {    
@@ -151,8 +151,6 @@ session_start();
                     <li><a class="dropdown-item" href="mediclaim_admtobill_status.php">Mediclaim Adm To Bill Status</a></li>
                     <li><a class="dropdown-item" href="#">Mediclaim Option-2</a></li>
                 </div>
-
-
 
               </div>
             </li>
@@ -327,8 +325,6 @@ session_start();
                 <a class="nav-link" href="bgh_com_escalation.html"><i class="fa fa-phone"></i><span class="sr-only">(current)</span></a>
               </li>
 
-
-
               <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">(current)</span>
@@ -339,10 +335,6 @@ session_start();
                   <a class="dropdown-item" href="logout.php">Logout</a>
                 </div>
               </li>
-
-
-
-
           </ul>
         </div>
       </nav>

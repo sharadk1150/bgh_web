@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" 
+crossorigin="anonymous">
+</script>
+
+<script>
+    // This function enables that this loads only after the entire page has been loaded in the system
+    $(document).ready(function(){
+       $("input").keyup(function(){
+           var name = $("input").val();
+//           alert(name);
+        $.post("suggestions.php", {suggestion : name}, function(data,status){
+                $("#test").html(data);
+        }); 
+      
+      
+      
+       });
+
+    });
+</script>
+
+<style>
+
+body{background-color: #ccc;}
+form{padding-top: 100px; 
+    width: 300px; margin: 0 auto;}
+form input, select, textarea {
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    color: #222;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+form select{
+    width: 100%;
+    height: 30px;
+    padding: 0px 3%;
+}
+form input{
+    width: 90%;
+    height: 50px;
+    padding: 0px 5%;
+}
+form textarea{
+    width: 90%;
+    height: 100px;
+    padding: 6px 5%;
+    resize: none;
+}
+form button{
+    width: 100%;
+    height: 40px;
+    background-color: #222;
+    border: none;
+    border-radius: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+}
+form button:hover{
+    background-color: #444;
+}
+
+input{
+    width: 50%;
+    height: 50px;
+    padding: 0px 5%;
+}
+
+
+::-webkit-input-placeholder{  /* Chrome/opera/safari */
+    color: #ccc;
+}::-moz-placeholder{  /* Firefox 19+ */
+    color: #ccc;
+}::-ms-input-placeholder{  /* IE 10+ */
+    color: #ccc;
+}::-moz-input-placeholder{  /* Firefox 18- */
+    color: #ccc;
+}
+
+
+.form-message{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+
+}
+.form-error{color: red;}
+.form-success{color: green;}
+.input-error{box-shadow: 0 0 5px red;}
+
+
+
+
+</style>
+
+
+
+
+</head>
+
+<body>
+    
+
+<input type="text" name="name" id="name">
+
+<div id="test">
+    <ul></ul>
+</div>
+
+
+
+</body>
+</html>

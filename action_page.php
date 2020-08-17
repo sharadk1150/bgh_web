@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-
 extract($_POST);
 
  echo $uname;
@@ -19,24 +18,10 @@ if(!isset($submit))
 }
 else
 {
-/*   $rs=mysqli_query($conn,"select * from bgh_user where ucode='$uname' and upass='$psw'");
-    
-    include("ora_conn.php");
-    echo $submit;
-    echo "\n";
-
-    echo $uname;
-    echo "\n";
-
-    echo $psw;
-    echo "\n";
-*/    
     include("ora_conn.php");
     $stid = oci_parse($conn, "SELECT ucode, upass FROM bgh_user where ucode='$uname' and upass='$psw'");
     oci_execute($stid);    
     $nrows = oci_fetch_all($stid, $res); 
-//    echo $nrows;
-//    echo "\n";    
     if ($nrows<1)
     {
         $found = "N";

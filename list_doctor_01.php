@@ -9,17 +9,32 @@
 <html>
 <head>
 <title>Misc. List Of Doctor's</title>
+
+<!--
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+-->
+
+
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="DataTables/datatables.min.css" rel="stylesheet" type="text/css" />
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/popper.js/dist/popper.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+
+
+
+
+
 
 <style>
 .table-hover tbody tr:hover td, 
@@ -111,17 +126,10 @@
                             }
                                 print '</tr>';
                             }
-//                            Print '<tr>';
-//                                    print '<td colspan="3">' . 'Totals' . '</td>';
-//                                    print '<td>' . $tot_claims . '</td>';
-//                                    print '<td>' . $tot_rec . '</td>';
-//                            print '</tr'>
 
                 print '<tbody>';
-
                 print '</table>';
                 print '</div>';
-  //              print '</div>';
         }
     
     
@@ -169,9 +177,14 @@
 
 ?> 
 
-
+<!--
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.bootstrap4.min.js"></script>
+-->
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+
 <script>  
       $(document).ready(function(){  
         $('.mydatatable').DataTable({
