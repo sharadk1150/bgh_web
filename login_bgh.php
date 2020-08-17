@@ -6,7 +6,7 @@
 <title>Bokaro General Hospital, Bokaro</title>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="node_modules/w3-css/w3.css">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <link rel="icon" type="image/png" href="sail-logo.jpg"/>
 
@@ -53,7 +53,7 @@
           <input minlength="4" maxlength="12" size="12" class="w3-input w3-border" type="password"  placeholder="Enter Password" name="psw" required>
           
           <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" name="submit" id="submit">Login</button>
-<!--          <input class="w3-check w3-margin-top" type="checkbox" checked="checked">Remember me> -->
+<!--      <input class="w3-check w3-margin-top" type="checkbox" checked="checked">Remember me> -->
         </div>
              
       </form>
