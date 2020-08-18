@@ -37,7 +37,8 @@
 
 
     <!--<div class="container"> -->
-<nav class="navbar navbar-dark fixed-top" style="background-color: powderblue; height:50px; position: absolute;">
+<nav class="navbar navbar-dark fixed-top bg-warning " style="height:50px; position: absolute;">
+<a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
 <form  class="form-inline" name="myform" action="stat_adm_census_monthly.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
   
 <h3> IPD: Monthly Cenus Data Ocuupancy </h3>

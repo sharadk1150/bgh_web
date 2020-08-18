@@ -34,18 +34,19 @@
         }
 ?>
 
-    
-<nav class="navbar navbar-dark fixed-top">
-
-<div class="container">  
+<!-- Nav Bar for position at the top of page-->  
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>BGH Stats-Mortality</h6>
+<div class="container">
 <form  name="myform" action="labour_room_br_01.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
-<form class="form-inline">   
- 
-     <div class="form-group row">         
-           
+     <div class="form-group row">                    
       <label for="fyyr" class="mr-sm-3 col-form-label">Birth Report for the Year:</label>
       <div class="mr-sm-4">
       <select id="fyyr" name="fyyr" class="form-control">       
+</form>
+</div>
+</nav>      
 <?php
           
             $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");

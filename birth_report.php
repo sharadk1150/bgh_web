@@ -27,20 +27,20 @@
   </head>
   <body>
 
-
-
-
-<!--<div class="container"> -->
+<!-- Nav Bar for position at the top of page-->  
 <nav class="navbar navbar-dark fixed-top bg-warning " style="height:50px; position: absolute;">
+ <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>BGH Stats-Mortality</h6>
+<div class="container">
 <form  class="form-inline" name="myform" action="birth_report.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
   
 <div class="form-group">  
-        <label for="stdate">----------->Admission Start Date</label>  
+        <label for="stdate">Admission Start Date</label>  
         <input class="form-control mr-sm-2" type="date"   id="stdate" name="stdate" placeholder="fromDate" aria-label="stdate" value="<?php echo isset($_POST['stdate']) ? $_POST['stdate']:''; ?>">
     </div>     
          
     <div class="form-group">  
-        <label for="endate">----------->Admission To Date</label>  
+        <label for="endate">Admission To Date</label>  
         <input class="form-control mr-sm-2" type="date" id="endate" name="endate" placeholder="ToDate"   aria-label="todate" value="<?php echo isset($_POST['endate']) ? $_POST['endate']:''; ?>">
     </div>  
           

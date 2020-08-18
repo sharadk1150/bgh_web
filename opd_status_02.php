@@ -24,16 +24,13 @@
         }
 ?>
     
-<!-- <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-.navbar-expand{-sm|-md|-lg|-xl}
-  -->
- 
- <nav class="navbar navbar-dark fixed-top bg-warning">
+<!--<nav class="navbar fixed-top navbar-light bg-warning justify-content-between"> -->
+<nav class="navbar fixed-top navbar-light bg-warning justify-content-start">
+  <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
   <h6>BGH Admission</h6>
-<div class="container">
+    <div class="container">
 <form  class="form-inline" name="myform" action="opd_status_02.php" method="POST">
                 <input type="hidden" name="check_submit" value="1" />
-    <form class="form-inline">   
         <div class="form-group row">
             <label for="stdate" class="mr-sm-3 col-form-label">From Date</label> 
                 <div class="mr-sm-3">
@@ -52,7 +49,6 @@
         
         </div>
     </form>            
-  </form>
 </div>  
 </nav>
 
