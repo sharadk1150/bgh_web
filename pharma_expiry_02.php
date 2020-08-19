@@ -27,18 +27,11 @@
         }
 ?>
     
-<nav class="navbar navbar-dark fixed-top bg-primary">
-  <h6> Pharma: Counter Wise Expiry, Damage, Breakage</h6>
-</nav>
-<br><br><br>
-
-
-
- <form  name="myform" action="pharma_expiry_02.php" method="POST"> <input type="hidden" name="check_submit" value="1" />
- 
- <!-- print '<form  name="myform" action=' . $_SERVER['PHP_SELF'].  ' method="POST"> <input type="hidden" name="check_submit" value="1" />'; -->
-     
-<form class="form-inline">   
+  <nav class="navbar navbar-dark fixed-top bg-warning">
+  <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+    <div class="container">        
+        <form  name="myform" action="pharma_expiry_02.php" method="POST"> <input type="hidden" name="check_submit" value="1" />    
+          <form class="form-inline">   
  
    <div class="form-group row">
       <label for="finyear" class="col-sm-1 col-form-label">Finacial Year</label>
@@ -107,14 +100,6 @@ if (array_key_exists('check_submit', $_POST))
                 print '</tr>';
                 print '</thead>';
             
-// print the total value of the medicine issued to the CSR Counter  
-//                print '<tr>';
-//                while ($row_1 = oci_fetch_array($scount, OCI_RETURN_NULLS+OCI_ASSOC)) 
-//                {            
-//                    print '<b>' . 'Total Value of Medicine Issued to CSR HC-5 is Rs.: ' . $row_1["TOT_VALUE"] . '</b>';
-                    
-//                }                        
-//                print '</tr>';
 
 // Print the data in Table            
                         while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) 
@@ -179,4 +164,5 @@ else
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/popper.js/dist/popper.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script></body>
+</body>
 </html>

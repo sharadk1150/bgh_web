@@ -67,32 +67,15 @@ else {
 
 ?>
 
-
-
-
-
-
 <html>
 <head>
 <link rel="stylesheet "href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
    <body>
-    <!--  
-      <form action="" method="POST" enctype="multipart/form-data">
-         <input type="file" name="image" />
-         <input type="submit"/>
-      </form>
-    -->  
-   <!--     
    <nav class="navbar navbar-dark fixed-top bg-warning">
-      <h6>File Upload Utility....</h6>
-   </nav>
-   <br><br><br>
-   -->
-<div class="container"> 
-
+  <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <div class="container"> 
 <form action="" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate >
   
   <div class="form-row">
@@ -119,7 +102,7 @@ else {
       <label for="validationCustom03">File SubCategory</label>
       <input type="text" class="form-control" id="validationCustom03" required>
       <div class="invalid-feedback">
-        Please provide a valid city.
+        Please provide a valid SubCategory.
       </div>
     </div>
     <div class="col-md-3 mb-3">
@@ -129,7 +112,7 @@ else {
         <option>...</option>
       </select>
       <div class="invalid-feedback">
-        Please select a valid state.
+        Please select a Min Category.
       </div>
     </div>
     <div class="col-md-3 mb-3">
@@ -164,14 +147,6 @@ else {
   <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
 </div>
-
-<!--  
-      <form action="" method="POST" enctype="multipart/form-data">
-         <input type="file" name="image" />
-         <input type="submit"/>
-      </form>
-    -->  
-
 
 
 <script>

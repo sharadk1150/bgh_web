@@ -10,17 +10,13 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 <!--    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css"> -->
 <!--    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css"> -->
 <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-    
-    
 <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
-
- <!--   <link href="css/styles.css" rel="stylesheet"> -->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script> -->
+<!--   <link href="css/styles.css" rel="stylesheet"> -->
 
 
 <style>
@@ -35,7 +31,13 @@
 </head>
 
 <body>
-    
+ 
+<nav class="navbar navbar-dark fixed-top bg-warning">
+<a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+<h2>Covid Intimation</h2>
+</nav>
+<br><br><br>
+
     
     <div class="container">
         
@@ -350,9 +352,9 @@
     
 <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
 <!--    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/popper.js/dist/popper.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script></body>
 
     
     
