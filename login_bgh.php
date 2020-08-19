@@ -7,7 +7,8 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="node_modules/w3-css/w3.css">
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="stylesheet" href="node_modules/fas-web/css/all.min.css">
+<!-- <script src='https://kit.fontawesome.com/a076d05399.js'></script> -->
 <link rel="icon" type="image/png" href="sail-logo.jpg"/>
 
 <body onload="document.getElementById('id01').style.display='block'">

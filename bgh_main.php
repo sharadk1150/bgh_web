@@ -13,7 +13,11 @@ session_start();
     <!-- Bootstrap CSS and internal CSS -->        
         <link rel="stylesheet"    href="bgh_main_style.css">
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <!--
         <link rel="stylesheet"    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        -->
+        <link rel="stylesheet" href="node_modules/fas-web/css/all.min.css">
+        <link rel="icon" type="image/png" href="sail-logo.jpg"/>
 
         <style>    
             .dropdown-menu
@@ -49,6 +53,21 @@ session_start();
               margin-left: .1rem;
               margin-right: .1rem;
             }
+            .navbar-brand {
+              display: inline-block;
+              padding-top: .3125rem;
+              padding-bottom: .3125rem;
+              margin-right: 0rem;
+              font-size: 1.25rem;
+              line-height: inherit;
+              white-space: nowrap;
+            }
+
+            .container-fluid-nav div{
+            display: flex;
+            justify-content: space-around;
+}
+            
 
         </style>
         <title> Bokaro General Hospital, Bokaro</title>
@@ -68,15 +87,27 @@ session_start();
             
         }
 ?>
+<!-- <div class="container"> -->
+<div class="container-fluid-nav">
+<nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+<!--  <span class="navbar-text" style="color:blue;text-align:center">Bokaro General Hospital</span> -->
+      <h5 style="color:blue;text-align:center">Bokaro General Hospital Information System (Internal)</h5>
+</nav> 
+</div>
+
 
     <!-- NAVBAR FROM BOOTSTRAP -->
     <!-- class="navbar navbar-dark bg-primary" -->
     <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
         <nav class="navbar  sticky-top navbar-expand-lg navbar-dark bg-primary justified"> 
-        <a class="navbar-brand" href="#"><img src="bgh_logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="SAIL"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#"><img src="bgh_logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="SAIL"></a>               
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+
+        
+
+
         <div class="collapse navbar-collapse" id="navbarNavDropdown">            
           <ul class="navbar-nav">
             <li class="nav-item dropdown active">
@@ -285,7 +316,8 @@ session_start();
                   PACS
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="http://10.143.55.35">Pacs System</a>
+                  <a class="dropdown-item" href="http://10.143.55.35">Pacs System (Local)</a>
+                  <a class="dropdown-item" href="http://122.252.255.248/User_Login.asp">Pacs System (Internet)</a>
                   <a class="dropdown-item" href="#">About PACS System</a>
                   <a class="dropdown-item" href="#">Work Order PACS</a>
                   <a class="dropdown-item" href="#">AMC PACS</a>                  
@@ -353,10 +385,10 @@ session_start();
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="bgh_2.jpg" height="400px" class="d-block w-100" alt="...">
+        <img src="bgh_2.jpg" height="350px"  class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="bgh_3.jpg" height="400px" class="d-block w-100" alt="...">
+        <img src="bgh_3.jpg" height="350px" class="d-block w-100" alt="...">
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -389,24 +421,37 @@ session_start();
           </div>
         </div>
       </div>
-<!--
-      <div class="card border-success mb-3" style="max-width: 18rem;">
-        <div class="card-header bg-transparent border-success">Header</div>
-        <div class="card-body text-success">
-          <h5 class="card-title">Covid-19</h5>
-          <p class="card-text">Some Important Message Will Go Here.</p>
-        </div>
-        <div class="card-footer bg-transparent border-success">Footer</div>
-      </div>
--->
-
-
-
+<!-- CARD LAYOUT NUMBER -->
       <div class="card border-success mb-3" style="max-width: 18rem;">
         <div class="card-header bg-transparent border-success">Header</div>
         <div class="card-body text-success">
           <h5 class="card-title">Important Message</h5>
           <p class="card-text">Some Important Message Will Go Here.</p>
+<!-- Caraousel Entry has to be done Here  -->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="bgh_2.jpg" height="20px" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="bgh_3.jpg" height="20px" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>     
+<!-- Caraousel Entry is upto Here         -->
+
         </div>
         <div class="card-footer bg-transparent border-success">Footer</div>
       </div>
