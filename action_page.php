@@ -9,7 +9,6 @@ extract($_POST);
     echo $psw;
     echo "\n";
 
-
 if(!isset($submit))
 { 
      echo "<h1 align=center>SUBMIT!</h1>";

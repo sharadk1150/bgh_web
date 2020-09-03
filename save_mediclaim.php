@@ -3,22 +3,21 @@
 //    require('ac_db.inc.php');
 //    $db = new \Oracle\Db("ward", "hpv185e"); 
 
-
+    alert($nfmedmaster);
    $db = oci_connect("BGH", "hpv185e", "10.143.100.36/BGH6");
    if ($c)
    { 
-
         $mainminno = $_POST['mainminno'];
-        $minno   = $_POST['minno'];
-        $name    = $_POST['name'];
-        $sex     = $_POST['sex'];
-        $dob     = $_POST['dob'];
-        $stno    = $_POST['stno'];
-        $dos     = $_POST['dos'];
-        $doe     = $_POST['doe'];
-        $ind     = $_POST['ind'];
-        $add1    = $_POST['add1'];
-        $pin     = $_POST['pin'];
+        $minno     = $_POST['minno'];
+        $name      = $_POST['name'];
+        $sex       = $_POST['sex'];
+        $dob       = $_POST['dob'];
+        $stno      = $_POST['stno'];
+        $dos       = $_POST['dos'];
+        $doe       = $_POST['doe'];
+        $ind       = $_POST['ind'];
+        $add1      = $_POST['add1'];
+        $pin       = $_POST['pin'];
         $contactno = $_POST['contactno'];
 
         $sql = "INSERT INTO BGH_MEDICLAIM_MASTER (minno,name,add1,pincode1,ind,eff_date,stno,dob, date_sep,date_enrol,contact_no,sex)
@@ -39,7 +38,7 @@
 
         oci_execute($compiled);
 
-        //   echo json_encode(array("statusCode"=>400));  
+        //echo json_encode(array("statusCode"=>400));  
         $arr = array("statusCode"=> 200);
         echo json_encode($arr);
         oci_close($db);
@@ -49,6 +48,5 @@
         $arr = array("statusCode"=> 201);
         echo json_encode($arr);
         oci_close($db);
-
     }    
 ?>

@@ -76,31 +76,29 @@ function handleResponse() {
         document.getElementById('email_label').innerHTML = firstName;
 */
     document.getElementById('mainminno_help').innerText = '** FOUND  GETTING DATA **';
-    document.getElementById('minno').value = jsonObject.MINNO;
-    document.getElementById('name').value = jsonObject.NAME;    
-    document.getElementById('add1').value = jsonObject.ADD1;    
-    document.getElementById('pin').value = jsonObject.PINCODE1;
-    document.getElementById('ind').value = jsonObject.IND;
-    document.getElementById('stno').value = jsonObject.STNO;
-    document.getElementById('dob').value = jsonObject.DOB;
-    document.getElementById('dos').value = jsonObject.DATE_SEP;
-    document.getElementById('doe').value = jsonObject.DATE_ENROL;
-    document.getElementById('sex').value = jsonObject.SEX;
+    document.getElementById('minno').value  = jsonObject.MINNO;
+    document.getElementById('name').value   = jsonObject.NAME;    
+    document.getElementById('add1').value   = jsonObject.ADD1;    
+    document.getElementById('pin').value    = jsonObject.PINCODE1;
+    document.getElementById('ind').value    = jsonObject.IND;
+    document.getElementById('stno').value   = jsonObject.STNO;
+    document.getElementById('dob').value    = jsonObject.DOB;
+    document.getElementById('dos').value    = jsonObject.DATE_SEP;
+    document.getElementById('doe').value    = jsonObject.DATE_ENROL;
+    document.getElementById('sex').value    = jsonObject.SEX;
     document.getElementById('contactno').value = jsonObject.CONTACT_NO;   
     console.log(document.getElementById('doe').value);  
         }
         else {
             document.getElementById('mainminno_help').innerText = '** NOT FOUND **';
+            $nfmedmaster = jsonObject.statusCode;
             document.getElementById('minno').value = document.getElementById('mainminno').value;
-
-        }
-    
+        }    
 }
     else {
+        $nfmedmaster = jsonObject.statusCode;
         document.getElementById('mainminno_help').innerText = 'Min Number Not Found in The DataBase of BGH';
-        document.getElementById('minno').value = document.getElementById('mainminno').value;
-        
-        
+        document.getElementById('minno').value = document.getElementById('mainminno').value;                
     }
 }
 </script>
@@ -111,13 +109,9 @@ function handleResponse() {
         <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
         <h2>Mediclaim Master</h2>
     </nav>
-<br><br><br>
-    
-<div class="container">
-        
-        
-<!--        <div class="row row-content">  -->
-           
+<br><br><br>    
+<div class="container">                
+<!--        <div class="row row-content">  -->           
         <div class="row">
            <div class="col-10">
               <h3>Mediclaim Master Updation Form</h3>
@@ -130,7 +124,6 @@ function handleResponse() {
             
 <div class="col-12 col-md-12">
 	
-
     <div class="alert alert-success alert-dismissible" id="success" style="display:none;">
 	  <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
     </div>
@@ -142,15 +135,11 @@ function handleResponse() {
                 <div class="col-md-3">
 
 <!--                
-                  <input type="text" class="form-control" id="mainminno" name="mainminno" maxlength="12" 
-                    onkeypress="sendRequest(this.form.mainminno.value)" placeholder="Min Number">
--->
-
-               
-                    <input type="text" class="form-control" id="mainminno" name="mainminno" maxlength="12"   
-                    onkeypress="handle(event, this.form.mainminno.value )" placeholder="Min Number">
-
-
+                <input type="text" class="form-control" id="mainminno" name="mainminno" maxlength="12" 
+                onkeypress="sendRequest(this.form.mainminno.value)" placeholder="Min Number">
+-->               
+                <input type="text" class="form-control" id="mainminno" name="mainminno" maxlength="12"   
+                onkeypress="handle(event, this.form.mainminno.value )" placeholder="Min Number">
                 </div>
 <!--                <div id="mainminno_help"><p> </p></div> -->
                 <span id="mainminno_help"></span><br />   
@@ -252,14 +241,10 @@ function handleResponse() {
                 
 </div>
 </div>
-
     
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/popper.js/dist/popper.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script></body>
-
-    
-    
 
 <script>
 
@@ -325,8 +310,6 @@ function dataResult(dataresponse)
 					   alert("Error occured !");
 		}
 }
-
-
 
 }
 else{

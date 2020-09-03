@@ -71,8 +71,10 @@ if (isset($_GET['mainminno']))
 			echo json_encode($array);
     	}
     	else 
-    	{
+    	{			
 			$array["statusCode"] =  '201';   
+			// data not found in med master so setting the code as 201
+			$nfmednast = $array["statusCode"];
 			echo json_encode($array);
     	}
 	
