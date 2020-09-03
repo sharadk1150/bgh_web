@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-<!--      
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
--->
 <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="node_modules/datatables.net-bs4/css/dataTables.bootstrap.min.css">
-<link rel="stylesheet" href="node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="DataTables/datatables.min.css" rel="stylesheet" type="text/css" />
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
-
+<script src="node_modules/popper.js/dist/popper.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
 
 
 <style>
@@ -46,6 +38,7 @@
  <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
   <h6>BGH Covid Report</h6>
 <div class="container">
+<!-- Change Here for New Program after Copying -->
 <form  class="form-inline" name="myform" action="misc_bgh_covid_report.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
   
     <div class="form-group">  
@@ -62,7 +55,8 @@
 </form>
 </div>
 </nav>
-<br><br><br>
+<br><br><br><br>
+
 <?php
 if (array_key_exists('check_submit', $_POST)) 
 {
@@ -73,7 +67,7 @@ if (array_key_exists('check_submit', $_POST))
         function do_fetch($mystdate, $myendate, $s)
         {            
             print '<div class="table-responsive">';
-            print '<table class="table table-hover table-striped table-bordered mydatatable" style="width:100%">';            
+            print '<table class="table table-hover table-striped table-bordered mydatatable" style="width:100%">';                        
             print '<p id="billnotmade"></p>';
             print '<thead>';           
             print '<tr>';
@@ -137,10 +131,10 @@ if (array_key_exists('check_submit', $_POST))
         // Create connection to Oracle
         $c = oci_connect("WARD", "hpv185e", "10.143.55.53/BGHWARD");
         $query = "select name, age, gender, mobile_no, address, date_of_sample_coll,
-                  date_of_true_nat, lab_sample_no, truenat_type, true_nat_result, suspect_no
+                  date_of_true_nat, lab_sample_no, truenat_type, true_nat_result
                   from covid_true_nat_vw
                   where to_char(date_of_sample_coll,'YYYY-MM-DD') between :EIDBV and :EIDBV1 
-                  order by suspect_no desc";
+                  order by date_of_true_nat";
 
         $s = oci_parse($c, $query);
         $mystdate = $stdate;
@@ -169,6 +163,19 @@ else
 <script src="node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 
 
+
+<script>
+$(document).ready(function() {
+    $('.mydatatable').DataTable( {
+        "scrollY":        "500px",
+        "scrollCollapse": true,
+        "paging":         false
+    } );
+} );
+</script>  
+
+<!--
+
 <script>  
       $(document).ready(function(){  
         $('.mydatatable').DataTable({
@@ -179,5 +186,7 @@ else
         });
       });  
  </script>  
+ -->
+
 </body>
 </html>

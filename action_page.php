@@ -40,8 +40,15 @@ if (isset($_SESSION["login"]))
     $_SESSION["login"]=$uname;
     $_SESSION["loggedIn"] = true; 
 //    header('Location: get_adm_date.php');
-    header('Location: bgh_main.php');
-    exit;
+    if ($uname='mediclaim') 
+    {
+        header('Location: bgh_mediclaim_master.php');
+        exit;
+    }
+    elseif ($uname='bgh1234') {
+        header('Location: bgh_main.php.php');
+        exit;        
+    }
 }
 else
 {

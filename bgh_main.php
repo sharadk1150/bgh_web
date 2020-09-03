@@ -89,9 +89,12 @@ session_start();
 ?>
 <!-- <div class="container"> -->
 <div class="container-fluid-nav">
-<nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+<h5 style="color:blue;text-align:center; background-color: orange">Bokaro General Hospital Information System (Internal)</h5>
+<!--
+<nav style="color:blue;text-align : center" class="navbar navbar-expand-lg navbar-dark bg-warning">
+-->
 <!--  <span class="navbar-text" style="color:blue;text-align:center">Bokaro General Hospital</span> -->
-      <h5 style="color:blue;text-align:center">Bokaro General Hospital Information System (Internal)</h5>
+      
 </nav> 
 </div>
 

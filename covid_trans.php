@@ -59,7 +59,8 @@
 
     <div class="alert alert-success alert-dismissible" id="success" style="display:none;">
 	  <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-	</div>                                                
+    </div>        
+                                            
     <form id="fupForm" name="form1" method="post">                                
             <div class="form-group row">
                  <label for="bslemp" class="col-md-2 col-form-label">BSL On Roll Employee</label>
@@ -351,8 +352,9 @@
 
     
 <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
-<!--    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script> -->
-<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script> -->
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script> -->
 <script src="node_modules/popper.js/dist/popper.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script></body>
 
@@ -460,7 +462,7 @@ $(document).ready(function() {
         window.location.replace("https://www.tutorialrepublic.com/");
     }      
         
-    }
+   
     
     const element = document.querySelector('#butview');
     element.addEventListener('click', callpage, false);
