@@ -430,7 +430,7 @@ session_start();
         <div class="card-body text-success">
           <h5 class="card-title">Important Message</h5>
           <p class="card-text">Some Important Message Will Go Here.</p>
-<!-- Caraousel Entry has to be done Here  -->
+<!-- Caraousel Entry has to be done Here 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -453,7 +453,7 @@ session_start();
       <span class="sr-only">Next</span>
     </a>
   </div>     
-<!-- Caraousel Entry is upto Here         -->
+Caraousel Entry is upto Here         -->
 
         </div>
         <div class="card-footer bg-transparent border-success">Footer</div>

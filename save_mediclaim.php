@@ -3,9 +3,8 @@
 //    require('ac_db.inc.php');
 //    $db = new \Oracle\Db("ward", "hpv185e"); 
 
-    alert($nfmedmaster);
    $db = oci_connect("BGH", "hpv185e", "10.143.100.36/BGH6");
-   if ($c)
+   if ($db)
    { 
         $mainminno = $_POST['mainminno'];
         $minno     = $_POST['minno'];
@@ -36,17 +35,110 @@
         oci_bind_by_name($compiled, ':pin'    	,$pin);
         oci_bind_by_name($compiled, ':contactno',$contactno);
 
-        oci_execute($compiled);
 
-        //echo json_encode(array("statusCode"=>400));  
-        $arr = array("statusCode"=> 200);
-        echo json_encode($arr);
-        oci_close($db);
-   }    
-    else
-    {
+        // catch the error if there is problem in executing the statement
+        if (false === @oci_execute($compiled))
+        {
+            $e = oci_error($compiled);
+            if ($e['code']='ORA-00001')
+            {
+                //update the database
+                $usql = "update bgh_mediclaim_master set 
+                                add1       =  :add1,
+                                name       =  :name,
+                                sex        =  :gender,
+                                dob        =  to_date(:dob,'YYYY-MM-DD'),
+                                stno       =  :stno,
+                                date_sep    = to_date(:dos,'YYYY-MM-DD'),
+                                date_enrol =  to_date(:doe,'YYYY-MM-DD'),
+                                ind        =  :ind,
+                                pincode1   =  :pin,
+                                contact_no =  :contactno 
+                        where minno = :minno";
+                $s = oci_parse($db, $usql);        
+                        oci_bind_by_name($s, ':minno'   ,$minno);
+                        oci_bind_by_name($s, ':add1'    ,$add1);
+                        oci_bind_by_name($s, ':name'    ,$name);
+                        oci_bind_by_name($s, ':gender'  ,$sex);
+                        oci_bind_by_name($s, ':dob'    	,$dob);
+                        oci_bind_by_name($s, ':stno'    ,$stno);
+                        oci_bind_by_name($s, ':dos'    	,$dos);
+                        oci_bind_by_name($s, ':doe'    	,$doe);
+                        oci_bind_by_name($s, ':ind'    	,$ind);
+                        oci_bind_by_name($s, ':pin'    	,$pin);
+                        oci_bind_by_name($s, ':contactno',$contactno);
+                        // updated in bgh_mediclaim_master        
+                        $u= oci_execute($s);
+                        if ($u)
+                        {
+                        //call the stored procedure here      
+                        $uupd = 'BEGIN UPDATE_BGHMID_EMPLOYEE_MIN(:minno,:name,:add1,:pin,:ind,:stno, :contactno, :gender,:dob,:dos); END;';
+
+                        $stid = oci_parse($db, $uupd);  
+                        oci_bind_by_name($stid, ':minno'   ,$minno);
+                        oci_bind_by_name($stid, ':add1'    ,$add1);
+                        oci_bind_by_name($stid, ':name'    ,$name);
+                        oci_bind_by_name($stid, ':gender'  ,$sex);
+                        oci_bind_by_name($stid, ':stno'    ,$stno);
+                        oci_bind_by_name($stid, ':ind'     ,$ind);
+                        oci_bind_by_name($stid, ':pin'     ,$pin);
+                        oci_bind_by_name($stid, ':contactno',$contactno);
+                        oci_bind_by_name($stid, ':dob',     $dob);
+                        oci_bind_by_name($stid, ':dos',     $dos);
+                        $uu=oci_execute($stid);                        
+            
+                        // Stored Procedure upto here 
+                        //echo json_encode(array("statusCode"=>400));  
+                        $arr = array("statusCode"=> 200);
+                        echo json_encode($arr);
+                        oci_close($db);                        
+                        }
+                        else
+                        {
+                        $arr = array("statusCode"=> 201);
+                        echo json_encode($arr);
+                        oci_close($db);                        
+                        }
+
+            }
+
+        }
+        // new values inserted in to bgh_mediclaim_master
+        else 
+        {
+            //echo json_encode(array("statusCode"=>400));  
+            //call the stored procedure here       
+            $uupd = 'BEGIN UPDATE_BGHMID_EMPLOYEE_MIN(:minno,:name,:add1,:pin,:ind,:stno, :contactno, :gender,:dob,:dos); END;';
+
+            $stid = oci_parse($db, $uupd);  
+            oci_bind_by_name($stid, ':minno'   ,$minno);
+            oci_bind_by_name($stid, ':add1'    ,$add1);
+            oci_bind_by_name($stid, ':name'    ,$name);
+            oci_bind_by_name($stid, ':gender'  ,$sex);
+            oci_bind_by_name($stid, ':stno'    ,$stno);
+            oci_bind_by_name($stid, ':ind'     ,$ind);
+            oci_bind_by_name($stid, ':pin'     ,$pin);
+            oci_bind_by_name($stid, ':contactno',$contactno);
+            oci_bind_by_name($stid, ':dob',     $dob);
+            oci_bind_by_name($stid, ':dos',     $dos);
+            $uu=oci_execute($stid);                        
+            //$e = oci_error($stid);
+            // end of stored procedure
+            $arr = array("statusCode"=> 200);
+            echo json_encode($arr);
+            oci_close($db);
+        }
+
+
+
+
+
+//connection issue
+}
+else
+{
         $arr = array("statusCode"=> 201);
         echo json_encode($arr);
         oci_close($db);
-    }    
+}    
 ?>

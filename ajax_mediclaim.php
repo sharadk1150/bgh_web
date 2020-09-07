@@ -43,7 +43,8 @@ if (isset($_GET['mainminno']))
 		oci_define_by_name($s, "SEX",        $vsex);
     
 		// Execute the query.
-		oci_execute($s);
+		$r = oci_execute($s);
+		
 	
 		// Fetch the results.
 		oci_fetch($s);

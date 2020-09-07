@@ -1,6 +1,9 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html>
-
 <head>
 
     <title>Ristorante Con Fusion: About Us</title>
@@ -91,12 +94,11 @@ function handleResponse() {
         }
         else {
             document.getElementById('mainminno_help').innerText = '** NOT FOUND **';
-            $nfmedmaster = jsonObject.statusCode;
+           
             document.getElementById('minno').value = document.getElementById('mainminno').value;
         }    
 }
     else {
-        $nfmedmaster = jsonObject.statusCode;
         document.getElementById('mainminno_help').innerText = 'Min Number Not Found in The DataBase of BGH';
         document.getElementById('minno').value = document.getElementById('mainminno').value;                
     }
@@ -105,8 +107,30 @@ function handleResponse() {
 <!-- THE SCRIPT IS UPTTO HERE -->
 </head>
 <body>
+<!-- Check if the User is Logged in or Not -->
+<?php
+          
+         $login_name = $_SESSION["login"];
+        if (!isset($_SESSION["loggedIn"]))
+        {  
+            header('Location:/login_bgh.php'); 
+        }
+        else
+        {
+            ;
+            
+        }
+?>
+<!-- Upto Here-->
+
+
+
+
+
+
+
     <nav class="navbar navbar-dark fixed-top bg-warning">
-        <a class="navbar-brand" href="bgh_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+        <a class="navbar-brand" href="login_bgh.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
         <h2>Mediclaim Master</h2>
     </nav>
 <br><br><br>    
@@ -224,8 +248,6 @@ function handleResponse() {
                             </div>                                        
             </div>
 
-
-
             <!-- Mediclaim Master Updates Ends Here  -->    
 
 
@@ -297,17 +319,21 @@ function dataResult(dataresponse)
 {
 		var dataresponse = JSON.parse(dataresponse);
         console.log(this.resposeText);
+        console.log(dataresponse.statusCode);
 		if(dataresponse.statusCode==200)
         {
             alert("Saving Data.... !");
 			$("#butsave").removeAttr("disabled");
+//          $('#fupForm').reset();
+            document.getElementById("fupForm").reset();
+            document.getElementById('mainminno_help').innerText ='';
 			$('#fupForm').find('input:text').val('');
 			$("#success").show();
-			$('#success').html('Data added successfully !'); 						
+			$('#success').html('Data Added successfully !'); 						
 		}
 		else if(dataresponse.statusCode==201)
         {
-					   alert("Error occured !");
+			alert("Error occured !");
 		}
 }
 
