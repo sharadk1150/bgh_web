@@ -52,6 +52,11 @@ if ( (isset($_SESSION["login"])) &&  ($_SESSION["loggedIn"] = true)  )
         header('Location: bgh_main.php');
         exit;        
     }
+    elseif ($uname=='srm1234') {
+        header('Location: srm_vendor_main.php');
+        exit;        
+    }
+
 }
 else
 {

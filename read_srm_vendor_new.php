@@ -1,3 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="DataTables/datatables.min.css" rel="stylesheet" type="text/css" />
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/popper.js/dist/popper.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+
+
+<style>
+    body 
+    {
+        font: 90%/1.45em "Helvetica Neue", HelveticaNeue, Verdana, Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        background-color: #fff;
+    }
+
+    label,h6 {
+        color:blue;
+        text-align: left;
+        margin-top: 5px;
+        padding: 0px;
+        font-weight: bold;
+        font-style: normal;        
+    }
+
+
+</style>
+
+    <meta charset=utf-8 />
+    <title>SRM- Vendor Activation Listing</title>
+  </head>
+  <body>
+
+
+
+
+<!--<div class="container"> -->
+
+<nav class="navbar navbar-dark fixed-top bg-warning">
+ <a class="navbar-brand" href="srm_vendor_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
+  <h6>SRM-Vendor Activation Listing</h6>
+<div class="container">
+</div>
+</nav>
+<br><br><br>
+
+
 <?php
 //use Phppot\DataSource;
 
@@ -16,7 +69,7 @@ if (isset($_POST["import"])) {
         
         while (($column = fgetcsv($file, 10000, ",")) !== FALSE) {
             
-          $vendor           =      'X'.$column[0];
+          $vendor           =      'V'.$column[0];
           $name1            =        $column[1];
           $name2            =        $column[2];
           $city             =        $column[3];
@@ -46,6 +99,9 @@ if (isset($_POST["import"])) {
                                   
           if ($u) 
           {
+                $uupd = 'BEGIN srm_initial_activation_email(trunc(sysdate)); END;';  
+                $stid = oci_parse($c, $uupd);  
+                $uu=oci_execute($stid);
                 $type = "success";
                 $message = "CSV Data Imported into the Database";
           } else 
@@ -62,7 +118,8 @@ if (isset($_POST["import"])) {
 <html>
 
 <head>
-<script src="jquery-3.2.1.min.js"></script>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<!-- <script src="jquery-3.2.1.min.js"></script> -->
 
 <style>
 body {

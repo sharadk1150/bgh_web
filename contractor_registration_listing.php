@@ -33,7 +33,7 @@
 </style>
 
     <meta charset=utf-8 />
-    <title>SRM- Vendor Activation Listing</title>
+    <title>Contractor Registration Listing</title>
   </head>
   <body>
 
@@ -46,7 +46,7 @@
  <a class="navbar-brand" href="srm_vendor_main.php"><img src="sail-logo.jpg" width="40" height="40" alt="BGH-MAIN"></a> 
   <h6>SRM-Vendor Activation Listing</h6>
 <div class="container">
-<form  class="form-inline" name="myform" action="srm_mail_listing.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
+<form  class="form-inline" name="myform" action="contractor_registration_listing.php" method="POST"> <input type="hidden" name="check_submit" value="1" />     
   
 <div class="form-group">  
         <label for="stdate">Received From ERP From Date</label>  
@@ -72,40 +72,32 @@ if (array_key_exists('check_submit', $_POST))
   if (isset($_POST['stdate'])){$stdate    =  $_POST['stdate'];}
   if (isset($_POST['endate'])){$endate    =  $_POST['endate'];}
          
-        function do_fetch($mystdate, $myendate, $s)
+        function do_fetch($s)
         {
             print '<table class="table table-hover table-striped table-bordered mydatatable" style="width:100%">'; 
       
             print '<thead>';           
             print '<tr>';
-                print '<th scope="col">VCode</th>';
-                print '<th scope="col">VName</th>';
-                print '<th scope="col">VEmail</th>';            
-                print '<th scope="col">VMobile</th>';
-                print '<th scope="col">Send</th>';
-                print '<th scope="col">RecDt</th>';
-                print '<th scope="col">MailSent</th>';            
-                print '<th scope="col">MailRecd</th>';
-                print '<th scope="col">PassSent</th>';
-                print '<th scope="col">NewVCode</th>';            
-                print '<th scope="col">RP1</th>';            
+                print '<th scope="col">RegType</th>';
+                print '<th scope="col">V-Code</th>';
+                print '<th scope="col">PAN-No</th>';            
+                print '<th scope="col">Reg-Number</th>';
+                print '<th scope="col">EMail</th>';
+                print '<th scope="col">Passwd</th>';
+                        
             print '</tr>';
             print '</thead>';   
 
             print '<tfoot>';           
             print '<tr>';
-                print '<th scope="col">VCode</th>';
-                print '<th scope="col">VName</th>';
-                print '<th scope="col">VEmail</th>';            
-                print '<th scope="col">VMobile</th>';
-                print '<th scope="col">Send</th>';
-                print '<th scope="col">RecDt</th>';
-                print '<th scope="col">MailSent</th>';            
-                print '<th scope="col">MailRecd</th>';
-                print '<th scope="col">PassSent</th>';
-                print '<th scope="col">NewVCode</th>';            
-                print '<th scope="col">RP1</th>';            
-            print '</tr>';
+            print '<th scope="col">RegType</th>';
+            print '<th scope="col">V-Code</th>';
+            print '<th scope="col">PAN-No</th>';            
+            print '<th scope="col">Reg-Number</th>';
+            print '<th scope="col">EMail</th>';
+            print '<th scope="col">Passwd</th>';
+                     
+        print '</tr>';
             print '</tfoot>';   
             
             
@@ -125,26 +117,22 @@ if (array_key_exists('check_submit', $_POST))
         }
         
         // Create connection to Oracle
-        $c = oci_connect("BGH", "hpv185e", "10.143.100.36/BGH6");
+        $c = oci_connect("CNTR", "CNTR", "10.143.100.249/ORCL");
         // Use bind variable to improve resuability, 
         // and to remove SQL Injection attacks.
-        $query = "select v_code, v_name, v_email,v_mobile, 
-                  send, to_char(recd_from_pur,'DD.MM.YY') recd_date, to_char(mail_sent_date,'DD.MM.YY') mail_sent, 
-                  to_char(mail_recd_date,'DD.MM.YY') mail_recd, to_char(pass_sent_date,'DD.MM.YY') pass_sent,
-                  newv_code, rp1_updated 
-                  from SRM_MAIL
-                  where to_char(recd_from_pur,'YYYY-MM-DD') between :EIDBV and :EIDBV1";
+        $query = "select reg_type, v_code, pan_no, reg_number, email_id, passwd
+                  from cntr_registration";
         $s = oci_parse($c, $query);
 
-        $mystdate = $stdate;
-        oci_bind_by_name($s, ":EIDBV", $mystdate);
+//        $mystdate = $stdate;
+//        oci_bind_by_name($s, ":EIDBV", $mystdate);
 
-        $myendate = $endate;
-        oci_bind_by_name($s, ":EIDBV1", $myendate);
+//        $myendate = $endate;
+//        oci_bind_by_name($s, ":EIDBV1", $myendate);
 // Execute the query
         oci_execute($s);
 // fecth data
-        do_fetch($mystdate, $myendate, $s);
+        do_fetch($s);
 //        do_fetch($s);
     
 

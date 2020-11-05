@@ -40,13 +40,10 @@
 
     function do_fetch_med($s)
         {
-//            date("d/m/Y", strtotime($str));
-             
-//                print '<table class="table table-sm table-bordered table-striped table-dark w-auto table-hover">';   
+//            date("d/m/Y", strtotime($str));             
+//            print '<table class="table table-sm table-bordered table-striped table-dark w-auto table-hover">';   
                 print '<table class="table table-hover table-striped table-bordered mydatatable" style="width:100%">'; 
-
-                    print '<thead class="thead-light">';
-        
+                    print '<thead class="thead-light">';        
                     print '<tr>'; 
                     print '<td colspan="9">' . 'Medicine Master List' . '</td>';
                     print '</tr>';
@@ -62,8 +59,7 @@
                         $x = 0;
                         while ($row = oci_fetch_array($s, OCI_RETURN_NULLS+OCI_ASSOC)) 
                         {
-                            $x = $x + 1;
-                            
+                            $x = $x + 1;                            
                             if ($x%2==0) 
                             {                            
                                 print '<tr class="bg-primary">';
