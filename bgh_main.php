@@ -66,8 +66,27 @@ session_start();
             .container-fluid-nav div{
             display: flex;
             justify-content: space-around;
-}
-            
+            }
+            .circular--square {
+            border-radius: 50%;
+            }
+
+            .circular--landscape {
+            display: inline-block;
+            position: relative;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 50%;
+          }
+
+          .circular--landscape img {
+          width: auto;
+          height: 100%;
+          margin-left: -50px;
+          }            
+
+
 
         </style>
         <title> Bokaro General Hospital, Bokaro</title>
@@ -393,10 +412,17 @@ session_start();
       <div class="carousel-item active">
         <img src="bgh_2.jpg" height="350px"  class="d-block w-100" alt="...">
       </div>
+
+  
+
+
+<!-- may be uncommented later
       <div class="carousel-item">
         <img src="bgh_3.jpg" height="350px" class="d-block w-100" alt="...">
       </div>
     </div>
+-->    
+
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
@@ -408,14 +434,24 @@ session_start();
   </div>     
 <!-- Caraousel Entry is upto Here         -->
 
+
+
+
+
+
+
+
+
 <!-- CARD LAYOUT FROM THE BOOTSTRAP GOES HERE -->
 
 <div class="card-deck">
 
-    <div class="card mb-6" style="max-width: 540px;">
+    <div class="card mb-6" style="max-width: 350px;">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="draksingh1.jpg" class="card-img" alt="...">
+            <div class="circular--landscape">
+              <img src="draksingh1.jpg" />
+            </div>
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -471,10 +507,10 @@ Caraousel Entry is upto Here         -->
         <div class="card-footer bg-transparent border-success">Footer</div>
     </div>
 
-    <div class="card mb-6 bg-primary" style="max-width: 540px;">
+    <div class="card mb-6 bg-information" style="max-width: 540px;">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="vkpandey.jpg" class="card-img" alt="...">
+            <img src="VKP_circle.png" class="card-img" alt="...">
           </div>
           <div class="col-md-8">
             <div class="card-body">
