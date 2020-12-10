@@ -28,8 +28,6 @@
         font-weight: bold;
         font-style: normal;        
     }
-
-
 </style>
 
     <meta charset=utf-8 />

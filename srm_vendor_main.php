@@ -113,6 +113,7 @@ session_start();
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">            
           <ul class="navbar-nav">
+            
             <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Vendor Enablement
@@ -128,6 +129,15 @@ session_start();
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="srm_mail_listing.php">View SRM Vendors</a>
+              </div>
+            </li>
+
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Initial Activation Mail
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="mail_gmail.php">Initial Activation Mail</a>
               </div>
             </li>
             

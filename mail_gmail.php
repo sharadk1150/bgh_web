@@ -8,6 +8,26 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/popper.js/dist/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <style>
+    body 
+    {
+        font: 90%/1.45em "Helvetica Neue", HelveticaNeue, Verdana, Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        background-color: #fff;
+    }
+
+    label,h6 {
+        color:blue;
+        text-align: left;
+        margin-top: 5px;
+        padding: 0px;
+        font-weight: bold;
+        font-style: normal;        
+    }
+    </style>
+
 
 </head>
 <body>
@@ -91,7 +111,8 @@ if (isset($_POST['getdata']))
     }
 
         $stid = oci_parse($conn, "SELECT v_code, v_name, v_email, init_pass 
-        FROM srm_mail where to_char(recd_from_pur,'YYYY-MM-DD') between :EIDBV and :EIDBV1");
+        FROM srm_mail where pass_sent_date is null and init_pass is not null and
+        to_char(recd_from_pur,'YYYY-MM-DD') between :EIDBV and :EIDBV1");
 
         $mystdate = $stdate;
         oci_bind_by_name($stid, ":EIDBV", $mystdate);
@@ -101,14 +122,14 @@ if (isset($_POST['getdata']))
 
         oci_execute($stid);
 
-while (($row = oci_fetch_row($stid)) != false) {
+//while (($row = oci_fetch_array($stid)) != false) 
+while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS)) 
+{
 //    echo $row[0] . " " . $row[1] . "<br>\n";
-
 //    $mail->addAddress("singh.sharadk@gmail.com", "Recepient Name");
 
     $mail->addAddress("$row[2]", "Recepient Name");
-
-        $mail->Body = "Dear Sir/Madam". "\n".
+    $mail->Body = "Dear Sir/Madam". "\n".
                   "your credentials are". "\n" .
                   "Userid:". $row[0]. "\n" .
                   "Initial Password:".$row[3]. "\n".
@@ -119,21 +140,20 @@ while (($row = oci_fetch_row($stid)) != false) {
     {
         echo "Mailer Error: " . $mail->ErrorInfo;
     } 
-        else 
+    else 
     {
         echo "Message has been sent successfully";
-        $stid = oci_parse($conn, "update srm_mail set mail_sent_date=trunc(sysdate), 
-        pass_sent_date=trunc(sysdate), mail_recd_date=trunc(sysdate) 
+        $sqid = oci_parse($conn, "update srm_mail set mail_sent_date=trunc(sysdate), 
+        pass_sent_date=trunc(sysdate), mail_recd_date=trunc(sysdate), SEND='Y' 
         where v_code=". "'". $row[0]. "'");
-        oci_execute($stid);
-
-
-
+        oci_execute($sqid);
     }
 }
-
 oci_free_statement($stid);
+oci_free_statement($sqid);
 oci_close($conn);
+
+
 }
 else if (isset($_POST['sendmail']))
 {
@@ -151,7 +171,6 @@ else if (isset($_POST['sendmail']))
 
 
 }
-
 ?>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
