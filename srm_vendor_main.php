@@ -119,7 +119,7 @@ session_start();
                 Vendor Enablement
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="read_srm_vendor_new.php">Upload and Send Activation Mail</a>
+                <a class="dropdown-item" href="read_srm_vendor_new.php">Upload CSV File</a>
               </div>
             </li>
 
@@ -134,13 +134,23 @@ session_start();
 
             <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Initial Activation Mail
+                Activation Mail With Login Credentials
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="mail_gmail.php">Initial Activation Mail</a>
               </div>
             </li>
-            
+
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ZMVENDACT UPDATION
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="zmvendact_put.php">Initial Activation Mail</a>
+              </div>
+            </li>
+
+
 
               <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
