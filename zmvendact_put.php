@@ -74,9 +74,20 @@ if (isset($_POST['getdata']))
 
 
         $stid = oci_parse($conn, 
-        "SELECT v_code, v_name, v_email, v_mobile, nvl(v_slno,' ') v_slno, send, 
-        to_char(recd_from_pur, 'DD.MM.RRRR') recd_from_pur,
-        nvl(to_char(mail_bounce_dt, 'DD.MM.RRRR'),' ') bounce_dt 
+        "SELECT 
+        substr(v_code,2) v_code, 
+        v_name, 
+        v_email, 
+        v_mobile, 
+        nvl(v_slno,'1') v_slno, 
+        send, 
+        to_char(recd_from_pur, 'YYYYMMDD') recd_from_pur,
+        to_char(MAIL_SENT_DATE,'YYYYMMDD'),
+        to_char(MAIL_RECD_DATE,'YYYYMMDD'),
+        to_char(PASS_SENT_DATE,'YYYYMMDD'), 
+        nvl(to_char(mail_bounce_dt, 'YYYYMMDD'),' ') mail_bounce_dt,
+        INIT_PASS,
+        NEWV_CODE 
         FROM srm_mail WHERE 
         to_char(recd_from_pur,'YYYY-MM-DD') between :EIDBV and :EIDBV1");
 
@@ -89,20 +100,20 @@ if (isset($_POST['getdata']))
         oci_execute($stid);
 
 
-        $myfile = fopen("orafile.csv", "w") or die("Unable to Open File");
-        fwrite($myfile, "v_code, v_name, v_email, v_mobile, v_slno, send, recd_from_pur, bounce_dt\n");
+        $myfile = fopen("zmvendact.txt", "w") or die("Unable to Open File");
+//        fwrite($myfile, "v_code, v_name, v_email, v_mobile, v_slno, send, recd_from_pur, bounce_dt\n");
         
         while(($row = oci_fetch_array($stid, OCI_RETURN_NULLS)) != false)
         {
-            fwrite($myfile, $row[0] . ',' . $row[1] . ',' . $row[2] . ',' . $row[3] . ',' . $row[4] . ',' . $row[5] . ',' . $row[6] . ',' . $row[7] . ',' . "\n");
+            fwrite($myfile, $row[0] . '|' . $row[1] . '|' . $row[2] . '|' . $row[3] . '|' . $row[4] . '|' . $row[5] . '|' . $row[6] . '|' . $row[7] . '|' . $row[8]. '|' . $row[9]. '|' . $row[10]. '|'. $row[11] . '|' . $row[12] . '|' . "\n");
         }
         oci_free_statement($stid);
         oci_close($conn);
         
-        echo "Data Exported To the file";
+        echo "<h1>Data Exported To the file</h1>";
         fclose($myfile);
          // Function call
-        ftp_file_put_contents('orafile.csv', 'This text will be written to your text file via FTP.');
+        ftp_file_put_contents('zmvendact.txt');
 
 }
 else if (isset($_POST['sendmail']))
@@ -123,19 +134,21 @@ else if (isset($_POST['sendmail']))
 }
 
 
-function ftp_file_put_contents($remote_file, $file_string) 
+function ftp_file_put_contents($remote_file) 
 {
-
+    echo('<p>Inside the Function .....</p>');
     // FTP login details
-    $ftp_server='my-ftp-server.de'; 
-    $ftp_user_name='my-username'; 
-    $ftp_user_pass='my-password';
+    $ftp_server='10.143.100.72'; 
+    $ftp_user_name='clc'; 
+    $ftp_user_pass='clc123';
     
     // Create temporary file
-    $local_file=fopen('php://temp', 'r+');
-    fwrite($local_file, $file_string);
-    rewind($local_file);       
-    
+    //$local_file=fopen('php://temp', 'r+');
+    //fwrite($local_file, $file_string);
+    //rewind($local_file);       
+    $local_file='zmvendact.txt';
+    $remote_file='zmvendact.txt';
+
     // FTP connection
     $ftp_conn=ftp_connect($ftp_server); 
     
@@ -143,7 +156,7 @@ function ftp_file_put_contents($remote_file, $file_string)
     @$login_result=ftp_login($ftp_conn, $ftp_user_name, $ftp_user_pass); 
     
     // FTP upload
-    if($login_result) $upload_result=ftp_fput($ftp_conn, $remote_file, $local_file, FTP_ASCII);
+    if($login_result) $upload_result=ftp_put($ftp_conn, $remote_file, $local_file, FTP_ASCII);
     
     // Error handling
     if(!$login_result or !$upload_result)
@@ -153,22 +166,13 @@ function ftp_file_put_contents($remote_file, $file_string)
     
     // Close FTP connection
     ftp_close($ftp_conn);
-    
+    echo('<p>File Transferred To The Server.</p>');
+
     // Close file handle
-    fclose($local_file); 
-
+    //fclose($local_file); 
 }
-    
-    
-   
-
-
-
-
-
-
-
 ?>
+
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
