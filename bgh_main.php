@@ -13,6 +13,8 @@ session_start();
     <!-- Bootstrap CSS and internal CSS -->        
         <link rel="stylesheet"    href="bgh_main_style.css">
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        
+
         <!--
         <link rel="stylesheet"    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         -->
@@ -158,7 +160,7 @@ session_start();
                 IPD/WARD
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Admissions Dashboard</a>
+                <a class="dropdown-item" href="inv_index.php">Admissions Dashboard</a>
                 <a class="dropdown-item" href="adm_all_admissions.php">All Admissions Searhable</a>
                 <a class="dropdown-item" href="get_adm_date.php">All Admissions</a>
                 <a class="dropdown-item" href="get_adm_employee.php">ON-Roll Employee IPD</a>
@@ -173,6 +175,9 @@ session_start();
                 <a class="dropdown-item" href="adm_cas_report_adm.php">Admission Report for Casualty</a>
                 <a class="dropdown-item" href="adm_unit_master.php">Unit Master</a>
                 <a class="dropdown-item" href="#">Entitled/Non-Entitled Admissions</a>
+                <a class="dropdown-item" href="adm_google_chart.php">Yearly Admissions Chart</a>
+
+
               </div>
             </li>
             
@@ -410,11 +415,8 @@ session_start();
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="bgh_2.jpg" height="350px"  class="d-block w-100" alt="...">
+        <img src="bgh_2.jpg" height="300px"  class="d-block w-100" alt="...">
       </div>
-
-  
-
 
 <!-- may be uncommented later
       <div class="carousel-item">
@@ -434,113 +436,163 @@ session_start();
   </div>     
 <!-- Caraousel Entry is upto Here         -->
 
-
-
-
-
-
-
-
-
 <!-- CARD LAYOUT FROM THE BOOTSTRAP GOES HERE -->
 
-<div class="card-deck">
+<!--Carousel Wrapper-->
+<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
-    <div class="card mb-6" style="max-width: 350px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <div class="circular--landscape">
-              <img src="draksingh1.jpg" />
-            </div>
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h6 class="card-title">Dr. A K Singh</h6>
-              <p class="card-text">This Internal Web Site Developed in Collaboration with BGH and C and IT Team will help
-              in monitoring and getting the information in a faster and timely manner.</p>
-              <p class="card-text"><small class="text-muted">Dr A K Singh, DMHS I/c (M&HS), Bokaro general Hospital</small></p>
-            </div>
+  <!--Controls-->
+  <div class="controls-top">
+    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
+        class="fas fa-chevron-right"></i></a>
+  </div>
+  <!--/.Controls-->
+
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+    <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+    <li data-target="#multi-item-example" data-slide-to="1"></li>
+    
+  </ol>
+  <!--/.Indicators-->
+
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+
+    <!--First slide-->
+    <div class="carousel-item active">
+
+      <div class="col-md-3" style="float:left">
+       <div class="card mb-2">
+          <img class="card-img-top"
+            src="bgh_bg.jpg" alt="Card image cap">
+          <div class="card-body">
+<!--      <h4 class="card-title">Covid-19</h4> -->
+            <p class="card-text"></p>
+            <a class="btn btn-primary">Covid-19</a>
           </div>
         </div>
       </div>
-<!-- CARD LAYOUT NUMBER -->
-      <div class="card border-success mb-3" style="max-width: 18rem;">
-        <div class="card-header bg-transparent border-success">Header</div>
-        <div class="card-body text-success">
-          <h5 class="card-title">Important Message</h5>
-          <p class="card-text">Some Important Message Will Go Here.</p>
-<!-- Caraousel Entry has to be done Here 
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="bgh_2.jpg" height="20px" class="d-block w-100" alt="...">
+
+      <div class="col-md-3" style="float:left">
+       <div class="card mb-2">
+          <img class="card-img-top"
+            src="bgh_bg.jpg" alt="Card image cap">
+          <div class="card-body">
+<!--      <h4 class="card-title">Covid-19</h4> -->
+            <p class="card-text"></p>
+            <a class="btn btn-primary">Covid-19</a>
+          </div>
+        </div>
       </div>
-      <div class="carousel-item">
-        <img src="bgh_3.jpg" height="20px" class="d-block w-100" alt="...">
+
+      <div class="col-md-3" style="float:left">
+       <div class="card mb-2">
+          <img class="card-img-top"
+            src="bgh_bg.jpg" alt="Card image cap">
+          <div class="card-body">
+<!--      <h4 class="card-title">Covid-19</h4> -->
+            <p class="card-text"></p>
+            <a class="btn btn-primary">Covid-19</a>
+          </div>
+        </div>
       </div>
+      
+      <div class="col-md-3" style="float:left">
+       <div class="card mb-2">
+          <img class="card-img-top"
+            src="bgh_bg.jpg" alt="Card image cap">
+          <div class="card-body">
+<!--      <h4 class="card-title">Covid-19</h4> -->
+            <p class="card-text"></p>
+            <a class="btn btn-primary">Covid-19</a>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>     
-Caraousel Entry is upto Here         -->
+    <!--/.First slide-->
 
+    <!--Second slide-->
+    <div class="carousel-item">
+
+    <div class="col-md-3" style="float:left">
+       <div class="card mb-2">
+          <img class="card-img-top"
+            src="bgh_bg.jpg" alt="Card image cap">
+          <div class="card-body">
+<!--      <h4 class="card-title">Covid-19</h4> -->
+            <p class="card-text"></p>
+            <a class="btn btn-primary">Covid-19</a>
+          </div>
         </div>
-        <div class="card-footer bg-transparent border-success">Footer</div>
       </div>
 
-    <div class="card border-success mb-3" style="max-width: 18rem;">
-        <div class="card-header bg-transparent border-success">Header</div>
-        <div class="card-body text-success">
-          <h5 class="card-title">Important Message</h5>
-          <p class="card-text">Some Important Message Will Go Here.</p>
+      <div class="col-md-3" style="float:left">
+       <div class="card mb-2">
+          <img class="card-img-top"
+            src="bgh_bg.jpg" alt="Card image cap">
+          <div class="card-body">
+<!--      <h4 class="card-title">Covid-19</h4> -->
+            <p class="card-text"></p>
+            <a class="btn btn-primary">Covid-19</a>
+          </div>
         </div>
-        <div class="card-footer bg-transparent border-success">Footer</div>
+      </div>
+
+      <div class="col-md-3" style="float:left">
+       <div class="card mb-2">
+          <img class="card-img-top"
+            src="bgh_bg.jpg" alt="Card image cap">
+          <div class="card-body">
+<!--      <h4 class="card-title">Covid-19</h4> -->
+            <p class="card-text"></p>
+            <a class="btn btn-primary">Covid-19</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-3" style="float:left">
+       <div class="card mb-2">
+          <img class="card-img-top"
+            src="bgh_bg.jpg" alt="Card image cap">
+          <div class="card-body">
+<!--      <h4 class="card-title">Covid-19</h4> -->
+            <p class="card-text"></p>
+            <a class="btn btn-primary">Covid-19</a>
+          </div>
+        </div>
+      </div>
+
     </div>
+    <!--/.Second slide-->
 
-    <div class="card mb-6 bg-information" style="max-width: 540px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="VKP_circle.png" class="card-img" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Sri V K Pandey</h5>
-              <p class="card-text">Access of Information to the concerned person without any dependency will help in monitoring the system.</p>
-              <p class="card-text"><small class="text-muted">Sri V K. Pandey, Executive Director(MM), SAIL, BSL</small></p>
-            </div>
-          </div>
-        </div>
-      </div>
-</div>       
-	<!-- copyright -->
+   
 
-  
+  </div>
+  <!--/.Slides-->
 
-	<!-- //copyright -->
+</div>
+<!--/.Carousel Wrapper-->
+<!-- Card LAYOUT UPTO HERE -->
 
+<!-- copyright -->
   <div class="copyright">
       <div class="row justify-content-center">
-		    <h6>&copy; 2020 BGH, Bokaro General Hospital. All rights reserved | Developed by C&IT Department With ❤ For BGH</a>
+		    <h6>&copy; 2021 BGH, Bokaro General Hospital. All rights reserved | Developed by C&IT Department With ❤ For BGH</a>
 			  </h6>
       </div>  
   
 		</div>
-		<!-- //copyright -->
+<!-- //copyright -->
 
-<!-- CARD LAYOUT FROM THE BOOTSTRAP GOES UPTO HERE -->
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/popper.js/dist/popper.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+
 
 <script>
       $('.dropdown-menu a.dropdown-toggle').on('click', function(e) 

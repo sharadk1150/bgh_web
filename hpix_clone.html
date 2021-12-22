@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>HealthPlix - EMR Login</title>
+
+<meta name="description" content="Healthplix EMR - Smartest EMR ever">
+
+<link href="resources/css/bootstrap.min.css?version=b0.0.1" rel="stylesheet">
+<link href="resources/css/style.css" rel="stylesheet">
+<link href="resources/css/hpstyleV167.css?version=b1.0.6" rel="stylesheet">
+<link href="resources/css/ladda/ladda-themeless.min.css" rel="stylesheet">
+
+<style type="text/css">
+.search-result-row:hover
+{
+background-color: lightgray;
+cursor: pointer;
+}
+#deposit-form span
+{
+font-size:18px;
+color:blue;
+}
+.navbar{
+background: #095187;
+border:1px;
+border-radius: 0px;
+}
+.navbar-default .navbar-nav>li>a {
+color:#fff;
+}
+.navbar-default .navbar-nav>.active>a {
+background-color:#fff;
+}
+
+</style>
+
+
+</head>
+<body style="background: url(resources/images/sail-banner.jpg) no-repeat;background-size:cover">
+<div class="container-fluid">
+
+
+<div class="row">
+<div class="col-md-3 col-md-offset-6" style="background-color:rgba(255,255,255,0.9);padding:25px;border: 1px solid #BEBEBE;
+box-sizing: border-box;backdrop-filter: blur(16px);border-radius: 8px;box-shadow: 0px 4px 44px rgba(0, 0, 0, 0.25);">
+<h4 class="form-group">Sign in to SAIL-BGH EMR</h4 class="text-center">
+
+<form role="form" method='POST' action="modelLoginCheck.php">
+<div class="form-group">
+<input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" >
+</div>
+<div class="form-group">
+<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+</div>
+<div class="form-group">
+<input type="checkbox" name="autologin" id="autologin" value="1">
+<span style="color:#000;">Remember me</span><br>
+</div>
+<div class="form-group">
+<div id="login-error" style="color:red"></div>
+</div>
+<div class="clearfix"></div>
+<div class="form-group">
+<button type="button" data-style="zoom-in" class="ladda-button btn btn-warning pull-right" id="loginButton" style="width:100%" onclick="submitLoginForm();">
+Login
+</button>
+</div>
+<center>
+<div class="form-group text-center">
+<p>&nbsp; &nbsp;</p>
+<a href="forgotPassword.php"><small>Forgot password?</small></a>
+<a style="display: none;" id="extensionKey" href="offline/extensionKey.php"><small>Enter Extension Key</small></a>
+</div>
+</center>
+</form>
+<center>
+<p class="m-t">
+<small>HealthPlix &copy; 2014-21</small>
+</p>
+</center>
+
+
+</div>
+</div>
+
+<!-- <div class="row" style="margin-top:10px">
+<div class="col-md-6 col-md-offset-3" style="background-color:rgba(244,67,54,0.9);color:white;padding:15px;text-align:justify;">
+We are upgrading to a much bigger and much faster server on Feb 22, 2017. During this upgrade there could be service interruptions that last for a few minutes. We apologize for the inconvenience this may cause. If you have any concerns please feel free to call us on +91-9901905793. We would be happy to clarify. Thanks for cooperation.
+</div> -->
+
+</div>
+
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/scripts.js"></script>
+<script src="resources/js/ladda/spin.min.js"></script>
+<script src="resources/js/ladda/ladda.min.js"></script>
+<script src="resources/js/ladda/ladda.jquery.min.js"></script>
+
+
+
+</body>
+</html>
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+$('body').keydown(function(e) {
+
+if (e.keyCode == 13) {
+submitLoginForm();
+}
+});
+});
+
+function submitLoginForm(){
+if(!netOffline()){
+return false;
+}else{
+$("#login-error").html('');
+}
+$("#loginButton").ladda().ladda('start');
+var data={
+"email": $("#email").val().trim(),
+"password": $("#password").val().trim(),
+"autologin": $("#autologin").is(':checked') ? 1 : 0
+}
+$.ajax({
+url: "modelLoginCheck.php",
+type: "POST",
+data: data,
+success: function(response)
+{
+console.log(response);
+//alert(1);return false;
+var obj=JSON.parse(response);
+if(obj.apierror.length>1)
+{
+if(obj.deactivatedVal == "1"){
+$("#extensionKey").css("display","block");
+}else{
+$("#extensionKey").css("display","none");
+}
+$("#login-error").html(obj.apierror);
+$("#loginButton").ladda().ladda('stop');
+}
+else
+{
+window.location=obj.nextpage;
+}
+},
+error: function(error)
+{
+$("#loginButton").ladda().ladda('stop');
+$("#login-error").text(error);
+},
+});
+}
+
+//Offline
+function netOffline() {
+var onlineStatus = navigator.onLine;
+if (onlineStatus == false) {
+$("#login-error").html('Check your internet connection');
+return false;
+}else{
+return true;
+}
+}
+
+</script>

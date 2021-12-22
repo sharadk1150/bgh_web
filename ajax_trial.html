@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Registration</title>
+<script type="text/javascript" language="javascript">
+// Need to make an object of XMLHttpRequest Type.
+function createRequestObject() {
+    var ro;
+    if (navigator.appName == "Microsoft Internet Explorer") {
+        ro = new ActiveXObject("Microsoft.XMLHTTP");
+    } else {
+        ro = new XMLHttpRequest();
+    }
+    return ro;
+}
+        
+var http = createRequestObject();
+
+// Function that calls the PHP script:
+function sendRequest(email) {
+	// Call the script.
+	// Use the GET method.
+	// Pass the email address in the URL.
+    http.open('get', 'ajax.php?email=' + encodeURIComponent(email));
+    http.onreadystatechange = handleResponse;
+    http.send(null);
+}
+
+// Function handles the response from the PHP script.
+function handleResponse() {
+	// If everything's okay:
+    if(http.readyState == 4){
+        console.log(this.responseText);
+    	// Assign the returned value to the document object.
+        //document.getElementById('email_label').innerHTML = http.responseText;
+        //document.getElementById('first_name').value = http.responseText;
+        //document.getElementById('email_label').innerHTML = http.responseText[0];
+        //document.getElementById('first_name').value = http.responseText[1];
+
+        var jsonText = http.responseText;
+        var jsonObject= eval('('+jsonText+')');
+
+        var firstName=jsonObject.name;
+        var middleName=jsonObject.midno;
+
+        document.getElementById('email_label').innerHTML = firstName;
+        document.getElementById('first_name').value = middleName;
+      
+        
+        document.getElementById('relation').value = jsonObject.relation;
+        document.getElementById('birth_dt').value = jsonObject.birth_dt;
+        document.getElementById('srl').value = jsonObject.srl;
+        document.getElementById('stno').value = jsonObject.stno;
+        document.getElementById('dep_stat').value = jsonObject.dep_stat;
+        document.getElementById('sex').value = jsonObject.sex;
+        document.getElementById('idnt_mark').value = jsonObject.idnt_mark;
+        document.getElementById('blood').value = jsonObject.blood;
+        document.getElementById('ret_dt').value = jsonObject.ret_dt;
+        document.getElementById('emp_stat').value = jsonObject.emp_stat;
+        document.getElementById('pat_stat').value = jsonObject.pat_stat;
+        document.getElementById('gradep').value = jsonObject.gradep;
+        document.getElementById('roll_stat').value = jsonObject.roll_stat;
+        document.getElementById('desdescp').value = jsonObject.desdescp;
+        document.getElementById('no_rec').innerHTML = '';
+
+    }
+    else {
+        document.getElementById('email_label').innerText = 'Invalid MID Number PLease Try Again';
+    }
+}
+// ]]>
+</script>
+</head>
+<body>
+<form action="#" method="post">
+Staff No: <input name="email" type="text" size="30" maxlength="60" onkeydown="sendRequest(this.form.email.value)" /> 
+<span id="email_label"></span><br />
+First Name: <input name="first_name" id="first_name" type="text" size="40" maxlength="40" /><br />
+
+First Name: <input name="relation"  id="relation"   type="text" size="40" maxlength="40" /><br />
+First Name: <input name="birth_dt"  id="birth_dt"   type="text" size="40" maxlength="40" /><br />
+First Name: <input name="srl"       id="srl"        type="text" size="40" maxlength="40" /><br />
+First Name: <input name="stno"      id="stno"       type="text" size="40" maxlength="40" /><br />
+First Name: <input name="dep_stat"  id="dep_stat"   type="text" size="40" maxlength="40" /><br />
+First Name: <input name="sex"       id="sex"        type="text" size="40" maxlength="40" /><br />
+First Name: <input name="idnt_mark" id="idnt_mark"  type="text" size="40" maxlength="40" /><br />
+First Name: <input name="blood"     id="blood"      type="text" size="40" maxlength="40" /><br />
+First Name: <input name="ret_dt"    id="ret_dt"     type="text" size="40" maxlength="40" /><br />
+First Name: <input name="emp_stat"  id="emp_stat"   type="text" size="40" maxlength="40" /><br />
+First Name: <input name="pat_stat"  id="pat_stat"   type="text" size="40" maxlength="40" /><br />
+First Name: <input name="gradep"    id="gradep"     type="text" size="40" maxlength="40" /><br />
+First Name: <input name="roll_stat" id="roll_stat"  type="text" size="40" maxlength="40" /><br />
+First Name: <input name="desdescp"  id="desdescp"   type="text" size="40" maxlength="40" /><br />
+
+
+
+
+
+
+
+
+
+
+(Rest of the form...)
+</form>
+
+<br><br><br>
+
+<span id="no_rec"></span><br />
+
+</body>
+</html>

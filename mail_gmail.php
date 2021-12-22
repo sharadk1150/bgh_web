@@ -73,9 +73,7 @@ if (isset($_POST['getdata']))
 
     $mail = new PHPMailer\PHPMailer\PHPMailer();
     //$mail->IsSMTP(); 
-
     //$mail=new PHPMailer;
-
     //Enable SMTP debugging. 
     $mail->SMTPDebug = 0;                               
     //Set PHPMailer to use SMTP.
@@ -125,17 +123,26 @@ if (isset($_POST['getdata']))
 //while (($row = oci_fetch_array($stid)) != false) 
 while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS)) 
 {
-//    echo $row[0] . " " . $row[1] . "<br>\n";
-//    $mail->addAddress("singh.sharadk@gmail.com", "Recepient Name");
+    //$mailer->ClearAllRecipients(); // clear all
+    // clear addresses of all types
+    $mail->ClearAddresses();  // each AddAddress add to list
+    $mail->ClearCCs();
+    $mail->ClearBCCs();
+    echo "<h1>PHP is Fun</h1>";
+    echo "<h1>PHP is Fun</h1>";
+    echo "<h1>PHP is Fun</h1>";
+    echo "<h1>PHP is Fun</h1>";
+    
 
+    echo $row[0] . " " . $row[1] .  " " . $row[2] . "<br>\n";
+    $mail->addAddress("singh.sharadk@gmail.com", "Recepient Name");
     $mail->addAddress("$row[2]", "Recepient Name");
     $mail->Body = "Dear Sir/Madam". "\n".
                   "your credentials are". "\n" .
                   "Userid:". $row[0]. "\n" .
                   "Initial Password:".$row[3]. "\n".
                   "Please Change on First Log On". "\n".
-                  ".........BSL/SRM";
-
+                  "Ignore the Previous Mail .BSL/SRM";
     if(!$mail->send()) 
     {
         echo "Mailer Error: " . $mail->ErrorInfo;
